@@ -139,87 +139,21 @@
   animation: ui-footer-shimmer 7s ease-in-out infinite;
 }
 
-/* Upper Orbit Ring */
-.ui-footer__orbit-ring--tilt {
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-4deg);
-  width: 1100px;
-  height: 300px;
-  border: 1px dashed rgba(255, 255, 255, 0.10);
-  border-radius: 50%;
-  animation: ui-footer-spin 60s linear infinite;
-}
-
-/* Mid-to-Lower Orbit Ring */
-.ui-footer__orbit-ring--lower {
-  position: absolute;
-  bottom: 120px;
-  left: 50%;
-  transform: translateX(-50%) rotate(6deg);
-  width: 1250px;
-  height: 380px;
-  border: 1px dashed rgba(56, 189, 248, 0.08);
-  border-radius: 50%;
-  animation: ui-footer-spin 75s linear infinite reverse;
-}
-
-.ui-footer__orbit-dot {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-}
-
-.ui-footer__orbit-dot--gold {
-  top: 32px;
-  right: 24%;
-  background-color: var(--pv-gold);
-  box-shadow: 0 0 14px var(--pv-gold), 0 0 24px var(--pv-gold);
-}
-
-.ui-footer__orbit-dot--cyan {
-  bottom: 35px;
-  left: 20%;
-  background-color: #38BDF8;
-  box-shadow: 0 0 14px #38BDF8, 0 0 24px #38BDF8;
-}
-
-.ui-footer__orbit-dot--lower-gold {
-  top: 40px;
-  left: 18%;
-  background-color: var(--pv-gold);
-  box-shadow: 0 0 12px var(--pv-gold);
-}
-
-.ui-footer__orbit-dot--lower-purple {
-  bottom: 45px;
-  right: 22%;
-  background-color: #A855F7;
-  box-shadow: 0 0 12px #A855F7;
-}
-
-/* Dynamic Multi-Tier Full-Coverage SVG Canvas */
+/* Focused Upper SVG Trajectory Framing CTA Banner */
 .ui-footer__orbit-svg {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
-  height: 100%;
+  max-width: 1440px;
+  height: 280px;
   pointer-events: none;
   z-index: 1;
 }
 
 .ui-footer__orbit-path {
   transition: opacity 0.3s ease;
-}
-
-.ui-footer__orbit-path--mid {
-  opacity: 0.65;
-}
-
-.ui-footer__orbit-path--lower {
-  opacity: 0.55;
 }
 
 @keyframes ui-footer-float-left {
