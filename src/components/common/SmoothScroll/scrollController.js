@@ -32,9 +32,8 @@ const WHEEL_MULTIPLIER = 1.15
 function animate(currentTime) {
   if (!isAnimating) return
 
-  // Calculate elapsed time in seconds; guarantee minimum 8ms floor on first frame
-  // and clamp to 50ms max to prevent jumps after tab switch/lag spike
-  const dt = Math.max(0.008, Math.min((currentTime - lastTime) / 1000, 0.05))
+  // Calculate elapsed time in seconds; support high-refresh rates (144Hz=6.9ms, 165Hz=6.0ms, 240Hz=4.1ms)
+  const dt = Math.max(0.001, Math.min((currentTime - lastTime) / 1000, 0.05))
   lastTime = currentTime
 
   // Frame-rate independent exponential interpolation
@@ -50,6 +49,7 @@ function animate(currentTime) {
     isAnimating = false
     isProgrammaticScroll = false
     rafId = null
+    document.documentElement.classList.remove('is-scrolling')
     return // Stop loop: zero CPU/GPU load while stationary
   }
 
@@ -63,6 +63,7 @@ function startAnimation() {
   if (!isAnimating) {
     isAnimating = true
     lastTime = performance.now()
+    document.documentElement.classList.add('is-scrolling')
     rafId = requestAnimationFrame(animate)
   }
 }
@@ -74,6 +75,7 @@ function stopAnimation() {
   }
   isAnimating = false
   isProgrammaticScroll = false
+  document.documentElement.classList.remove('is-scrolling')
 }
 
 /**

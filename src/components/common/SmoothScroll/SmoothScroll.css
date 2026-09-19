@@ -19,3 +19,9 @@ body {
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 }
+
+/* Disable expensive hover recalculations and hit-testing in Chrome during active scroll */
+html.is-scrolling,
+html.is-scrolling * {
+  pointer-events: none !important;
+}

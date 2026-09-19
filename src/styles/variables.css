@@ -30,8 +30,8 @@
    /* Borders & Glass */
    --pv-border: rgba(255, 255, 255, 0.10);
    --pv-border-gold: rgba(255, 184, 28, 0.35);
-   --pv-glass: rgba(255, 255, 255, 0.045);
-   --pv-glass-hover: rgba(255, 255, 255, 0.08);
+   --pv-glass: rgba(10, 14, 28, 0.72);
+   --pv-glass-hover: rgba(15, 22, 42, 0.85);
 
    /* Glow Effects */
    --pv-gold-glow: rgba(255, 184, 28, 0.35);
@@ -57,9 +57,9 @@
    --glass-border: var(--pv-border);
    --glass-border-hover: rgba(255, 255, 255, 0.18);
    --glass-border-accent: var(--pv-border-gold);
-   --glass-blur: blur(8px);
-   --glass-blur-sm: blur(4px);
-   --glass-blur-lg: blur(12px);
+   --glass-blur: blur(5px);
+   --glass-blur-sm: blur(3px);
+   --glass-blur-lg: blur(8px);
 
    /* Text Colors */
    --text-primary: var(--pv-text-primary);

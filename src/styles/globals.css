@@ -49,11 +49,7 @@ section[id] {
   scroll-margin-top: 6.5rem;
 }
 
-/* Chrome 144Hz compositor hint: isolate each section's layout so the browser
-   doesn't have to recalculate the full page layout tree on every scroll frame */
-section {
-  contain: layout style;
-}
+
 
 /* Custom Sleek Scrollbar */
 ::-webkit-scrollbar {

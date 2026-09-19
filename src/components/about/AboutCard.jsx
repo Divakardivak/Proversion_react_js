@@ -57,7 +57,6 @@ export function AboutCard({ pillar, index }) {
           : {
               rotateX,
               rotateY,
-              transformStyle: 'preserve-3d',
             }
       }
       initial={{ opacity: 0, y: 36, scale: 0.96 }}
@@ -80,7 +79,6 @@ export function AboutCard({ pillar, index }) {
 
       <div
         className="ui-about-card__content"
-        style={shouldReduceMotion ? {} : { transform: 'translateZ(16px)' }}
       >
         {/* Card Header: Icon + Pillar Badge + Title */}
         <div className="ui-about-card__header">
