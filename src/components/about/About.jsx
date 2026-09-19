@@ -55,17 +55,6 @@ export function About() {
 
           {/* Right Column: 3D Floating Information Panels */}
           <div className="ui-about__cards-wrapper">
-            {/* Ambient Flow Line Connecting Cards */}
-            <svg className="ui-about__connector-svg" aria-hidden="true">
-              <line
-                x1="2"
-                y1="0"
-                x2="2"
-                y2="100%"
-                className="ui-about__connector-line"
-              />
-            </svg>
-
             <div className="ui-about__cards-container">
               {aboutData.pillars.map((pillar, index) => (
                 <AboutCard key={pillar.id} pillar={pillar} index={index} />
