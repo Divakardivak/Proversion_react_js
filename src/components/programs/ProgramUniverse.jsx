@@ -137,7 +137,7 @@ export function ProgramUniverse({
   isMobile = false,
 }) {
   const containerRef = useRef(null)
-  const isInView = useInView(containerRef, { margin: '200px 0px' })
+  const isInView = useInView(containerRef, { margin: '40px 0px' })
   const shouldReduceMotion = useReducedMotion()
 
   return (

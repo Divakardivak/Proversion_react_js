@@ -1,15 +1,14 @@
 /**
  * Custom High-Refresh-Rate Smooth Scroll Controller Engine
- * Pure vanilla JavaScript module — zero React state, zero dependencies.
+ * Pure vanilla JavaScript module — zero React state, zero layout thrashing.
  *
- * Provides:
- * - Native document scrolling via window.scrollTo({ behavior: 'instant' })
- * - Time-based exponential interpolation independent of display refresh rate
- * - Single on-demand requestAnimationFrame loop (stops completely when idle)
- * - Wheel input delta normalization (DOM_DELTA_PIXEL, DOM_DELTA_LINE, DOM_DELTA_PAGE)
- * - Instant user wheel interrupt of programmatic anchor animations
- * - Direction reversal pivot to eliminate sluggish inertia fighting
- * - Native touch scrolling & native keyboard scrolling preservation
+ * Performance Optimizations for Google Chrome & High-Refresh Displays:
+ * - Direct window.scrollTo(0, Math.round(currentScroll)) avoiding sub-pixel raster jitter
+ * - Zero getComputedStyle/layout queries inside wheel handler (O(1) selector check)
+ * - Optimized exponential response (RESPONSE = 18) for instantaneous, buttery response
+ * - Delta normalized with crisp 1.15 multiplier to eliminate "stuck in molasses" feeling
+ * - Maximum lead clamping to prevent runaway acceleration on aggressive spinning
+ * - Sub-pixel snap threshold (< 0.5px) for crisp termination with zero idle RAF usage
  */
 
 let currentScroll = typeof window !== 'undefined' ? window.scrollY : 0
@@ -20,18 +19,22 @@ let rafId = null
 let lastTime = 0
 let isReducedMotionActive = false
 
-// Exponential smoothing response constant (12 = buttery, immediate, crisp)
-const RESPONSE = 12
+// Exponential smoothing response constant (18 = instantaneous start, buttery decay)
+const RESPONSE = 18
+
+// Wheel multiplier for comfortable notch travel without sluggish drag
+const WHEEL_MULTIPLIER = 1.15
 
 /**
  * Time-based exponential interpolation step
- * Mathematically identical across 60Hz, 120Hz, 144Hz, 165Hz, and 240Hz
+ * Mathematically consistent across 60Hz, 120Hz, 144Hz, 165Hz, and 240Hz
  */
 function animate(currentTime) {
   if (!isAnimating) return
 
-  // Calculate elapsed time in seconds, clamped to 100ms max (e.g. tab switch)
-  const dt = Math.min((currentTime - lastTime) / 1000, 0.1)
+  // Calculate elapsed time in seconds; guarantee minimum 8ms floor on first frame
+  // and clamp to 50ms max to prevent jumps after tab switch/lag spike
+  const dt = Math.max(0.008, Math.min((currentTime - lastTime) / 1000, 0.05))
   lastTime = currentTime
 
   // Frame-rate independent exponential interpolation
@@ -40,24 +43,18 @@ function animate(currentTime) {
 
   // Check sub-pixel threshold
   const diff = Math.abs(targetScroll - currentScroll)
-  if (diff < 0.3) {
+  if (diff < 0.5) {
     currentScroll = targetScroll
-    window.scrollTo({
-      top: currentScroll,
-      left: 0,
-      behavior: 'instant',
-    })
+    // Round to integer pixel boundary for zero raster-tile jitter in Chrome
+    window.scrollTo(0, Math.round(currentScroll))
     isAnimating = false
     isProgrammaticScroll = false
     rafId = null
     return // Stop loop: zero CPU/GPU load while stationary
   }
 
-  window.scrollTo({
-    top: currentScroll,
-    left: 0,
-    behavior: 'instant',
-  })
+  // Fast direct scroll to integer boundary
+  window.scrollTo(0, Math.round(currentScroll))
 
   rafId = requestAnimationFrame(animate)
 }
@@ -77,24 +74,6 @@ function stopAnimation() {
   }
   isAnimating = false
   isProgrammaticScroll = false
-}
-
-/**
- * Check if element or parent has native scroll room (modals, dropdowns, code blocks)
- */
-function hasScrollableAncestor(el, deltaY) {
-  if (!el || el === document.body || el === document.documentElement) return false
-  const style = window.getComputedStyle(el)
-  const overflowY = style.overflowY
-  const isScrollable = overflowY === 'auto' || overflowY === 'scroll'
-
-  if (isScrollable && el.scrollHeight > el.clientHeight) {
-    const atTop = el.scrollTop <= 0 && deltaY < 0
-    const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight && deltaY > 0
-    if (!atTop && !atBottom) return true
-  }
-
-  return hasScrollableAncestor(el.parentElement, deltaY)
 }
 
 /**
@@ -140,11 +119,7 @@ export function smoothScrollTo(target, options = {}) {
     stopAnimation()
     currentScroll = destination
     targetScroll = destination
-    window.scrollTo({
-      top: destination,
-      left: 0,
-      behavior: 'instant',
-    })
+    window.scrollTo(0, Math.round(destination))
     return
   }
 
@@ -175,22 +150,32 @@ export function initSmoothScrollController() {
   }
 
   /**
-   * Handle mouse wheel input with cross-browser delta normalization
+   * Handle mouse wheel input with zero layout thrashing and cross-browser delta normalization
    */
   function handleWheel(e) {
     if (isReducedMotionActive) return
     if (e.ctrlKey || e.metaKey || e.altKey) return
-    if (hasScrollableAncestor(e.target, e.deltaY)) return
+
+    // Fast O(1) DOM check — NO getComputedStyle or layout querying!
+    if (e.target && e.target.closest && e.target.closest('[data-scroll-container], textarea, select')) {
+      return
+    }
 
     let delta = e.deltaY
     if (e.deltaMode === 1) {
-      delta *= 20
+      // DOM_DELTA_LINE (Firefox / Windows line mode)
+      delta *= 24
     } else if (e.deltaMode === 2) {
+      // DOM_DELTA_PAGE
       delta *= window.innerHeight
+    } else {
+      // Standard mouse wheel delta with natural travel multiplier
+      delta *= WHEEL_MULTIPLIER
     }
 
     if (Math.abs(delta) < 0.1) return
 
+    // Intercept default stepped jump to smoothly interpolate
     e.preventDefault()
 
     const maxScroll = Math.max(
@@ -219,7 +204,11 @@ export function initSmoothScrollController() {
       }
     }
 
+    // Clamp maximum lead distance to prevent runaway momentum on aggressive spinning
+    const maxLead = window.innerHeight * 1.25
+    targetScroll = Math.max(currentScroll - maxLead, Math.min(targetScroll, currentScroll + maxLead))
     targetScroll = Math.max(0, Math.min(targetScroll, maxScroll))
+
     startAnimation()
   }
 

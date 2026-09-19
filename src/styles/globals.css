@@ -31,7 +31,7 @@ body {
   position: relative;
 }
 
-/* GPU-accelerated fixed background on separate compositor layer (eliminates scroll repaints) */
+/* GPU-accelerated fixed background on root layer */
 body::before {
   content: '';
   position: fixed;
@@ -42,8 +42,6 @@ body::before {
     radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.10), transparent 35%),
     var(--pv-bg);
   pointer-events: none;
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 /* Ensure anchor links have breathing room below fixed navbar */

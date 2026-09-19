@@ -88,7 +88,7 @@ function SceneRig({ isMobile }) {
  */
 export function HeroScene({ isMobile = false }) {
   const containerRef = useRef(null)
-  const isInView = useInView(containerRef, { margin: '200px 0px' })
+  const isInView = useInView(containerRef, { margin: '40px 0px' })
   const shouldReduceMotion = useReducedMotion()
 
   const cameraPosition = useMemo(
