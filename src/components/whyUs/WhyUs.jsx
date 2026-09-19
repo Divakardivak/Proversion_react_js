@@ -89,17 +89,17 @@ export function WhyUs() {
           }}
         >
           {/* SVG Animated Connection Conduits */}
-          <svg className="ui-why-us__svg" viewBox="0 0 960 440" aria-hidden="true">
+          <svg className="ui-why-us__svg" viewBox="0 0 960 500" aria-hidden="true">
             <defs>
-              <linearGradient id="whyUsGradAscend" x1="480" y1="220" x2="480" y2="120" gradientUnits="userSpaceOnUse">
+              <linearGradient id="whyUsGradAscend" x1="480" y1="255" x2="480" y2="110" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stopColor="#FFB81C" stopOpacity="0.8" />
                 <stop offset="100%" stopColor="#38BDF8" stopOpacity="0.95" />
               </linearGradient>
-              <linearGradient id="whyUsGradEvolve" x1="480" y1="220" x2="275" y2="330" gradientUnits="userSpaceOnUse">
+              <linearGradient id="whyUsGradEvolve" x1="480" y1="255" x2="320" y2="392" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stopColor="#FFB81C" stopOpacity="0.8" />
                 <stop offset="100%" stopColor="#818CF8" stopOpacity="0.95" />
               </linearGradient>
-              <linearGradient id="whyUsGradPropel" x1="480" y1="220" x2="685" y2="330" gradientUnits="userSpaceOnUse">
+              <linearGradient id="whyUsGradPropel" x1="480" y1="255" x2="640" y2="392" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stopColor="#FFB81C" stopOpacity="0.8" />
                 <stop offset="100%" stopColor="#FFB81C" stopOpacity="0.95" />
               </linearGradient>
@@ -113,37 +113,37 @@ export function WhyUs() {
             </defs>
 
             {/* Base Background Conduits */}
-            <line x1="480" y1="220" x2="480" y2="120" className="ui-why-us__line-base" />
-            <line x1="480" y1="220" x2="275" y2="330" className="ui-why-us__line-base" />
-            <line x1="480" y1="220" x2="685" y2="330" className="ui-why-us__line-base" />
+            <line x1="480" y1="255" x2="480" y2="110" className="ui-why-us__line-base" />
+            <line x1="480" y1="255" x2="320" y2="392" className="ui-why-us__line-base" />
+            <line x1="480" y1="255" x2="640" y2="392" className="ui-why-us__line-base" />
 
             {/* Conduit Terminal Port Rings */}
-            <circle cx="480" cy="120" r="4.5" className="ui-why-us__port ui-why-us__port--ascend" />
-            <circle cx="275" cy="330" r="4.5" className="ui-why-us__port ui-why-us__port--evolve" />
-            <circle cx="685" cy="330" r="4.5" className="ui-why-us__port ui-why-us__port--propel" />
+            <circle cx="480" cy="110" r="5" className="ui-why-us__port ui-why-us__port--ascend" />
+            <circle cx="320" cy="392" r="5" className="ui-why-us__port ui-why-us__port--evolve" />
+            <circle cx="640" cy="392" r="5" className="ui-why-us__port ui-why-us__port--propel" />
 
             {/* Active Luminous Laser Lines */}
             <line
               x1="480"
-              y1="220"
+              y1="255"
               x2="480"
-              y2="120"
+              y2="110"
               stroke="url(#whyUsGradAscend)"
               className={`ui-why-us__line ${activeNodeId === 'ascend' ? 'ui-why-us__line--active' : ''}`}
             />
             <line
               x1="480"
-              y1="220"
-              x2="275"
-              y2="330"
+              y1="255"
+              x2="320"
+              y2="392"
               stroke="url(#whyUsGradEvolve)"
               className={`ui-why-us__line ${activeNodeId === 'evolve' ? 'ui-why-us__line--active' : ''}`}
             />
             <line
               x1="480"
-              y1="220"
-              x2="685"
-              y2="330"
+              y1="255"
+              x2="640"
+              y2="392"
               stroke="url(#whyUsGradPropel)"
               className={`ui-why-us__line ${activeNodeId === 'propel' ? 'ui-why-us__line--active' : ''}`}
             />
@@ -151,17 +151,17 @@ export function WhyUs() {
             {/* Energy Photons Traveling along active conduit */}
             {!shouldReduceMotion && activeNodeId === 'ascend' && (
               <circle r="4.5" fill="#38BDF8" filter="url(#whyUsGlow)">
-                <animateMotion path="M 480 220 L 480 120" dur="1.2s" repeatCount="indefinite" />
+                <animateMotion path="M 480 255 L 480 110" dur="1.2s" repeatCount="indefinite" />
               </circle>
             )}
             {!shouldReduceMotion && activeNodeId === 'evolve' && (
               <circle r="4.5" fill="#818CF8" filter="url(#whyUsGlow)">
-                <animateMotion path="M 480 220 L 275 330" dur="1.4s" repeatCount="indefinite" />
+                <animateMotion path="M 480 255 L 320 392" dur="1.4s" repeatCount="indefinite" />
               </circle>
             )}
             {!shouldReduceMotion && activeNodeId === 'propel' && (
               <circle r="4.5" fill="#FFB81C" filter="url(#whyUsGlow)">
-                <animateMotion path="M 480 220 L 685 330" dur="1.4s" repeatCount="indefinite" />
+                <animateMotion path="M 480 255 L 640 392" dur="1.4s" repeatCount="indefinite" />
               </circle>
             )}
           </svg>
@@ -245,14 +245,28 @@ export function WhyUs() {
               aria-labelledby={`tab-${activePillar.id}`}
               className="ui-why-us__detail-card"
               style={{
+                '--active-color': activePillar.color,
                 '--active-border': `${activePillar.color}66`,
-                '--active-glow': `${activePillar.color}18`,
+                '--active-glow': `${activePillar.color}25`,
               }}
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -14 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
             >
+              {/* High-Tech Animated Border Beam Lines */}
+              {!shouldReduceMotion && (
+                <div className="ui-why-us__card-beam-track" aria-hidden="true">
+                  <div className="ui-why-us__card-beam" />
+                </div>
+              )}
+
+              {/* Cyber Tech Corner Brackets */}
+              <div className="ui-why-us__card-corner ui-why-us__card-corner--tl" aria-hidden="true" />
+              <div className="ui-why-us__card-corner ui-why-us__card-corner--tr" aria-hidden="true" />
+              <div className="ui-why-us__card-corner ui-why-us__card-corner--bl" aria-hidden="true" />
+              <div className="ui-why-us__card-corner ui-why-us__card-corner--br" aria-hidden="true" />
+
               <div className="ui-why-us__detail-header">
                 <div className="ui-why-us__detail-title-group">
                   <div

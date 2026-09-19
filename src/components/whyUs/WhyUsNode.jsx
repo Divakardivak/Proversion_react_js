@@ -33,12 +33,19 @@ export function WhyUsNode({
       onClick={onSelect}
       onMouseEnter={onHover}
       onFocus={onHover}
-      whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
+      whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
       whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
       style={{
         '--node-color': node.color,
       }}
     >
+      {/* Animated Glowing Laser Border Beam for Active Node */}
+      {isActive && !shouldReduceMotion && (
+        <div className="ui-why-us__node-beam-track" aria-hidden="true">
+          <div className="ui-why-us__node-beam" />
+        </div>
+      )}
+
       <div className="ui-why-us__node-pulse" aria-hidden="true" />
 
       <div className="ui-why-us__node-inner">
