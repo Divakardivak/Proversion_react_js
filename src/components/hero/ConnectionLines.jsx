@@ -18,14 +18,21 @@ export function ConnectionLines({ nodes }) {
 
     nodes.forEach((node, idx) => {
       const i = idx * 6
-      // Origin
-      pos[i] = 0
-      pos[i + 1] = 0
-      pos[i + 2] = 0
-      // Target
-      pos[i + 3] = node.position[0]
-      pos[i + 4] = node.position[1]
-      pos[i + 5] = node.position[2]
+      const nx = node.position[0]
+      const ny = node.position[1]
+      const nz = node.position[2]
+      const len = Math.sqrt(nx * nx + ny * ny + nz * nz) || 1
+      const coreR = 0.85
+
+      // Start cleanly at outer radius of the core
+      pos[i] = (nx / len) * coreR
+      pos[i + 1] = (ny / len) * coreR
+      pos[i + 2] = (nz / len) * coreR
+
+      // End cleanly near the node
+      pos[i + 3] = nx * 0.94
+      pos[i + 4] = ny * 0.94
+      pos[i + 5] = nz * 0.94
     })
 
     return pos
@@ -35,8 +42,8 @@ export function ConnectionLines({ nodes }) {
     if (shouldReduceMotion || !matRef.current) return
 
     const t = state.clock.getElapsedTime()
-    // Very subtle low-opacity breathing
-    matRef.current.opacity = 0.11 + Math.sin(t * 1.2) * 0.04
+    // Smooth gentle breathing
+    matRef.current.opacity = 0.16 + Math.sin(t * 1.4) * 0.05
   })
 
   return (
@@ -49,9 +56,9 @@ export function ConnectionLines({ nodes }) {
       </bufferGeometry>
       <lineBasicMaterial
         ref={matRef}
-        color="#818cf8"
+        color="#38BDF8"
         transparent
-        opacity={0.12}
+        opacity={0.18}
         blending={THREE.AdditiveBlending}
         depthWrite={false}
       />

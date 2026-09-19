@@ -4,17 +4,16 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 /**
  * Precision technological central core for ProVersion.
- * Features an inner faceted dark titanium core, wireframe energy lattice,
- * and ultra-thin concentric gyroscopic rings with slow, majestic rotation.
+ * Features a glowing inner energy core, crystalline geodesic outer shell,
+ * and dual luminous planetary gimbal rings with traveling orbital spark beads.
  * @param {Object} props
  * @param {number} [props.scrollOffset=0]
  */
 export function CentralCore({ scrollOffset = 0 }) {
   const coreRef = useRef()
-  const latticeRef = useRef()
+  const innerRef = useRef()
   const ring1Ref = useRef()
   const ring2Ref = useRef()
-  const ring3Ref = useRef()
   const groupRef = useRef()
   const shouldReduceMotion = useReducedMotion()
 
@@ -23,31 +22,27 @@ export function CentralCore({ scrollOffset = 0 }) {
 
     const t = state.clock.getElapsedTime()
 
-    // Majestic, slow rotation of the core
+    // Smooth, majestic rotation of the core
     if (coreRef.current) {
-      coreRef.current.rotation.y += delta * 0.18
-      coreRef.current.rotation.x = Math.sin(t * 0.4) * 0.12 + scrollOffset * 0.4
+      coreRef.current.rotation.y += delta * 0.22
+      coreRef.current.rotation.x = Math.sin(t * 0.5) * 0.12 + scrollOffset * 0.3
     }
 
-    if (latticeRef.current) {
-      latticeRef.current.rotation.y -= delta * 0.12
-      latticeRef.current.rotation.z += delta * 0.08
+    if (innerRef.current) {
+      innerRef.current.rotation.y -= delta * 0.28
+      const pulse = 1 + Math.sin(t * 2) * 0.05
+      innerRef.current.scale.set(pulse, pulse, pulse)
     }
 
-    // Ultra-thin gyroscopic rings rotating on distinct planetary axes
+    // Clean planetary gimbal rings
     if (ring1Ref.current) {
-      ring1Ref.current.rotation.x += delta * 0.15
-      ring1Ref.current.rotation.y += delta * 0.1
+      ring1Ref.current.rotation.z += delta * 0.16
+      ring1Ref.current.rotation.x = 0.35 + Math.sin(t * 0.4) * 0.06
     }
 
     if (ring2Ref.current) {
-      ring2Ref.current.rotation.y -= delta * 0.12
-      ring2Ref.current.rotation.z += delta * 0.09
-    }
-
-    if (ring3Ref.current) {
-      ring3Ref.current.rotation.z += delta * 0.08
-      ring3Ref.current.rotation.x -= delta * 0.06
+      ring2Ref.current.rotation.z -= delta * 0.14
+      ring2Ref.current.rotation.y = -0.45 + Math.cos(t * 0.4) * 0.06
     }
 
     // Subtle gentle float
@@ -58,68 +53,74 @@ export function CentralCore({ scrollOffset = 0 }) {
 
   return (
     <group ref={groupRef}>
-      {/* Central Soft Ambient Light */}
-      <pointLight color="#FFB81C" intensity={1.6} distance={7} decay={2} />
-      <pointLight color="#22D3EE" intensity={1.2} distance={5} decay={2} />
+      {/* Precision Dual Point Lights */}
+      <pointLight color="#FFB81C" intensity={2.2} distance={8} decay={2} />
+      <pointLight color="#38BDF8" intensity={1.6} distance={6} decay={2} position={[-1, 1, 1]} />
 
-      {/* Inner Faceted Dark Titanium Core */}
-      <mesh ref={coreRef}>
-        <icosahedronGeometry args={[0.75, 0]} />
-        <meshStandardMaterial
-          color="#0D1030"
-          metalness={0.92}
-          roughness={0.18}
-          emissive="#FFB81C"
-          emissiveIntensity={0.25}
-        />
-      </mesh>
-
-      {/* Wireframe Energy Shell */}
-      <mesh ref={latticeRef}>
-        <icosahedronGeometry args={[0.92, 1]} />
-        <meshBasicMaterial
-          color="#FFB81C"
-          wireframe
-          transparent
-          opacity={0.22}
-        />
-      </mesh>
-
-      {/* Precision Gyroscopic Ring 1 (Inner - Gold) */}
-      <mesh ref={ring1Ref}>
-        <torusGeometry args={[1.25, 0.012, 16, 100]} />
+      {/* Inner Glowing Energy Core */}
+      <mesh ref={innerRef}>
+        <sphereGeometry args={[0.52, 32, 32]} />
         <meshStandardMaterial
           color="#FFB81C"
-          metalness={0.92}
-          roughness={0.18}
           emissive="#FFB81C"
-          emissiveIntensity={0.28}
-        />
-      </mesh>
-
-      {/* Precision Gyroscopic Ring 2 (Middle - Cyan) */}
-      <mesh ref={ring2Ref}>
-        <torusGeometry args={[1.5, 0.01, 16, 100]} />
-        <meshStandardMaterial
-          color="#22D3EE"
-          metalness={0.9}
+          emissiveIntensity={1.35}
           roughness={0.2}
-          emissive="#2563EB"
-          emissiveIntensity={0.2}
+          metalness={0.8}
         />
       </mesh>
 
-      {/* Delicate Outer Orbital Ring 3 (Outer - Purple) */}
-      <mesh ref={ring3Ref}>
-        <torusGeometry args={[1.75, 0.008, 16, 120]} />
+      {/* Crystalline Tech Geodesic Outer Shell */}
+      <mesh ref={coreRef}>
+        <icosahedronGeometry args={[0.82, 2]} />
         <meshStandardMaterial
-          color="#7C3AED"
-          metalness={0.85}
-          roughness={0.25}
+          color="#080E24"
+          roughness={0.15}
+          metalness={0.92}
+          wireframe
+          emissive="#38BDF8"
+          emissiveIntensity={0.38}
           transparent
-          opacity={0.45}
+          opacity={0.65}
         />
       </mesh>
+
+      {/* Primary Luminous Orbital Ring (Gold) */}
+      <group ref={ring1Ref} rotation={[0.4, 0.2, 0]}>
+        <mesh>
+          <torusGeometry args={[1.45, 0.014, 16, 100]} />
+          <meshStandardMaterial
+            color="#FFB81C"
+            emissive="#FFB81C"
+            emissiveIntensity={0.65}
+            roughness={0.2}
+            metalness={0.9}
+          />
+        </mesh>
+        {/* Orbital Satellite Beaded Spark */}
+        <mesh position={[1.45, 0, 0]}>
+          <sphereGeometry args={[0.045, 16, 16]} />
+          <meshStandardMaterial color="#FFFFFF" emissive="#FFB81C" emissiveIntensity={2.2} />
+        </mesh>
+      </group>
+
+      {/* Secondary Luminous Orbital Ring (Cyan) */}
+      <group ref={ring2Ref} rotation={[-0.5, -0.3, 0]}>
+        <mesh>
+          <torusGeometry args={[1.72, 0.012, 16, 100]} />
+          <meshStandardMaterial
+            color="#38BDF8"
+            emissive="#38BDF8"
+            emissiveIntensity={0.65}
+            roughness={0.2}
+            metalness={0.9}
+          />
+        </mesh>
+        {/* Orbital Satellite Beaded Spark */}
+        <mesh position={[-1.72, 0, 0]}>
+          <sphereGeometry args={[0.04, 16, 16]} />
+          <meshStandardMaterial color="#FFFFFF" emissive="#38BDF8" emissiveIntensity={2.2} />
+        </mesh>
+      </group>
     </group>
   )
 }

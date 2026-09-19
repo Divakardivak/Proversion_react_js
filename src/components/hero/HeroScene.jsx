@@ -8,23 +8,22 @@ import { ConnectionLines } from './ConnectionLines'
 import { ParticleField } from '@/components/three/ParticleField'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 
-// Desktop nodes aligned with approved ProVersion palette (Gold, Blue, Cyan, Purple)
+// Clean, symmetrical flagship technology nodes with zero overlap and ample breathing room
 const DESKTOP_NODES = [
-  { name: 'AI & ML', position: [0, 1.85, 0.2], color: '#38BDF8', phase: 0 },
-  { name: 'Cloud AWS', position: [-1.85, 0.85, -0.3], color: '#2563EB', phase: 1 },
-  { name: 'Full Stack', position: [1.85, 0.85, 0.3], color: '#FFB81C', phase: 2 },
-  { name: 'Cybersecurity', position: [-1.65, -0.95, 0.4], color: '#7C3AED', phase: 3 },
-  { name: 'Data Analytics', position: [1.65, -0.95, -0.3], color: '#22D3EE', phase: 4 },
-  { name: 'IoT & Edge AI', position: [-0.25, -1.8, 0.1], color: '#38BDF8', phase: 5 },
-  { name: 'VLSI & FPGA', position: [0.7, -0.15, 0.7], color: '#FFC928', phase: 6 },
+  { name: 'AI & ML', position: [0, 2.22, 0.15], color: '#38BDF8', phase: 0 },
+  { name: 'Full Stack', position: [2.35, 1.05, -0.1], color: '#FFB81C', phase: 1 },
+  { name: 'Data Analytics', position: [2.15, -1.25, 0.1], color: '#22D3EE', phase: 2 },
+  { name: 'IoT & Edge AI', position: [0, -2.22, -0.15], color: '#FFC928', phase: 3 },
+  { name: 'Cybersecurity', position: [-2.15, -1.25, 0.1], color: '#7C3AED', phase: 4 },
+  { name: 'Cloud AWS', position: [-2.35, 1.05, -0.1], color: '#2563EB', phase: 5 },
 ]
 
-// Mobile nodes with tight boundaries (max |x| = 1.25)
+// Mobile nodes with clean safe bounds
 const MOBILE_NODES = [
-  { name: 'AI & ML', position: [0, 1.65, 0.1], color: '#38BDF8', phase: 0 },
-  { name: 'Cloud AWS', position: [-1.25, 0.45, 0.1], color: '#2563EB', phase: 1 },
-  { name: 'Full Stack', position: [1.25, 0.45, -0.1], color: '#FFB81C', phase: 2 },
-  { name: 'Cybersecurity', position: [0, -1.55, 0.2], color: '#7C3AED', phase: 3 },
+  { name: 'AI & ML', position: [0, 1.85, 0.1], color: '#38BDF8', phase: 0 },
+  { name: 'Full Stack', position: [1.45, 0.5, -0.1], color: '#FFB81C', phase: 1 },
+  { name: 'Cybersecurity', position: [-1.45, -0.5, 0.1], color: '#7C3AED', phase: 2 },
+  { name: 'Cloud AWS', position: [0, -1.85, -0.1], color: '#2563EB', phase: 3 },
 ]
 
 /**
@@ -93,7 +92,7 @@ export function HeroScene({ isMobile = false }) {
   const shouldReduceMotion = useReducedMotion()
 
   const cameraPosition = useMemo(
-    () => (isMobile ? [0, 0, 7.8] : [0, 0, 7.4]),
+    () => (isMobile ? [0, 0, 8.4] : [0, 0, 7.8]),
     [isMobile]
   )
 
@@ -104,11 +103,11 @@ export function HeroScene({ isMobile = false }) {
         position: 'relative',
         width: '100%',
         height: '100%',
-        minHeight: isMobile ? '360px' : '500px',
+        minHeight: isMobile ? '380px' : '520px',
       }}
     >
       <Canvas
-        camera={{ position: cameraPosition, fov: 40 }}
+        camera={{ position: cameraPosition, fov: 42 }}
         dpr={isMobile ? [1, 1.25] : [1, 1.5]}
         gl={{
           antialias: true,
@@ -118,18 +117,18 @@ export function HeroScene({ isMobile = false }) {
         frameloop={shouldReduceMotion || !isInView ? 'demand' : 'always'}
         style={{ pointerEvents: 'none' }}
       >
-        <ambientLight intensity={0.45} />
-        <directionalLight position={[10, 10, 5]} intensity={0.9} />
-        <directionalLight position={[-10, -10, -5]} intensity={0.4} color="#38bdf8" />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[10, 10, 5]} intensity={1.1} color="#FFD866" />
+        <directionalLight position={[-10, -10, -5]} intensity={0.6} color="#38BDF8" />
 
         <Suspense fallback={null}>
           <SceneRig isMobile={isMobile} />
           <ParticleField
-            count={isMobile ? 40 : 110}
-            color="#38bdf8"
-            size={0.024}
+            count={isMobile ? 30 : 65}
+            color="#38BDF8"
+            size={0.022}
             radius={6.5}
-            speed={0.04}
+            speed={0.035}
           />
         </Suspense>
       </Canvas>
