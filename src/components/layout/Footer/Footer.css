@@ -12,32 +12,42 @@
   color: var(--pv-text-secondary);
 }
 
-/* Dynamic Animated Cosmic Visual (Glow arc, orbital trajectory, & satellites) */
+/* Dynamic Animated Cosmic Visual (Full footer coverage from top to bottom) */
 .ui-footer__visual-container {
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
   width: 100%;
-  max-width: 1400px;
-  height: 280px;
+  height: 100%;
   pointer-events: none;
-  overflow: visible;
+  overflow: hidden;
   z-index: 0;
 }
 
+/* Full-Height Matrix Cyber Grid */
+.ui-footer__grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 35%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 35%, transparent 100%);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Ambient Cosmic Nebulae across Full Height */
 .ui-footer__glow-radial {
   position: absolute;
-  top: -50px;
+  top: -60px;
   left: 50%;
   transform: translateX(-50%);
-  width: 700px;
-  height: 220px;
+  width: 800px;
+  height: 280px;
   background: radial-gradient(ellipse at top,
-      rgba(255, 184, 28, 0.20) 0%,
-      rgba(56, 189, 248, 0.12) 40%,
+      rgba(255, 184, 28, 0.22) 0%,
+      rgba(56, 189, 248, 0.12) 45%,
       transparent 70%);
-  filter: blur(50px);
+  filter: blur(60px);
   animation: ui-footer-glow 6s ease-in-out infinite alternate;
 }
 
@@ -46,21 +56,69 @@
   top: -30px;
   left: 50%;
   transform: translateX(-50%);
-  width: 500px;
-  height: 160px;
+  width: 550px;
+  height: 180px;
   background: radial-gradient(ellipse at center,
-      rgba(255, 184, 28, 0.16) 0%,
+      rgba(255, 184, 28, 0.18) 0%,
       transparent 65%);
-  filter: blur(40px);
+  filter: blur(45px);
   animation: ui-footer-pulse 4s ease-in-out infinite alternate;
 }
 
+/* Mid-Height Left Cyan/Blue Nebula */
+.ui-footer__glow-mid-cyan {
+  position: absolute;
+  top: 35%;
+  left: 2%;
+  width: 550px;
+  height: 450px;
+  background: radial-gradient(circle,
+      rgba(56, 189, 248, 0.11) 0%,
+      rgba(37, 99, 235, 0.06) 45%,
+      transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  animation: ui-footer-float-left 14s ease-in-out infinite alternate;
+}
+
+/* Lower-Right Indigo/Purple Nebula */
+.ui-footer__glow-lower-purple {
+  position: absolute;
+  bottom: 8%;
+  right: 3%;
+  width: 600px;
+  height: 480px;
+  background: radial-gradient(circle,
+      rgba(124, 58, 237, 0.12) 0%,
+      rgba(168, 85, 247, 0.06) 50%,
+      transparent 70%);
+  filter: blur(85px);
+  pointer-events: none;
+  animation: ui-footer-float-right 16s ease-in-out infinite alternate;
+}
+
+/* Center Bottom Gold Ambient Pool */
+.ui-footer__glow-bottom-gold {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 250px;
+  background: radial-gradient(ellipse at bottom,
+      rgba(255, 184, 28, 0.08) 0%,
+      transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+/* Top Arc & Shimmer */
 .ui-footer__arc {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 860px;
+  width: 900px;
   height: 220px;
   border-top: 1.5px solid rgba(255, 184, 28, 0.45);
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
@@ -74,23 +132,37 @@
   top: -2px;
   left: 50%;
   transform: translateX(-50%);
-  width: 240px;
+  width: 260px;
   height: 6px;
   background: radial-gradient(ellipse, #ffffff 0%, #FFB81C 50%, transparent 80%);
   filter: blur(2px);
   animation: ui-footer-shimmer 7s ease-in-out infinite;
 }
 
+/* Upper Orbit Ring */
 .ui-footer__orbit-ring--tilt {
   position: absolute;
-  top: -35px;
+  top: -40px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 1040px;
-  height: 320px;
-  border: 1px dashed rgba(255, 255, 255, 0.12);
+  transform: translateX(-50%) rotate(-4deg);
+  width: 1100px;
+  height: 300px;
+  border: 1px dashed rgba(255, 255, 255, 0.10);
   border-radius: 50%;
-  animation: ui-footer-spin 50s linear infinite;
+  animation: ui-footer-spin 60s linear infinite;
+}
+
+/* Mid-to-Lower Orbit Ring */
+.ui-footer__orbit-ring--lower {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%) rotate(6deg);
+  width: 1250px;
+  height: 380px;
+  border: 1px dashed rgba(56, 189, 248, 0.08);
+  border-radius: 50%;
+  animation: ui-footer-spin 75s linear infinite reverse;
 }
 
 .ui-footer__orbit-dot {
@@ -114,16 +186,58 @@
   box-shadow: 0 0 14px #38BDF8, 0 0 24px #38BDF8;
 }
 
+.ui-footer__orbit-dot--lower-gold {
+  top: 40px;
+  left: 18%;
+  background-color: var(--pv-gold);
+  box-shadow: 0 0 12px var(--pv-gold);
+}
+
+.ui-footer__orbit-dot--lower-purple {
+  bottom: 45px;
+  right: 22%;
+  background-color: #A855F7;
+  box-shadow: 0 0 12px #A855F7;
+}
+
+/* Dynamic Multi-Tier Full-Coverage SVG Canvas */
 .ui-footer__orbit-svg {
   position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
   width: 100%;
-  max-width: 1200px;
-  height: 280px;
+  height: 100%;
   pointer-events: none;
   z-index: 1;
+}
+
+.ui-footer__orbit-path {
+  transition: opacity 0.3s ease;
+}
+
+.ui-footer__orbit-path--mid {
+  opacity: 0.65;
+}
+
+.ui-footer__orbit-path--lower {
+  opacity: 0.55;
+}
+
+@keyframes ui-footer-float-left {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(30px, 20px) scale(1.08);
+  }
+}
+
+@keyframes ui-footer-float-right {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-30px, -20px) scale(1.06);
+  }
 }
 
 @keyframes ui-footer-glow {

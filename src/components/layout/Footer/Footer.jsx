@@ -76,28 +76,59 @@ export function Footer() {
 
   return (
     <footer className="ui-footer" role="contentinfo" aria-label="ProVersion Footer">
-      {/* Dynamic Animated Cosmic Trajectory & Orbital Satellites */}
+      {/* Dynamic Animated Cosmic Trajectory & Orbital Satellites (Full Footer Coverage) */}
       <div className="ui-footer__visual-container" aria-hidden="true">
+        {/* Full-Height Matrix Cyber Grid */}
+        <div className="ui-footer__grid-pattern" />
+
+        {/* Ambient Cosmic Nebulae across Full Height */}
         <div className="ui-footer__glow-radial" />
         <div className="ui-footer__glow-pulse" />
+        <div className="ui-footer__glow-mid-cyan" />
+        <div className="ui-footer__glow-lower-purple" />
+        <div className="ui-footer__glow-bottom-gold" />
+
+        {/* Top Arc & Shimmer */}
         <div className="ui-footer__arc" />
         <div className="ui-footer__arc-shimmer" />
 
+        {/* Upper Cosmic Orbital Ring */}
         <div className="ui-footer__orbit-ring ui-footer__orbit-ring--tilt">
           <div className="ui-footer__orbit-dot ui-footer__orbit-dot--gold" />
           <div className="ui-footer__orbit-dot ui-footer__orbit-dot--cyan" />
         </div>
 
-        {/* Dynamic SVG Orbital Trajectory with Traveling Photons */}
-        <svg className="ui-footer__orbit-svg" viewBox="0 0 1200 280" preserveAspectRatio="xMidYMid meet">
+        {/* Mid-to-Lower Sweeping Orbital Ring */}
+        <div className="ui-footer__orbit-ring ui-footer__orbit-ring--lower">
+          <div className="ui-footer__orbit-dot ui-footer__orbit-dot--lower-gold" />
+          <div className="ui-footer__orbit-dot ui-footer__orbit-dot--lower-purple" />
+        </div>
+
+        {/* Dynamic Multi-Tier SVG Orbital Trajectory with Traveling Photons */}
+        <svg className="ui-footer__orbit-svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
           <defs>
-            <linearGradient id="footerOrbitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient id="footerOrbitGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#38BDF8" stopOpacity="0" />
               <stop offset="25%" stopColor="#FFB81C" stopOpacity="0.8" />
               <stop offset="50%" stopColor="#818CF8" stopOpacity="0.85" />
               <stop offset="75%" stopColor="#FFB81C" stopOpacity="0.8" />
               <stop offset="100%" stopColor="#38BDF8" stopOpacity="0" />
             </linearGradient>
+
+            <linearGradient id="footerOrbitGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#818CF8" stopOpacity="0.1" />
+              <stop offset="30%" stopColor="#38BDF8" stopOpacity="0.6" />
+              <stop offset="70%" stopColor="#FFB81C" stopOpacity="0.75" />
+              <stop offset="100%" stopColor="#A855F7" stopOpacity="0.1" />
+            </linearGradient>
+
+            <linearGradient id="footerOrbitGrad3" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FFB81C" stopOpacity="0" />
+              <stop offset="40%" stopColor="#818CF8" stopOpacity="0.5" />
+              <stop offset="80%" stopColor="#38BDF8" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#FFB81C" stopOpacity="0" />
+            </linearGradient>
+
             <filter id="footerGlow" x="-30%" y="-30%" width="160%" height="160%">
               <feGaussianBlur stdDeviation="3.5" result="blur" />
               <feMerge>
@@ -107,43 +138,96 @@ export function Footer() {
             </filter>
           </defs>
 
-          {/* Glowing Elliptical Orbital Path */}
+          {/* Upper Elliptical Trajectory (Encapsulating CTA) */}
           <ellipse
-            cx="600"
-            cy="90"
-            rx="540"
-            ry="115"
+            cx="720"
+            cy="110"
+            rx="640"
+            ry="110"
             fill="none"
-            stroke="url(#footerOrbitGrad)"
-            strokeWidth="1.6"
+            stroke="url(#footerOrbitGrad1)"
+            strokeWidth="1.5"
             strokeDasharray="6 8"
             className="ui-footer__orbit-path"
           />
 
-          {/* Traveling Energy Satellites */}
-          <circle r="4.5" fill="#FFB81C" filter="url(#footerGlow)">
-            <animateMotion
-              path="M 60,90 a 540,115 0 1,0 1080,0 a 540,115 0 1,0 -1080,0"
-              dur="12s"
-              repeatCount="indefinite"
-            />
-          </circle>
-          <circle r="3.8" fill="#38BDF8" filter="url(#footerGlow)">
-            <animateMotion
-              path="M 60,90 a 540,115 0 1,0 1080,0 a 540,115 0 1,0 -1080,0"
-              dur="16s"
-              begin="-5s"
-              repeatCount="indefinite"
-            />
-          </circle>
-          <circle r="3.2" fill="#A855F7" filter="url(#footerGlow)">
-            <animateMotion
-              path="M 60,90 a 540,115 0 1,0 1080,0 a 540,115 0 1,0 -1080,0"
-              dur="20s"
-              begin="-10s"
-              repeatCount="indefinite"
-            />
-          </circle>
+          {/* Middle Diagonal Trajectory (Sweeping behind columns) */}
+          <ellipse
+            cx="720"
+            cy="480"
+            rx="700"
+            ry="220"
+            fill="none"
+            stroke="url(#footerOrbitGrad2)"
+            strokeWidth="1.3"
+            strokeDasharray="5 10"
+            className="ui-footer__orbit-path ui-footer__orbit-path--mid"
+          />
+
+          {/* Lower Harmonic Wave Trajectory */}
+          <path
+            d="M -100,750 Q 360,650 720,740 T 1540,680"
+            fill="none"
+            stroke="url(#footerOrbitGrad3)"
+            strokeWidth="1.2"
+            strokeDasharray="4 8"
+            className="ui-footer__orbit-path ui-footer__orbit-path--lower"
+          />
+
+          {/* Traveling Photons / Energy Satellites on Upper Trajectory */}
+          {!shouldReduceMotion && (
+            <>
+              <circle r="4.5" fill="#FFB81C" filter="url(#footerGlow)">
+                <animateMotion
+                  path="M 80,110 a 640,110 0 1,0 1280,0 a 640,110 0 1,0 -1280,0"
+                  dur="13s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+              <circle r="3.8" fill="#38BDF8" filter="url(#footerGlow)">
+                <animateMotion
+                  path="M 80,110 a 640,110 0 1,0 1280,0 a 640,110 0 1,0 -1280,0"
+                  dur="17s"
+                  begin="-5s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </>
+          )}
+
+          {/* Traveling Photons / Energy Satellites on Middle & Lower Trajectories */}
+          {!shouldReduceMotion && (
+            <>
+              <circle r="4" fill="#818CF8" filter="url(#footerGlow)">
+                <animateMotion
+                  path="M 20,480 a 700,220 0 1,0 1400,0 a 700,220 0 1,0 -1400,0"
+                  dur="22s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+              <circle r="3.5" fill="#FFB81C" filter="url(#footerGlow)">
+                <animateMotion
+                  path="M 20,480 a 700,220 0 1,0 1400,0 a 700,220 0 1,0 -1400,0"
+                  dur="28s"
+                  begin="-10s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+              <circle r="3.2" fill="#38BDF8" filter="url(#footerGlow)">
+                <animateMotion
+                  path="M -100,750 Q 360,650 720,740 T 1540,680"
+                  dur="18s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </>
+          )}
+
+          {/* Star Node Constellation Points */}
+          <circle cx="280" cy="420" r="3" fill="#38BDF8" filter="url(#footerGlow)" opacity="0.8" />
+          <circle cx="1160" cy="520" r="3.5" fill="#FFB81C" filter="url(#footerGlow)" opacity="0.8" />
+          <circle cx="480" cy="710" r="2.5" fill="#A855F7" filter="url(#footerGlow)" opacity="0.7" />
+          <circle cx="940" cy="730" r="3" fill="#38BDF8" filter="url(#footerGlow)" opacity="0.75" />
         </svg>
       </div>
 
