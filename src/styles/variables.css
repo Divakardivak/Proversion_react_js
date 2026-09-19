@@ -1,0 +1,284 @@
+:root {
+   /* ==========================================================================
+     Official ProVersion Brand Color System
+     ========================================================================== */
+
+   /* Level 1 — Brand Identity */
+   --pv-gold: #FFB81C;
+   --pv-gold-bright: #FFC928;
+   --pv-gold-soft: #FFD866;
+   --pv-white: #FFFFFF;
+
+   /* Level 2 — Dark Foundation */
+   --pv-bg: #050816;
+   --pv-bg-midnight: #080B1A;
+   --pv-bg-indigo: #0D1030;
+   --pv-bg-secondary: #15104A;
+
+   /* Level 3 — Supporting Technology Accents */
+   --pv-blue: #2563EB;
+   --pv-blue-bright: #38BDF8;
+   --pv-cyan: #22D3EE;
+   --pv-purple: #7C3AED;
+   --pv-magenta: #C026D3;
+
+   /* Level 4 — Supporting UI */
+   --pv-text-primary: #FFFFFF;
+   --pv-text-secondary: #CBD5E1;
+   --pv-text-muted: #94A3B8;
+
+   /* Borders & Glass */
+   --pv-border: rgba(255, 255, 255, 0.10);
+   --pv-border-gold: rgba(255, 184, 28, 0.35);
+   --pv-glass: rgba(255, 255, 255, 0.045);
+   --pv-glass-hover: rgba(255, 255, 255, 0.08);
+
+   /* Glow Effects */
+   --pv-gold-glow: rgba(255, 184, 28, 0.35);
+   --pv-blue-glow: rgba(37, 99, 235, 0.30);
+   --pv-purple-glow: rgba(124, 58, 237, 0.25);
+
+   /* ==========================================================================
+     Semantic Mappings to Design Tokens
+     ========================================================================== */
+
+   /* Backgrounds */
+   --bg-primary: var(--pv-bg);
+   --bg-secondary: var(--pv-bg-midnight);
+   --bg-tertiary: var(--pv-bg-indigo);
+   --bg-surface: var(--pv-glass);
+   --bg-surface-hover: var(--pv-glass-hover);
+   --bg-elevated: rgba(255, 255, 255, 0.08);
+   --bg-overlay: rgba(5, 8, 22, 0.82);
+
+   /* Surface Opacities & Glass */
+   --glass-bg: var(--pv-glass);
+   --glass-bg-hover: var(--pv-glass-hover);
+   --glass-border: var(--pv-border);
+   --glass-border-hover: rgba(255, 255, 255, 0.18);
+   --glass-border-accent: var(--pv-border-gold);
+   --glass-blur: blur(8px);
+   --glass-blur-sm: blur(4px);
+   --glass-blur-lg: blur(12px);
+
+   /* Text Colors */
+   --text-primary: var(--pv-text-primary);
+   --text-secondary: var(--pv-text-secondary);
+   --text-muted: var(--pv-text-muted);
+   --text-dim: #64748b;
+   --text-inverse: var(--pv-bg);
+   --text-accent: var(--pv-gold);
+   --text-cyan: var(--pv-cyan);
+
+   /* Accent Colors */
+   --accent-primary: var(--pv-gold);
+   --accent-gold: var(--pv-gold);
+   --accent-secondary: var(--pv-blue);
+   --accent-cyan: var(--pv-cyan);
+   --accent-purple: var(--pv-purple);
+   --accent-magenta: var(--pv-magenta);
+   --accent-emerald: #10B981;
+   --accent-amber: var(--pv-gold-bright);
+   --accent-rose: #F43F5E;
+
+   /* Approved Gradient System */
+   --gradient-gold: linear-gradient(135deg, #FFB81C 0%, #FFD866 100%);
+   --gradient-tech: linear-gradient(135deg, #2563EB 0%, #22D3EE 100%);
+   --gradient-future: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+   --gradient-brand: linear-gradient(135deg, #FFB81C 0%, #FFFFFF 100%);
+
+   --gradient-accent: var(--gradient-gold);
+   --gradient-accent-soft: linear-gradient(135deg, rgba(255, 184, 28, 0.15) 0%, rgba(255, 201, 40, 0.06) 100%);
+   --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+   --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+   --gradient-text: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
+   --gradient-text-accent: var(--gradient-gold);
+   --gradient-dark-radial: radial-gradient(circle at 50% 0%, rgba(255, 184, 28, 0.10) 0%, transparent 70%);
+
+   /* Borders & Dividers */
+   --border-subtle: rgba(255, 255, 255, 0.06);
+   --border-base: var(--pv-border);
+   --border-strong: rgba(255, 255, 255, 0.18);
+   --border-focus: var(--pv-gold);
+   --border-accent: var(--pv-border-gold);
+
+   /* Glow Effects */
+   --glow-primary: 0 0 24px -4px var(--pv-gold-glow);
+   --glow-accent: 0 0 32px -6px var(--pv-blue-glow);
+   --glow-cyan: 0 0 28px -4px rgba(34, 211, 238, 0.25);
+   --glow-subtle: 0 0 16px -2px rgba(255, 255, 255, 0.08);
+
+   /* ==========================================================================
+     Typography Scale
+     ========================================================================== */
+   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+   --font-display: 'Outfit', var(--font-sans);
+   --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+   /* Font Sizes */
+   --text-2xs: 0.6875rem;
+   /* 11px */
+   --text-xs: 0.75rem;
+   /* 12px */
+   --text-sm: 0.875rem;
+   /* 14px */
+   --text-base: 1rem;
+   /* 16px */
+   --text-lg: 1.125rem;
+   /* 18px */
+   --text-xl: 1.25rem;
+   /* 20px */
+   --text-2xl: 1.5rem;
+   /* 24px */
+   --text-3xl: 1.875rem;
+   /* 30px */
+   --text-4xl: 2.25rem;
+   /* 36px */
+   --text-5xl: 3rem;
+   /* 48px */
+   --text-6xl: 3.75rem;
+   /* 60px */
+   --text-7xl: 4.5rem;
+   /* 72px */
+   --text-8xl: 6rem;
+   /* 96px */
+
+   /* Line Heights */
+   --leading-none: 1;
+   --leading-tight: 1.15;
+   --leading-snug: 1.3;
+   --leading-normal: 1.5;
+   --leading-relaxed: 1.65;
+
+   /* Font Weights */
+   --font-regular: 400;
+   --font-medium: 500;
+   --font-semibold: 600;
+   --font-bold: 700;
+   --font-extrabold: 800;
+
+   /* Letter Spacing */
+   --tracking-tighter: -0.04em;
+   --tracking-tight: -0.02em;
+   --tracking-normal: 0em;
+   --tracking-wide: 0.025em;
+   --tracking-wider: 0.05em;
+   --tracking-widest: 0.1em;
+
+   /* ==========================================================================
+     Spacing & Layout
+     ========================================================================== */
+   --space-0-5: 0.125rem;
+   /* 2px */
+   --space-1: 0.25rem;
+   /* 4px */
+   --space-2: 0.5rem;
+   /* 8px */
+   --space-3: 0.75rem;
+   /* 12px */
+   --space-4: 1rem;
+   /* 16px */
+   --space-5: 1.25rem;
+   /* 20px */
+   --space-6: 1.5rem;
+   /* 24px */
+   --space-8: 2rem;
+   /* 32px */
+   --space-10: 2.5rem;
+   /* 40px */
+   --space-12: 3rem;
+   /* 48px */
+   --space-16: 4rem;
+   /* 64px */
+   --space-20: 5rem;
+   /* 80px */
+   --space-24: 6rem;
+   /* 96px */
+   --space-32: 8rem;
+   /* 128px */
+
+   /* Container Max Widths */
+   --container-sm: 640px;
+   --container-md: 768px;
+   --container-lg: 1024px;
+   --container-xl: 1280px;
+   --container-2xl: 1440px;
+   --container-max: 1600px;
+   --container-gutter: 1.5rem;
+
+   /* Breakpoint Values (for JS & media query reference) */
+   --bp-375: 375px;
+   --bp-390: 390px;
+   --bp-430: 430px;
+   --bp-768: 768px;
+   --bp-1024: 1024px;
+   --bp-1280: 1280px;
+   --bp-1440: 1440px;
+   --bp-1920: 1920px;
+
+   /* ==========================================================================
+     Border Radius
+     ========================================================================== */
+   --radius-xs: 0.25rem;
+   /* 4px */
+   --radius-sm: 0.375rem;
+   /* 6px */
+   --radius-md: 0.5rem;
+   /* 8px */
+   --radius-lg: 0.75rem;
+   /* 12px */
+   --radius-xl: 1rem;
+   /* 16px */
+   --radius-2xl: 1.5rem;
+   /* 24px */
+   --radius-3xl: 2rem;
+   /* 32px */
+   --radius-full: 9999px;
+
+   /* ==========================================================================
+     Shadows & Elevation
+     ========================================================================== */
+   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.6);
+   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+   --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+   /* ==========================================================================
+     Transitions & Timings
+     ========================================================================== */
+   --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+   --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+   --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+   --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+   --duration-instant: 100ms;
+   --duration-fast: 150ms;
+   --duration-normal: 250ms;
+   --duration-slow: 400ms;
+   --duration-gentle: 600ms;
+
+   --transition-fast: 150ms var(--ease-out-cubic);
+   --transition-normal: 250ms var(--ease-out-cubic);
+   --transition-slow: 400ms var(--ease-out-cubic);
+   --transition-smooth: 500ms var(--ease-out-expo);
+
+   /* ==========================================================================
+     Z-Index Hierarchy
+     ========================================================================== */
+   --z-negative: -1;
+   --z-background: 0;
+   --z-base: 1;
+   --z-surface: 10;
+   --z-card: 20;
+   --z-sticky: 100;
+   --z-header: 200;
+   --z-dropdown: 300;
+   --z-overlay: 400;
+   --z-modal: 500;
+   --z-popover: 600;
+   --z-tooltip: 700;
+   --z-toast: 800;
+}

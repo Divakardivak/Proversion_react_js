@@ -1,0 +1,19 @@
+.ui-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  z-index: calc(var(--z-header) + 50);
+  pointer-events: none;
+}
+
+.ui-scroll-progress__bar {
+  height: 100%;
+  width: 100%;
+  background: var(--gradient-accent);
+  transform-origin: left;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+  transition: transform 0.1s linear;
+}

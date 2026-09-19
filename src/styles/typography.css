@@ -1,0 +1,139 @@
+/* ==========================================================================
+   Typography System - ProVersion
+   ========================================================================== */
+
+/* Headings with Fluid Clamping */
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw + 1rem, var(--text-6xl));
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3vw + 0.75rem, var(--text-4xl));
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2vw + 0.5rem, var(--text-3xl));
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+
+h4, .h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+h5, .h5 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+}
+
+h6, .h6 {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+}
+
+/* Display Titles for Hero & High-Impact Sections */
+.display-hero {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 6vw + 1rem, var(--text-8xl));
+  font-weight: var(--font-extrabold);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tighter);
+}
+
+.display-section {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw + 0.5rem, var(--text-5xl));
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Eyebrow / Tagline */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+
+/* Body & Lead Text */
+.text-lead {
+  font-size: clamp(1.125rem, 1vw + 0.875rem, var(--text-xl));
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.text-body {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+}
+
+.text-small {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-muted);
+}
+
+.text-caption {
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  color: var(--text-dim);
+}
+
+/* Gradient Text Utilities */
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-text-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-brand {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Mono Code / Tech Text */
+.text-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-normal);
+}

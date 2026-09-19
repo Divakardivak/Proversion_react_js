@@ -1,0 +1,542 @@
+.ui-entrepreneurship {
+  position: relative;
+  padding: var(--space-24) 0;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(15, 23, 42, 0.6) 50%, var(--bg-primary) 100%);
+  overflow: hidden;
+}
+
+/* Ambient Background Lighting */
+.ui-entrepreneurship__bg-glow {
+  position: absolute;
+  top: 20%;
+  left: 8%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 65%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ui-entrepreneurship__bg-glow-right {
+  position: absolute;
+  bottom: 15%;
+  right: 5%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 65%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Section Header */
+.ui-entrepreneurship__header {
+  text-align: center;
+  max-width: var(--container-md);
+  margin: 0 auto var(--space-8) auto;
+  position: relative;
+  z-index: 1;
+}
+
+.ui-entrepreneurship__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background: var(--pv-gold-soft);
+  border: 1px solid var(--pv-border-gold);
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--pv-gold-bright);
+  margin-bottom: var(--space-3);
+  box-shadow: var(--pv-glow-gold);
+}
+
+.ui-entrepreneurship__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.ui-entrepreneurship__tagline {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+/* Layout Grid: Desktop Journey + Details Panel */
+.ui-entrepreneurship__layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  position: relative;
+  z-index: 1;
+}
+
+/* Desktop Horizontal Journey Canvas */
+.ui-journey-canvas {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  margin: 0 auto;
+}
+
+.ui-journey-path-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.ui-journey-path-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ui-journey-canvas__stages {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ui-journey-canvas__node-anchor {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* Milestone Stage Node */
+.ui-journey-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ui-journey-stage__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2);
+  outline: none;
+  transition: transform var(--transition-fast);
+}
+
+.ui-journey-stage__button:focus-visible {
+  border-radius: var(--radius-xl);
+  outline: 2px solid var(--stage-accent);
+  outline-offset: 4px;
+}
+
+/* Stage Visual Objects */
+.ui-stage-visual {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-full);
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.ui-stage-visual--active {
+  border-color: var(--stage-accent);
+  transform: scale(1.15);
+  box-shadow: 0 0 24px var(--stage-accent), 0 10px 28px rgba(0, 0, 0, 0.6);
+}
+
+/* Specific Milestone Visuals */
+.ui-stage-visual__orb-glow {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  opacity: 0.3;
+  transition: opacity var(--transition-fast);
+}
+
+.ui-stage-visual--active .ui-stage-visual__orb-glow {
+  opacity: 0.6;
+}
+
+.ui-stage-visual__cube-frame,
+.ui-stage-visual__target-ring,
+.ui-stage-visual__rocket-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+}
+
+.ui-stage-visual__rings-outer {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px dashed;
+  animation: spinSlow 16s linear infinite;
+}
+
+.ui-stage-visual__rings-inner {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Stage Meta Labels */
+.ui-journey-stage__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.ui-journey-stage__step {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.ui-journey-stage--active .ui-journey-stage__step {
+  color: var(--stage-accent);
+}
+
+.ui-journey-stage__title {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.ui-journey-stage--active .ui-journey-stage__title {
+  color: var(--text-primary);
+}
+
+.ui-journey-stage__indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  transition: all var(--transition-fast);
+}
+
+/* Information Panel Card */
+.ui-entrepreneurship-details {
+  max-width: var(--container-lg);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.ui-entrepreneurship-details__card {
+  position: relative;
+  background: var(--pv-dark-glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--pv-border-glass);
+  border-left: 3px solid var(--card-accent, var(--pv-gold));
+  border-radius: var(--radius-2xl);
+  padding: clamp(1.75rem, 2.8vw, 2.5rem);
+  box-shadow: var(--shadow-glass), 0 0 32px rgba(0, 0, 0, 0.45);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+  min-height: 280px;
+}
+
+.ui-entrepreneurship-details__eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.ui-entrepreneurship-details__step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 11px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--pv-border-glass);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.ui-entrepreneurship-details__step-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background-color var(--transition-fast);
+}
+
+.ui-entrepreneurship-details__free-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 11px;
+  background: var(--pv-gold-soft);
+  border: 1px solid var(--pv-border-gold);
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--pv-gold-bright);
+}
+
+.ui-entrepreneurship-details__gov-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 11px;
+  background: rgba(37, 99, 235, 0.10);
+  border: 1px solid rgba(37, 99, 235, 0.28);
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: #38bdf8;
+}
+
+/* 2-Column Interior Grid */
+.ui-entrepreneurship-details__content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: start;
+}
+
+.ui-entrepreneurship-details__col-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-entrepreneurship-details__header {
+  margin-bottom: var(--space-3);
+}
+
+.ui-entrepreneurship-details__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.ui-entrepreneurship-details__tagline {
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: color var(--transition-fast);
+}
+
+.ui-entrepreneurship-details__description {
+  font-size: 0.95rem;
+  line-height: 1.62;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.ui-entrepreneurship-details__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* Right Column: Deliverables */
+.ui-entrepreneurship-details__col-deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ui-entrepreneurship-details__points-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.ui-entrepreneurship-details__points-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ui-entrepreneurship-details__point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--pv-border-glass);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-fast);
+}
+
+.ui-entrepreneurship-details__point-item:hover {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.ui-entrepreneurship-details__point-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.ui-entrepreneurship-details__point-text {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Mobile Vertical Journey */
+.ui-journey-vertical {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-left: var(--space-8);
+  margin-bottom: var(--space-6);
+}
+
+.ui-journey-vertical__track {
+  position: absolute;
+  left: 14px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+}
+
+.ui-journey-vertical__progress {
+  width: 100%;
+  background: linear-gradient(180deg, #FFB81C 0%, #FFC928 25%, #2563EB 55%, #38BDF8 80%, #22D3EE 100%);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 12px rgba(255, 184, 28, 0.4);
+  transition: height var(--transition-normal);
+}
+
+.ui-journey-vertical__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ui-journey-vertical__item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Responsive Adaptations */
+@media (max-width: 1024px) {
+  .ui-entrepreneurship {
+    padding: var(--space-16) 0;
+  }
+
+  .ui-entrepreneurship-details__content-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .ui-journey-canvas {
+    height: 250px;
+  }
+
+  .ui-stage-visual {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ui-entrepreneurship {
+    padding: var(--space-12) 0;
+  }
+
+  .ui-entrepreneurship-details__content-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .ui-entrepreneurship-details__points-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .ui-entrepreneurship {
+    padding: var(--space-10) 0;
+  }
+
+  .ui-entrepreneurship-details__card {
+    padding: var(--space-4);
+  }
+
+  .ui-entrepreneurship-details__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ui-entrepreneurship-details__actions .ui-btn {
+    width: 100%;
+  }
+}

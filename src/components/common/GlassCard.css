@@ -1,0 +1,43 @@
+.ui-glass-card {
+  position: relative;
+  background: var(--pv-glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
+}
+
+/* Spot light layer following cursor */
+.ui-glass-card__spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 184, 28, 0.08),
+    transparent 60%
+  );
+}
+
+.ui-glass-card:hover .ui-glass-card__spotlight {
+  opacity: 1;
+}
+
+/* Hover elevation */
+.ui-glass-card--hover:hover {
+  background: var(--pv-glass-hover);
+  border-color: rgba(255, 184, 28, 0.22);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.35), 0 0 20px rgba(255, 184, 28, 0.15);
+}
+
+.ui-glass-card__content {
+  position: relative;
+  z-index: 1;
+}

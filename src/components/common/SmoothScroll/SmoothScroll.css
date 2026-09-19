@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Lenis Smooth Scroll — Cross-browser baseline
+   ========================================================================== */
+
+/* Required by Lenis: prevents height conflicts with the virtual scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+  scroll-behavior: auto !important;
+}
+
+/* Hard-disable native CSS smooth scroll globally.
+   Lenis handles ALL easing — any CSS smooth-scroll will conflict and
+   cause a visible "double-spring" stutter, especially in Chrome. */
+html {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Nested scrollable areas (modals, carousels, etc.) opt-out of Lenis */
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* When Lenis is stopped (modal open, etc.), prevent body scroll bleed */
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Disable iframe pointer capture during scroll (prevents scroll hijack) */
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Chrome / Cross-Browser 144Hz GPU Compositor Hints
+   ========================================================================== */
+
+/* The Lenis wrapper div gets promoted to its own GPU compositor layer.
+   This prevents the browser's layout engine from triggering repaints on
+   every scroll frame — critical for Chrome which is more aggressive about
+   demoting layers than Edge/Firefox. */
+.lenis-wrapper {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}

@@ -1,0 +1,15 @@
+.ui-animated-text {
+  display: inline-block;
+}
+
+.ui-animated-text__word {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.ui-animated-text__char {
+  display: inline-block;
+  vertical-align: top;
+}

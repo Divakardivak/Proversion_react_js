@@ -1,0 +1,316 @@
+/* ==========================================================================
+   AnimatedLogo - Premium 3D-Style ProVersion Logo Component
+   ========================================================================== */
+
+.ui-logo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+/* Sizing presets */
+.ui-logo--small {
+  width: 36px;
+  height: 36px;
+}
+
+.ui-logo--medium {
+  width: 68px;
+  height: 68px;
+}
+
+.ui-logo--large {
+  width: 104px;
+  height: 104px;
+}
+
+/* 3D Scene Wrapper */
+.ui-logo__scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Ambient Breathing Glow */
+.ui-logo__glow {
+  position: absolute;
+  inset: -25%;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle at center, rgba(255, 184, 28, 0.35) 0%, rgba(37, 99, 235, 0.15) 50%, transparent 70%);
+  box-shadow: 0 0 25px rgba(255, 184, 28, 0.20), 0 0 60px rgba(37, 99, 235, 0.12);
+  pointer-events: none;
+  z-index: 0;
+  transform: translateZ(-20px);
+}
+
+.ui-logo__glow--breathing {
+  animation: logoGlowBreathe 6s ease-in-out infinite;
+}
+
+@keyframes logoGlowBreathe {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateZ(-20px) scale(0.92);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateZ(-20px) scale(1.12);
+  }
+}
+
+/* 3D Extrusion Depth Layers */
+.ui-logo__depth-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  transform-style: preserve-3d;
+}
+
+/* 5 Subtle extruded depth steps */
+.ui-logo__depth-layer--5 {
+  transform: translate3d(5px, 5px, -5px);
+  opacity: 0.12;
+  filter: brightness(0.35) saturate(1.2);
+}
+
+.ui-logo__depth-layer--4 {
+  transform: translate3d(4px, 4px, -4px);
+  opacity: 0.20;
+  filter: brightness(0.48) saturate(1.2);
+}
+
+.ui-logo__depth-layer--3 {
+  transform: translate3d(3px, 3px, -3px);
+  opacity: 0.32;
+  filter: brightness(0.62) saturate(1.2);
+}
+
+.ui-logo__depth-layer--2 {
+  transform: translate3d(2px, 2px, -2px);
+  opacity: 0.48;
+  filter: brightness(0.78) saturate(1.1);
+}
+
+.ui-logo__depth-layer--1 {
+  transform: translate3d(1px, 1px, -1px);
+  opacity: 0.70;
+  filter: brightness(0.92);
+}
+
+/* Main Front Layer */
+.ui-logo__front-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translate3d(0, 0, 1px);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.ui-logo__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+/* Light Sweep Highlight */
+.ui-logo__light-sweep {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.6) 48%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.6) 52%,
+    transparent 65%
+  );
+  transform: translateX(-150%) rotate(25deg);
+  pointer-events: none;
+  z-index: 3;
+  mix-blend-mode: overlay;
+  animation: logoSweep 10s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+  animation-delay: 1.2s;
+}
+
+@keyframes logoSweep {
+  0% {
+    transform: translateX(-150%) rotate(25deg);
+  }
+  15% {
+    transform: translateX(150%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(150%) rotate(25deg);
+  }
+}
+
+/* Hero Floating Motion */
+.ui-logo--floating {
+  animation: logoFloat 6s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Orbiting Particles (Hero Variant Only) */
+.ui-logo__particles-container {
+  position: absolute;
+  inset: -45%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ui-logo__orbit-track {
+  position: absolute;
+  inset: 0;
+  animation: logoOrbit linear infinite;
+}
+
+@keyframes logoOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ui-logo__particle {
+  position: absolute;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* Particle variations */
+.ui-logo__particle--1 {
+  top: 10%;
+  left: 20%;
+  width: 3.5px;
+  height: 3.5px;
+  background-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.ui-logo__particle--2 {
+  top: 75%;
+  left: 15%;
+  width: 4px;
+  height: 4px;
+  background-color: #fbbf24;
+  color: #fbbf24;
+}
+
+.ui-logo__particle--3 {
+  top: 25%;
+  right: 12%;
+  width: 3px;
+  height: 3px;
+  background-color: #818cf8;
+  color: #818cf8;
+}
+
+.ui-logo__particle--4 {
+  bottom: 12%;
+  right: 22%;
+  width: 3.5px;
+  height: 3.5px;
+  background-color: #a855f7;
+  color: #a855f7;
+}
+
+.ui-logo__particle--5 {
+  top: 50%;
+  left: 4%;
+  width: 2.5px;
+  height: 2.5px;
+  background-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.ui-logo__particle--6 {
+  bottom: 35%;
+  right: 6%;
+  width: 3px;
+  height: 3px;
+  background-color: #fbbf24;
+  color: #fbbf24;
+}
+
+.ui-logo__particle--7 {
+  top: 5%;
+  right: 35%;
+  width: 2px;
+  height: 2px;
+  background-color: #ffffff;
+  color: #ffffff;
+}
+
+.ui-logo__particle--8 {
+  bottom: 5%;
+  left: 40%;
+  width: 2.5px;
+  height: 2.5px;
+  background-color: #6366f1;
+  color: #6366f1;
+}
+
+/* Hover Interaction */
+.ui-logo--interactive {
+  cursor: pointer;
+  transition: transform var(--transition-normal);
+}
+
+.ui-logo--interactive:hover .ui-logo__glow {
+  opacity: 0.75;
+  transform: translateZ(-20px) scale(1.25);
+  transition: all var(--transition-normal);
+}
+
+/* Reduced Motion Mode */
+@media (prefers-reduced-motion: reduce) {
+  .ui-logo__glow--breathing,
+  .ui-logo__light-sweep,
+  .ui-logo--floating,
+  .ui-logo__orbit-track {
+    animation: none !important;
+  }
+
+  .ui-logo__particles-container {
+    display: none !important;
+  }
+
+  .ui-logo__scene {
+    transform: none !important;
+  }
+}
