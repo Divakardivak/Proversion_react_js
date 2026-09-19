@@ -4,7 +4,6 @@ import { Sparkles, ArrowDown, ChevronRight, Award, Users, BookOpen } from 'lucid
 import { Container } from '@/components/common/Container'
 import { Button } from '@/components/common/Button'
 import { MagneticButton } from '@/components/common/MagneticButton'
-import { AnimatedLogo } from '@/components/common/AnimatedLogo'
 import { HeroScene } from './HeroScene'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useMediaQuery } from '@/hooks/useMediaQuery'

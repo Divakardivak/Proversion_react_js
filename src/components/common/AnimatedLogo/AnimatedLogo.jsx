@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import logoSrc from '@/assets/proversion-logo.png'
 import './AnimatedLogo.css'
 
 /**
@@ -123,35 +124,35 @@ export function AnimatedLogo({
 
         {/* 5 Layered 3D Depth Steps (Extrusion effect) */}
         <img
-          src="/assets/proversion-logo.png"
+          src={logoSrc}
           alt=""
           aria-hidden="true"
           className="ui-logo__depth-layer ui-logo__depth-layer--5"
           draggable="false"
         />
         <img
-          src="/assets/proversion-logo.png"
+          src={logoSrc}
           alt=""
           aria-hidden="true"
           className="ui-logo__depth-layer ui-logo__depth-layer--4"
           draggable="false"
         />
         <img
-          src="/assets/proversion-logo.png"
+          src={logoSrc}
           alt=""
           aria-hidden="true"
           className="ui-logo__depth-layer ui-logo__depth-layer--3"
           draggable="false"
         />
         <img
-          src="/assets/proversion-logo.png"
+          src={logoSrc}
           alt=""
           aria-hidden="true"
           className="ui-logo__depth-layer ui-logo__depth-layer--2"
           draggable="false"
         />
         <img
-          src="/assets/proversion-logo.png"
+          src={logoSrc}
           alt=""
           aria-hidden="true"
           className="ui-logo__depth-layer ui-logo__depth-layer--1"
@@ -161,7 +162,7 @@ export function AnimatedLogo({
         {/* Main Crisp Foreground Layer */}
         <div className="ui-logo__front-layer">
           <img
-            src="/assets/proversion-logo.png"
+            src={logoSrc}
             alt="ProVersion Official Logo"
             className="ui-logo__img"
             draggable="false"
