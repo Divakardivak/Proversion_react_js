@@ -6,8 +6,8 @@ import { fileURLToPath } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/Proversion_react_js/' : '/',
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/Proversion_react_js/' : '/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -32,4 +32,4 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 1000,
   },
-})
+}))
