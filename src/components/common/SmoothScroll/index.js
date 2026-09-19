@@ -1,2 +1,2 @@
-export { default } from './SmoothScroll'
-export { SmoothScroll } from './SmoothScroll'
+export { default, SmoothScroll, useSmoothScroll } from './SmoothScroll'
+export { smoothScrollTo } from './scrollController'

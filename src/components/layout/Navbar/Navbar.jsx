@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Sparkles } from 'lucide-react'
-import { useLenis } from 'lenis/react'
+import { smoothScrollTo } from '@/components/common/SmoothScroll'
 import { Container } from '@/components/common/Container'
 import { Button } from '@/components/common/Button'
 import { MagneticButton } from '@/components/common/MagneticButton'
@@ -26,7 +26,6 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const shouldReduceMotion = useReducedMotion()
-  const lenis = useLenis()
 
   const handleNavClick = useCallback(
     (e, href) => {
@@ -34,27 +33,16 @@ export function Navbar() {
       e.preventDefault()
 
       if (href === '#' || href === '#home') {
-        if (lenis) {
-          lenis.scrollTo(0, { offset: 0 })
-        } else {
-          window.scrollTo({ top: 0, behavior: 'smooth' })
-        }
+        smoothScrollTo(0, { offset: 0 })
         window.history.pushState(null, '', ' ')
       } else {
-        const target = document.querySelector(href)
-        if (target) {
-          if (lenis) {
-            lenis.scrollTo(target, { offset: -90 })
-          } else {
-            target.scrollIntoView({ behavior: 'smooth' })
-          }
-          window.history.pushState(null, '', href)
-        }
+        smoothScrollTo(href, { offset: -90 })
+        window.history.pushState(null, '', href)
       }
 
       setMobileMenuOpen(false)
     },
-    [lenis]
+    []
   )
 
   // High-performance threshold listener: ONLY re-renders when crossing 20px
