@@ -56,9 +56,9 @@ export function ConnectionLines({ nodes }) {
       </bufferGeometry>
       <lineBasicMaterial
         ref={matRef}
-        color="#38BDF8"
+        color="#a78bfa"
         transparent
-        opacity={0.18}
+        opacity={0.22}
         blending={THREE.AdditiveBlending}
         depthWrite={false}
       />

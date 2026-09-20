@@ -20,7 +20,7 @@ export const testimonialsData = [
     quote:
       'Through an intensive, mentor-led program at ProVersion, I mastered advanced tools, participated in real-time lab exercises, and completed multiple domain-specific projects. Today, I handle complex tasks with efficiency and am fully industry-ready.',
     rating: 5,
-    accentColor: '#22D3EE',
+    accentColor: '#a78bfa',
   },
   {
     id: 'sravani-reddy',
@@ -31,7 +31,7 @@ export const testimonialsData = [
     quote:
       'After a two-year career gap, I joined ProVersion’s structured training program emphasizing hands-on projects and workflow simulations. The dedicated mentorship and practical portfolio allowed me to step back into the tech domain successfully.',
     rating: 5,
-    accentColor: '#FFB81C',
+    accentColor: '#FFD700',
   },
   {
     id: 'pradeep-naik',
@@ -42,7 +42,7 @@ export const testimonialsData = [
     quote:
       'The placement-oriented curriculum, live projects, and continuous assessments turned me into a job-ready professional. I now understand workflows and domain-specific tools, and feel confident applying for top-tier roles.',
     rating: 5,
-    accentColor: '#38BDF8',
+    accentColor: '#6366f1',
   },
   {
     id: 'sneha-rajput',
@@ -53,6 +53,6 @@ export const testimonialsData = [
     quote:
       'After a career break, the advanced upskilling program, case studies, project-based design cycles, and continuous mentorship rebuilt my capabilities. I am now prepared for high-impact roles in leading organizations.',
     rating: 5,
-    accentColor: '#7C3AED',
+    accentColor: '#7c3aed',
   },
 ]

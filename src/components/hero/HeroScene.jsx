@@ -10,20 +10,20 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 // Clean, symmetrical flagship technology nodes with zero overlap and ample breathing room
 const DESKTOP_NODES = [
-  { name: 'AI & ML', position: [0, 2.22, 0.15], color: '#38BDF8', phase: 0 },
-  { name: 'Full Stack', position: [2.35, 1.05, -0.1], color: '#FFB81C', phase: 1 },
-  { name: 'Data Analytics', position: [2.15, -1.25, 0.1], color: '#22D3EE', phase: 2 },
-  { name: 'IoT & Edge AI', position: [0, -2.22, -0.15], color: '#FFC928', phase: 3 },
-  { name: 'Cybersecurity', position: [-2.15, -1.25, 0.1], color: '#7C3AED', phase: 4 },
-  { name: 'Cloud AWS', position: [-2.35, 1.05, -0.1], color: '#2563EB', phase: 5 },
+  { name: 'AI & ML', position: [0, 2.22, 0.15], color: '#a78bfa', phase: 0 },
+  { name: 'Full Stack', position: [2.35, 1.05, -0.1], color: '#7c3aed', phase: 1 },
+  { name: 'Data Analytics', position: [2.15, -1.25, 0.1], color: '#6366f1', phase: 2 },
+  { name: 'IoT & Edge AI', position: [0, -2.22, -0.15], color: '#FFD700', phase: 3 },
+  { name: 'Cybersecurity', position: [-2.15, -1.25, 0.1], color: '#c084fc', phase: 4 },
+  { name: 'Cloud AWS', position: [-2.35, 1.05, -0.1], color: '#818cf8', phase: 5 },
 ]
 
 // Mobile nodes with clean safe bounds
 const MOBILE_NODES = [
-  { name: 'AI & ML', position: [0, 1.85, 0.1], color: '#38BDF8', phase: 0 },
-  { name: 'Full Stack', position: [1.45, 0.5, -0.1], color: '#FFB81C', phase: 1 },
-  { name: 'Cybersecurity', position: [-1.45, -0.5, 0.1], color: '#7C3AED', phase: 2 },
-  { name: 'Cloud AWS', position: [0, -1.85, -0.1], color: '#2563EB', phase: 3 },
+  { name: 'AI & ML', position: [0, 1.85, 0.1], color: '#a78bfa', phase: 0 },
+  { name: 'Full Stack', position: [1.45, 0.5, -0.1], color: '#7c3aed', phase: 1 },
+  { name: 'Cybersecurity', position: [-1.45, -0.5, 0.1], color: '#c084fc', phase: 2 },
+  { name: 'Cloud AWS', position: [0, -1.85, -0.1], color: '#818cf8', phase: 3 },
 ]
 
 /**
@@ -118,14 +118,14 @@ export function HeroScene({ isMobile = false }) {
         style={{ pointerEvents: 'none' }}
       >
         <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={1.1} color="#FFD866" />
-        <directionalLight position={[-10, -10, -5]} intensity={0.6} color="#38BDF8" />
+        <directionalLight position={[10, 10, 5]} intensity={1.1} color="#c084fc" />
+        <directionalLight position={[-10, -10, -5]} intensity={0.7} color="#7c3aed" />
 
         <Suspense fallback={null}>
           <SceneRig isMobile={isMobile} />
           <ParticleField
             count={isMobile ? 30 : 65}
-            color="#38BDF8"
+            color="#a78bfa"
             size={0.022}
             radius={6.5}
             speed={0.035}

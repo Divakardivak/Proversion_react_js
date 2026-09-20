@@ -24,7 +24,7 @@ export const entrepreneurshipStages = [
       'Problem-Solution Fit Validation',
       'Market Feasibility & Value Proposition',
     ],
-    accentColor: '#38BDF8',
+    accentColor: '#7c3aed',
     visualType: 'orb',
   },
   {
@@ -40,7 +40,7 @@ export const entrepreneurshipStages = [
       'Contract Drafting & Legal Frameworks',
       'Government Scheme & Subsidy Access',
     ],
-    accentColor: '#2563EB',
+    accentColor: '#6366f1',
     visualType: 'cube',
   },
   {
@@ -56,7 +56,7 @@ export const entrepreneurshipStages = [
       'Investor-Ready Pitch Deck Creation',
       'Stakeholder & Grant Presentation Prep',
     ],
-    accentColor: '#7C3AED',
+    accentColor: '#a78bfa',
     visualType: 'target',
   },
   {
@@ -72,7 +72,7 @@ export const entrepreneurshipStages = [
       'Angel Investor & Funding Connects',
       'Government Startup Grants Navigation',
     ],
-    accentColor: '#FFC928',
+    accentColor: '#c084fc',
     visualType: 'rocket',
   },
   {
@@ -88,7 +88,7 @@ export const entrepreneurshipStages = [
       'Ongoing Post-Program Mentorship',
       'Peer Collaboration & Business Partnerships',
     ],
-    accentColor: '#FFB81C',
+    accentColor: '#FFD700',
     visualType: 'rings',
   },
 ]

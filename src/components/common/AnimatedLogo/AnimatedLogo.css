@@ -45,8 +45,8 @@
   position: absolute;
   inset: -25%;
   border-radius: var(--radius-full);
-  background: radial-gradient(circle at center, rgba(255, 184, 28, 0.35) 0%, rgba(37, 99, 235, 0.15) 50%, transparent 70%);
-  box-shadow: 0 0 25px rgba(255, 184, 28, 0.20), 0 0 60px rgba(37, 99, 235, 0.12);
+  background: radial-gradient(circle at center, rgba(124, 58, 237, 0.35) 0%, rgba(99, 102, 241, 0.15) 50%, transparent 70%);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.25), 0 0 60px rgba(99, 102, 241, 0.15);
   pointer-events: none;
   z-index: 0;
   transform: translateZ(-20px);
@@ -218,8 +218,8 @@
   left: 20%;
   width: 3.5px;
   height: 3.5px;
-  background-color: #38bdf8;
-  color: #38bdf8;
+  background-color: #7c3aed;
+  color: #7c3aed;
 }
 
 .ui-logo__particle--2 {
@@ -227,8 +227,8 @@
   left: 15%;
   width: 4px;
   height: 4px;
-  background-color: #fbbf24;
-  color: #fbbf24;
+  background-color: #FFD700;
+  color: #FFD700;
 }
 
 .ui-logo__particle--3 {
@@ -245,8 +245,8 @@
   right: 22%;
   width: 3.5px;
   height: 3.5px;
-  background-color: #a855f7;
-  color: #a855f7;
+  background-color: #a78bfa;
+  color: #a78bfa;
 }
 
 .ui-logo__particle--5 {
@@ -254,8 +254,8 @@
   left: 4%;
   width: 2.5px;
   height: 2.5px;
-  background-color: #38bdf8;
-  color: #38bdf8;
+  background-color: #c084fc;
+  color: #c084fc;
 }
 
 .ui-logo__particle--6 {
@@ -263,8 +263,8 @@
   right: 6%;
   width: 3px;
   height: 3px;
-  background-color: #fbbf24;
-  color: #fbbf24;
+  background-color: #FFD700;
+  color: #FFD700;
 }
 
 .ui-logo__particle--7 {

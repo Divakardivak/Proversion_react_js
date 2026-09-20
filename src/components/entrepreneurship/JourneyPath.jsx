@@ -32,11 +32,11 @@ export function JourneyPath({ progress, activeIndex = 0 }) {
         <defs>
           {/* Glowing Linear Gradient */}
           <linearGradient id="journeyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#FFB81C" />
-            <stop offset="25%" stopColor="#FFC928" />
-            <stop offset="55%" stopColor="#2563EB" />
-            <stop offset="80%" stopColor="#38BDF8" />
-            <stop offset="100%" stopColor="#22D3EE" />
+            <stop offset="0%" stopColor="#7c3aed" />
+            <stop offset="25%" stopColor="#8b5cf6" />
+            <stop offset="50%" stopColor="#a78bfa" />
+            <stop offset="75%" stopColor="#c084fc" />
+            <stop offset="100%" stopColor="#FFD700" />
           </linearGradient>
         </defs>
 

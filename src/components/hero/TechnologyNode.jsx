@@ -9,13 +9,13 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
  * @param {Object} props
  * @param {string} props.name - Technology track name
  * @param {[number, number, number]} props.position - 3D coordinates [x, y, z]
- * @param {string} [props.color='#38bdf8'] - Node theme color
+ * @param {string} [props.color='#7c3aed'] - Node theme color
  * @param {number} [props.phase=0] - Sine wave phase offset
  */
 export function TechnologyNode({
   name,
   position,
-  color = '#38bdf8',
+  color = '#7c3aed',
   phase = 0,
 }) {
   const nodeRef = useRef()
@@ -60,7 +60,7 @@ export function TechnologyNode({
             alignItems: 'center',
             gap: '6px',
             padding: '4px 11px',
-            background: 'rgba(7, 11, 24, 0.94)',
+            background: 'rgba(9, 5, 20, 0.94)',
             border: `1px solid ${color}45`,
             borderRadius: '9999px',
             boxShadow: `0 4px 16px rgba(0, 0, 0, 0.6), 0 0 12px ${color}25`,

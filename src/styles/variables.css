@@ -1,118 +1,154 @@
 :root {
-   /* ==========================================================================
-     Official ProVersion Brand Color System
+  /* ==========================================================================
+     Pro Version - Midnight Luxury Tech & Electric Violet Design System
      ========================================================================== */
 
-   /* Level 1 — Brand Identity */
-   --pv-gold: #FFB81C;
-   --pv-gold-bright: #FFC928;
-   --pv-gold-soft: #FFD866;
-   --pv-white: #FFFFFF;
+  /* Brand Violet (Electric Violet & Purple) */
+  --primary: #7c3aed;
+  --primary-hover: #6d28d9;
+  --primary-dark: #5b21b6;
+  --primary-light: #a78bfa;
+  --primary-soft: #c4b5fd;
+  --primary-tint: #f5f3ff;
+  --primary-border: #ede9fe;
 
-   /* Level 2 — Dark Foundation */
-   --pv-bg: #050816;
-   --pv-bg-midnight: #080B1A;
-   --pv-bg-indigo: #0D1030;
-   --pv-bg-secondary: #15104A;
+  /* Midnight Dark Theme (Luxury Dark Sections) */
+  --bg-midnight: #090514;
+  --bg-dark-card: #1a0533;
+  --bg-dark-card-2: #2d1060;
+  --bg-footer: #0b0717;
+  --border-subtle-dark: rgba(124, 58, 237, 0.2);
+  --border-muted-dark: rgba(167, 139, 250, 0.15);
 
-   /* Level 3 — Supporting Technology Accents */
-   --pv-blue: #2563EB;
-   --pv-blue-bright: #38BDF8;
-   --pv-cyan: #22D3EE;
-   --pv-purple: #7C3AED;
-   --pv-magenta: #C026D3;
+  /* Accent & Utility */
+  --accent-gold: #FFD700;
+  --accent-gold-glow: #FFA500;
+  --accent-green: #22c55e;
+  --accent-green-hover: #16a34a;
+  --accent-green-bg: #f0fdf4;
+  --accent-green-border: #bbf7d0;
+  --accent-indigo: #6366f1;
+  --accent-indigo-light: #818cf8;
+  --accent-fuchsia: #c084fc;
+  --accent-fuchsia-bright: #d946ef;
+  --accent-red: #ef4444;
+  --accent-red-bg: rgba(239, 68, 68, 0.08);
 
-   /* Level 4 — Supporting UI */
-   --pv-text-primary: #FFFFFF;
-   --pv-text-secondary: #CBD5E1;
-   --pv-text-muted: #94A3B8;
+  --border-light: #e2e8f0;
+  --text-dark: #0f172a;
+  --text-muted: #94a3b8;
+  --text-light: #f8fafc;
 
-   /* Borders & Glass */
-   --pv-border: rgba(255, 255, 255, 0.10);
-   --pv-border-gold: rgba(255, 184, 28, 0.35);
-   --pv-glass: rgba(10, 14, 28, 0.72);
-   --pv-glass-hover: rgba(15, 22, 42, 0.85);
+  /* Fonts */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-brand: 'Playfair Display', serif;
 
-   /* Glow Effects */
-   --pv-gold-glow: rgba(255, 184, 28, 0.35);
-   --pv-blue-glow: rgba(37, 99, 235, 0.30);
-   --pv-purple-glow: rgba(124, 58, 237, 0.25);
+  /* Legacy & Semantic Mappings for complete system compatibility */
+  --pv-gold: #FFD700;
+  --pv-gold-bright: #FFA500;
+  --pv-gold-soft: rgba(255, 215, 0, 0.14);
+  --pv-white: #FFFFFF;
 
-   /* ==========================================================================
-     Semantic Mappings to Design Tokens
-     ========================================================================== */
+  --pv-bg: #090514;
+  --pv-bg-midnight: #090514;
+  --pv-bg-indigo: #1a0533;
+  --pv-bg-secondary: #2d1060;
+  --pv-deep-navy: #090514;
 
-   /* Backgrounds */
-   --bg-primary: var(--pv-bg);
-   --bg-secondary: var(--pv-bg-midnight);
-   --bg-tertiary: var(--pv-bg-indigo);
-   --bg-surface: var(--pv-glass);
-   --bg-surface-hover: var(--pv-glass-hover);
-   --bg-elevated: rgba(255, 255, 255, 0.08);
-   --bg-overlay: rgba(5, 8, 22, 0.82);
+  --pv-blue: #6366f1;
+  --pv-blue-bright: #818cf8;
+  --pv-cyan: #a78bfa;
+  --pv-purple: #7c3aed;
+  --pv-magenta: #c084fc;
 
-   /* Surface Opacities & Glass */
-   --glass-bg: var(--pv-glass);
-   --glass-bg-hover: var(--pv-glass-hover);
-   --glass-border: var(--pv-border);
-   --glass-border-hover: rgba(255, 255, 255, 0.18);
-   --glass-border-accent: var(--pv-border-gold);
-   --glass-blur: blur(5px);
-   --glass-blur-sm: blur(3px);
-   --glass-blur-lg: blur(8px);
+  --pv-text-primary: #f8fafc;
+  --pv-text-secondary: #cbd5e1;
+  --pv-text-muted: #94a3b8;
 
-   /* Text Colors */
-   --text-primary: var(--pv-text-primary);
-   --text-secondary: var(--pv-text-secondary);
-   --text-muted: var(--pv-text-muted);
-   --text-dim: #64748b;
-   --text-inverse: var(--pv-bg);
-   --text-accent: var(--pv-gold);
-   --text-cyan: var(--pv-cyan);
+  --pv-border: rgba(124, 58, 237, 0.2);
+  --pv-border-glass: rgba(124, 58, 237, 0.2);
+  --pv-border-gold: rgba(255, 215, 0, 0.35);
+  --pv-glass: rgba(26, 5, 51, 0.78);
+  --pv-glass-hover: rgba(45, 16, 96, 0.88);
+  --pv-dark-glass: rgba(26, 5, 51, 0.85);
 
-   /* Accent Colors */
-   --accent-primary: var(--pv-gold);
-   --accent-gold: var(--pv-gold);
-   --accent-secondary: var(--pv-blue);
-   --accent-cyan: var(--pv-cyan);
-   --accent-purple: var(--pv-purple);
-   --accent-magenta: var(--pv-magenta);
-   --accent-emerald: #10B981;
-   --accent-amber: var(--pv-gold-bright);
-   --accent-rose: #F43F5E;
+  --pv-gold-glow: rgba(255, 215, 0, 0.35);
+  --pv-blue-glow: rgba(124, 58, 237, 0.35);
+  --pv-purple-glow: rgba(124, 58, 237, 0.4);
+  --pv-glow-gold: 0 0 16px rgba(255, 215, 0, 0.25);
 
-   /* Approved Gradient System */
-   --gradient-gold: linear-gradient(135deg, #FFB81C 0%, #FFD866 100%);
-   --gradient-tech: linear-gradient(135deg, #2563EB 0%, #22D3EE 100%);
-   --gradient-future: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
-   --gradient-brand: linear-gradient(135deg, #FFB81C 0%, #FFFFFF 100%);
+  /* Backgrounds */
+  --bg-primary: #090514;
+  --bg-secondary: #0b0717;
+  --bg-tertiary: #1a0533;
+  --bg-surface: var(--pv-glass);
+  --bg-surface-hover: var(--pv-glass-hover);
+  --bg-elevated: rgba(124, 58, 237, 0.08);
+  --bg-overlay: rgba(9, 5, 20, 0.95);
 
-   --gradient-accent: var(--gradient-gold);
-   --gradient-accent-soft: linear-gradient(135deg, rgba(255, 184, 28, 0.15) 0%, rgba(255, 201, 40, 0.06) 100%);
-   --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-   --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
-   --gradient-text: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
-   --gradient-text-accent: var(--gradient-gold);
-   --gradient-dark-radial: radial-gradient(circle at 50% 0%, rgba(255, 184, 28, 0.10) 0%, transparent 70%);
+  /* Glass & Surfaces */
+  --glass-bg: rgba(26, 5, 51, 0.78);
+  --glass-bg-hover: rgba(45, 16, 96, 0.88);
+  --glass-border: rgba(124, 58, 237, 0.2);
+  --glass-border-hover: rgba(167, 139, 250, 0.4);
+  --glass-border-accent: rgba(124, 58, 237, 0.4);
+  --glass-blur: blur(12px);
+  --glass-blur-sm: blur(6px);
+  --glass-blur-lg: blur(16px);
 
-   /* Borders & Dividers */
-   --border-subtle: rgba(255, 255, 255, 0.06);
-   --border-base: var(--pv-border);
-   --border-strong: rgba(255, 255, 255, 0.18);
-   --border-focus: var(--pv-gold);
-   --border-accent: var(--pv-border-gold);
+  /* Text Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-dim: #64748b;
+  --text-inverse: #090514;
+  --text-accent: #a78bfa;
+  --text-cyan: #c4b5fd;
 
-   /* Glow Effects */
-   --glow-primary: 0 0 24px -4px var(--pv-gold-glow);
-   --glow-accent: 0 0 32px -6px var(--pv-blue-glow);
-   --glow-cyan: 0 0 28px -4px rgba(34, 211, 238, 0.25);
-   --glow-subtle: 0 0 16px -2px rgba(255, 255, 255, 0.08);
+  /* Accent Colors */
+  --accent-primary: #7c3aed;
+  --accent-secondary: #6366f1;
+  --accent-cyan: #a78bfa;
+  --accent-purple: #7c3aed;
+  --accent-magenta: #c084fc;
+  --accent-emerald: #22c55e;
+  --accent-amber: #FFA500;
+  --accent-rose: #ef4444;
 
-   /* ==========================================================================
-     Typography Scale
-     ========================================================================== */
-   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-   --font-display: 'Outfit', var(--font-sans);
+  /* Signature Gradients & Glow System */
+  --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  --gradient-tech: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+  --gradient-future: linear-gradient(135deg, #7c3aed 0%, #d946ef 100%);
+  --gradient-brand: linear-gradient(to right, #c084fc, #8b5cf6, #d946ef);
+  --gradient-hero: linear-gradient(135deg, #1a0533 0%, #2d1060 35%, #1a0533 70%, #090514 100%);
+  --gradient-cta: linear-gradient(135deg, #7c3aed, #5b21b6);
+
+  --gradient-accent: linear-gradient(135deg, #7c3aed, #5b21b6);
+  --gradient-accent-soft: linear-gradient(135deg, rgba(124, 58, 237, 0.18) 0%, rgba(167, 139, 250, 0.08) 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(45, 16, 96, 0.4) 0%, rgba(26, 5, 51, 0.2) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(124, 58, 237, 0.12) 0%, rgba(26, 5, 51, 0.04) 100%);
+  --gradient-text: linear-gradient(135deg, #FFFFFF 0%, #c4b5fd 100%);
+  --gradient-text-accent: linear-gradient(to right, #c084fc, #8b5cf6, #d946ef);
+  --gradient-dark-radial: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.2) 0%, transparent 70%);
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(124, 58, 237, 0.12);
+  --border-base: rgba(124, 58, 237, 0.2);
+  --border-strong: rgba(167, 139, 250, 0.35);
+  --border-focus: #7c3aed;
+  --border-accent: rgba(124, 58, 237, 0.35);
+
+  /* Glow Effects */
+  --glow-primary: 0 8px 32px rgba(124, 58, 237, 0.4), 0 0 0 1px rgba(167, 139, 250, 0.2);
+  --glow-accent: 0 12px 40px rgba(124, 58, 237, 0.65), 0 0 0 2px rgba(167, 139, 250, 0.4);
+  --glow-cyan: 0 0 28px -4px rgba(167, 139, 250, 0.35);
+  --glow-subtle: 0 0 16px -2px rgba(124, 58, 237, 0.18);
+
+  /* ==========================================================================
+    Typography Scale
+    ========================================================================== */
+  --font-sans: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: var(--font-heading), var(--font-sans);
    --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
 
    /* Font Sizes */

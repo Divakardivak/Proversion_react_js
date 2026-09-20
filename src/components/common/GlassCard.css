@@ -3,10 +3,10 @@
   background: var(--pv-glass);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(124, 58, 237, 0.2);
   border-radius: var(--radius-2xl);
   padding: var(--space-6);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
   overflow: hidden;
   transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
 }
@@ -20,7 +20,7 @@
   transition: opacity var(--transition-normal);
   background: radial-gradient(
     600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(255, 184, 28, 0.08),
+    rgba(124, 58, 237, 0.15),
     transparent 60%
   );
 }
@@ -32,9 +32,9 @@
 /* Hover elevation */
 .ui-glass-card--hover:hover {
   background: var(--pv-glass-hover);
-  border-color: rgba(255, 184, 28, 0.22);
+  border-color: #7c3aed;
   transform: translateY(-4px);
-  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.35), 0 0 20px rgba(255, 184, 28, 0.15);
+  box-shadow: 0 20px 40px -8px rgba(124, 58, 237, 0.25), 0 0 20px rgba(124, 58, 237, 0.18);
 }
 
 .ui-glass-card__content {

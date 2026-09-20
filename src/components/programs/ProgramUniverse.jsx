@@ -81,7 +81,7 @@ function CarouselRig({ programs, selectedId, onSelect, isMobile }) {
       {/* Orbital Elliptical Trajectory Track */}
       <ProgramOrbitTrack
         isMobile={isMobile}
-        accentColor={selectedProgram?.accentColor || '#FFB81C'}
+        accentColor={selectedProgram?.accentColor || '#7c3aed'}
       />
 
       {/* Futuristic Focused Laser Energy Beam to Active Node */}
@@ -165,7 +165,7 @@ export function ProgramUniverse({
       >
         <ambientLight intensity={0.65} />
         <directionalLight position={[8, 10, 8]} intensity={1.2} />
-        <directionalLight position={[-8, -6, -4]} intensity={0.5} color="#FFB81C" />
+        <directionalLight position={[-8, -6, -4]} intensity={0.5} color="#7c3aed" />
 
         <Suspense fallback={null}>
           <CarouselRig
@@ -176,7 +176,7 @@ export function ProgramUniverse({
           />
           <ParticleField
             count={isMobile ? 30 : 65}
-            color="#FFB81C"
+            color="#a78bfa"
             size={0.02}
             radius={5.5}
             speed={0.03}

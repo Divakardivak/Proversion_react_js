@@ -48,7 +48,6 @@ export function CareerConduit({ progress, milestones, activeStageIndex = 0 }) {
         {milestones.map((milestone, idx) => {
           const isCompleted = idx < activeStageIndex
           const isCurrent = idx === activeStageIndex
-          const isFuture = idx > activeStageIndex
 
           const pipStateClass = isCompleted
             ? 'ui-career-conduit__pip--completed'

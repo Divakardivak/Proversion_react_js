@@ -92,16 +92,16 @@ export function WhyUs() {
           <svg className="ui-why-us__svg" viewBox="0 0 960 500" aria-hidden="true">
             <defs>
               <linearGradient id="whyUsGradAscend" x1="480" y1="255" x2="480" y2="110" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#FFB81C" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#38BDF8" stopOpacity="0.95" />
+                <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#a78bfa" stopOpacity="0.95" />
               </linearGradient>
               <linearGradient id="whyUsGradEvolve" x1="480" y1="255" x2="320" y2="392" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#FFB81C" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#818CF8" stopOpacity="0.95" />
+                <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#818cf8" stopOpacity="0.95" />
               </linearGradient>
               <linearGradient id="whyUsGradPropel" x1="480" y1="255" x2="640" y2="392" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#FFB81C" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#FFB81C" stopOpacity="0.95" />
+                <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#FFD700" stopOpacity="0.95" />
               </linearGradient>
               <filter id="whyUsGlow" x="-30%" y="-30%" width="160%" height="160%">
                 <feGaussianBlur stdDeviation="3.5" result="blur" />
@@ -150,17 +150,17 @@ export function WhyUs() {
 
             {/* Energy Photons Traveling along active conduit */}
             {!shouldReduceMotion && activeNodeId === 'ascend' && (
-              <circle r="4.5" fill="#38BDF8" filter="url(#whyUsGlow)">
+              <circle r="4.5" fill="#a78bfa" filter="url(#whyUsGlow)">
                 <animateMotion path="M 480 255 L 480 110" dur="1.2s" repeatCount="indefinite" />
               </circle>
             )}
             {!shouldReduceMotion && activeNodeId === 'evolve' && (
-              <circle r="4.5" fill="#818CF8" filter="url(#whyUsGlow)">
+              <circle r="4.5" fill="#818cf8" filter="url(#whyUsGlow)">
                 <animateMotion path="M 480 255 L 320 392" dur="1.4s" repeatCount="indefinite" />
               </circle>
             )}
             {!shouldReduceMotion && activeNodeId === 'propel' && (
-              <circle r="4.5" fill="#FFB81C" filter="url(#whyUsGlow)">
+              <circle r="4.5" fill="#FFD700" filter="url(#whyUsGlow)">
                 <animateMotion path="M 480 255 L 640 392" dur="1.4s" repeatCount="indefinite" />
               </circle>
             )}
@@ -171,7 +171,7 @@ export function WhyUs() {
             <div
               className="ui-why-us__center-aura"
               style={{
-                background: `radial-gradient(circle, ${activePillar.color}33 0%, rgba(255, 184, 28, 0.15) 50%, transparent 70%)`,
+                background: `radial-gradient(circle, ${activePillar.color}33 0%, rgba(124, 58, 237, 0.15) 50%, transparent 70%)`,
               }}
               aria-hidden="true"
             />

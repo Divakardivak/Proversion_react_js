@@ -66,15 +66,15 @@ export function ProgramCore() {
   return (
     <group ref={groupRef}>
       {/* Soft central illumination */}
-      <pointLight color="#FFB81C" intensity={1.6} distance={6} decay={2} />
-      <pointLight color="#38BDF8" intensity={1.0} distance={4} decay={2} />
+      <pointLight color="#7c3aed" intensity={1.6} distance={6} decay={2} />
+      <pointLight color="#a78bfa" intensity={1.0} distance={4} decay={2} />
 
       {/* Inner Glowing Core Sphere */}
       <mesh ref={innerGlowRef}>
         <sphereGeometry args={[0.38, 24, 24]} />
         <meshStandardMaterial
-          color="#FFB81C"
-          emissive="#FFB81C"
+          color="#7c3aed"
+          emissive="#7c3aed"
           emissiveIntensity={0.65}
           transparent
           opacity={0.7}
@@ -86,10 +86,10 @@ export function ProgramCore() {
       <mesh ref={coreRef}>
         <icosahedronGeometry args={[0.72, 0]} />
         <meshStandardMaterial
-          color="#080B1A"
+          color="#090514"
           metalness={0.94}
           roughness={0.16}
-          emissive="#15104A"
+          emissive="#1a0533"
           emissiveIntensity={0.35}
           transparent
           opacity={0.88}
@@ -100,42 +100,42 @@ export function ProgramCore() {
       <mesh ref={latticeRef}>
         <icosahedronGeometry args={[0.9, 1]} />
         <meshBasicMaterial
-          color="#FFD866"
+          color="#a78bfa"
           wireframe
           transparent
-          opacity={0.22}
+          opacity={0.25}
         />
       </mesh>
 
-      {/* Outer Precision Ring 1 (Inner - Gold) */}
+      {/* Outer Precision Ring 1 (Inner - Violet) */}
       <mesh ref={ring1Ref}>
         <torusGeometry args={[1.2, 0.012, 16, 100]} />
         <meshStandardMaterial
-          color="#FFB81C"
+          color="#7c3aed"
           metalness={0.9}
           roughness={0.2}
-          emissive="#FFB81C"
+          emissive="#7c3aed"
           emissiveIntensity={0.28}
         />
       </mesh>
 
-      {/* Outer Precision Ring 2 (Middle - Cyan) */}
+      {/* Outer Precision Ring 2 (Middle - Lavender) */}
       <mesh ref={ring2Ref}>
         <torusGeometry args={[1.45, 0.01, 16, 100]} />
         <meshStandardMaterial
-          color="#22D3EE"
+          color="#a78bfa"
           metalness={0.9}
           roughness={0.2}
-          emissive="#38BDF8"
+          emissive="#a78bfa"
           emissiveIntensity={0.2}
         />
       </mesh>
 
-      {/* Outer Delicate Ring 3 (Outer - Purple) */}
+      {/* Outer Delicate Ring 3 (Outer - Fuchsia) */}
       <mesh ref={ring3Ref}>
         <torusGeometry args={[1.7, 0.008, 16, 120]} />
         <meshStandardMaterial
-          color="#7C3AED"
+          color="#c084fc"
           metalness={0.8}
           roughness={0.3}
           transparent
@@ -156,16 +156,16 @@ export function ProgramCore() {
         <div
           style={{
             padding: '3px 9px',
-            background: 'rgba(5, 8, 22, 0.94)',
-            border: '1px solid rgba(255, 184, 28, 0.6)',
+            background: 'rgba(9, 5, 20, 0.94)',
+            border: '1px solid rgba(167, 139, 250, 0.6)',
             borderRadius: '9999px',
-            color: '#FFB81C',
+            color: '#a78bfa',
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: '9px',
             fontWeight: '700',
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
-            boxShadow: '0 0 14px rgba(255, 184, 28, 0.35)',
+            boxShadow: '0 0 14px rgba(124, 58, 237, 0.4)',
           }}
         >
           PRO

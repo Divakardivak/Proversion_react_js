@@ -45,44 +45,49 @@
 
 /* Variants */
 .ui-btn--primary {
-  background: var(--pv-gold);
-  color: #050816;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  color: #ffffff;
   font-weight: 700;
   border: 1px solid transparent;
-  box-shadow: 0 0 24px rgba(255, 184, 28, 0.22);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.4), 0 0 0 1px rgba(167, 139, 250, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ui-btn--primary:hover {
-  background: var(--pv-gold-bright);
-  box-shadow: 0 0 35px rgba(255, 184, 28, 0.38);
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.65), 0 0 0 2px rgba(167, 139, 250, 0.4);
   transform: translateY(-2px);
-  color: #050816;
+  color: #ffffff;
 }
 
 .ui-btn--secondary {
   background: rgba(255, 255, 255, 0.04);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ui-btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 184, 28, 0.45);
-  color: var(--pv-gold-soft);
+  background: rgba(124, 58, 237, 0.12);
+  border-color: rgba(167, 139, 250, 0.5);
+  color: var(--primary-light);
   transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.25);
 }
 
 .ui-btn--outline {
   background: transparent;
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ui-btn--outline:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--pv-border-gold);
-  color: var(--pv-gold);
+  background: rgba(124, 58, 237, 0.08);
+  border-color: var(--primary);
+  color: var(--primary-light);
   transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
 }
 
 .ui-btn--glass {
@@ -91,13 +96,15 @@
   -webkit-backdrop-filter: var(--glass-blur);
   color: #ffffff;
   border: 1px solid var(--pv-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ui-btn--glass:hover {
   background: var(--pv-glass-hover);
-  border-color: var(--pv-border-gold);
-  color: var(--pv-gold-soft);
+  border-color: var(--primary);
+  color: var(--primary-light);
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.25);
 }
 
 .ui-btn--ghost {

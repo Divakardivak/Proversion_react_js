@@ -8,14 +8,14 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
  * Creates an ambient cloud of drifting 3D particles.
  * @param {Object} props
  * @param {number} [props.count=350] - Number of particles
- * @param {string} [props.color='#38bdf8'] - Particle color
+ * @param {string} [props.color='#a78bfa'] - Particle color
  * @param {number} [props.size=0.035] - Particle point size
  * @param {number} [props.radius=6] - Spread radius
  * @param {number} [props.speed=0.08] - Drift speed
  */
 export function ParticleField({
   count = 350,
-  color = '#38bdf8',
+  color = '#a78bfa',
   size = 0.035,
   radius = 6,
   speed = 0.08,

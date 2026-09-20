@@ -52,8 +52,8 @@ export function TestimonialCard({
             <Star
               key={i}
               size={13}
-              fill="#FFB81C"
-              color="#FFB81C"
+              fill="#FFD700"
+              color="#FFD700"
               className="ui-testimonial-card__star"
             />
           ))}
@@ -72,7 +72,7 @@ export function TestimonialCard({
         <div
           className="ui-testimonial-card__avatar"
           style={{
-            background: `linear-gradient(135deg, ${testimonial.accentColor}33 0%, rgba(15, 23, 42, 0.95) 100%)`,
+            background: `linear-gradient(135deg, ${testimonial.accentColor}33 0%, rgba(9, 5, 20, 0.95) 100%)`,
             borderColor: `${testimonial.accentColor}66`,
             color: '#ffffff',
           }}

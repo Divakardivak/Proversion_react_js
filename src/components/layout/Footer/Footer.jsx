@@ -96,11 +96,11 @@ export function Footer() {
         <svg className="ui-footer__orbit-svg" viewBox="0 0 1440 280" preserveAspectRatio="xMidYMid meet">
           <defs>
             <linearGradient id="footerOrbitGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#38BDF8" stopOpacity="0" />
-              <stop offset="25%" stopColor="#FFB81C" stopOpacity="0.75" />
-              <stop offset="50%" stopColor="#818CF8" stopOpacity="0.8" />
-              <stop offset="75%" stopColor="#FFB81C" stopOpacity="0.75" />
-              <stop offset="100%" stopColor="#38BDF8" stopOpacity="0" />
+              <stop offset="0%" stopColor="#7c3aed" stopOpacity="0" />
+              <stop offset="25%" stopColor="#a78bfa" stopOpacity="0.75" />
+              <stop offset="50%" stopColor="#6366f1" stopOpacity="0.8" />
+              <stop offset="75%" stopColor="#c084fc" stopOpacity="0.75" />
+              <stop offset="100%" stopColor="#7c3aed" stopOpacity="0" />
             </linearGradient>
 
             <filter id="footerGlow" x="-30%" y="-30%" width="160%" height="160%">
@@ -128,14 +128,14 @@ export function Footer() {
           {/* Traveling Photons on Upper CTA Trajectory */}
           {!shouldReduceMotion && (
             <>
-              <circle r="4" fill="#FFB81C" filter="url(#footerGlow)">
+              <circle r="4" fill="#a78bfa" filter="url(#footerGlow)">
                 <animateMotion
                   path="M 80,110 a 640,105 0 1,0 1280,0 a 640,105 0 1,0 -1280,0"
                   dur="14s"
                   repeatCount="indefinite"
                 />
               </circle>
-              <circle r="3.5" fill="#38BDF8" filter="url(#footerGlow)">
+              <circle r="3.5" fill="#7c3aed" filter="url(#footerGlow)">
                 <animateMotion
                   path="M 80,110 a 640,105 0 1,0 1280,0 a 640,105 0 1,0 -1280,0"
                   dur="18s"

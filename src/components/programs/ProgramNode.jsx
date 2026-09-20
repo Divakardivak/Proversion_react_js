@@ -121,8 +121,8 @@ export function ProgramNode({
         <mesh rotation={[Math.PI / 2.2, 0.3, 0]}>
           <torusGeometry args={[0.40, 0.008, 16, 48]} />
           <meshStandardMaterial
-            color="#FFB81C"
-            emissive="#FFB81C"
+            color="#FFD700"
+            emissive="#FFD700"
             emissiveIntensity={0.6}
             transparent
             opacity={0.65}
@@ -156,8 +156,8 @@ export function ProgramNode({
               gap: '5px',
               padding: isSelected ? '4px 10px' : '3px 8px',
               background: isSelected
-                ? 'rgba(5, 8, 22, 0.94)'
-                : 'rgba(8, 11, 26, 0.92)',
+                ? 'rgba(9, 5, 20, 0.94)'
+                : 'rgba(15, 8, 30, 0.92)',
               border: isSelected
                 ? `1.5px solid ${program.accentColor}`
                 : `1px solid ${program.accentColor}66`,
@@ -193,8 +193,8 @@ export function ProgramNode({
                 style={{
                   fontSize: '7.5px',
                   fontWeight: '800',
-                  color: '#FFB81C',
-                  background: 'rgba(255, 184, 28, 0.16)',
+                  color: '#FFD700',
+                  background: 'rgba(255, 215, 0, 0.16)',
                   padding: '1px 4px',
                   borderRadius: '999px',
                   letterSpacing: '0.08em',

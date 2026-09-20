@@ -125,7 +125,7 @@ h6, .h6 {
 }
 
 .text-gradient-brand {
-  background: var(--gradient-accent);
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

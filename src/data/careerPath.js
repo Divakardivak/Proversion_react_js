@@ -24,7 +24,7 @@ export const careerMilestones = [
       'Concept Reinforcement & Quizzes',
       'Industry-Standard Tools & Environments',
     ],
-    accentColor: '#38BDF8',
+    accentColor: '#7c3aed',
     iconName: 'BookOpen',
   },
   {
@@ -39,7 +39,7 @@ export const careerMilestones = [
       'Daily Doubt Clarification Sessions',
       'Hardcopy Domain Certificates',
     ],
-    accentColor: '#2563EB',
+    accentColor: '#6366f1',
     iconName: 'Code2',
   },
   {
@@ -54,7 +54,7 @@ export const careerMilestones = [
       'ATS-Optimized Technical Resume',
       'Professional Communication & Aptitude',
     ],
-    accentColor: '#7C3AED',
+    accentColor: '#a78bfa',
     iconName: 'Briefcase',
   },
   {
@@ -69,7 +69,7 @@ export const careerMilestones = [
       '2 Major Real-Time MNC Projects',
       'Production Toolchains & GitHub Portfolio',
     ],
-    accentColor: '#C026D3',
+    accentColor: '#c084fc',
     iconName: 'FolderGit2',
   },
   {
@@ -84,7 +84,7 @@ export const careerMilestones = [
       'Online or Offline Formats',
       'Up to 4 Months Corporate Experience',
     ],
-    accentColor: '#FFC928',
+    accentColor: '#818cf8',
     iconName: 'Award',
   },
   {
@@ -99,7 +99,7 @@ export const careerMilestones = [
       'Corporate Connect & Hiring Drives',
       '100% Placement Focus & Mock Interviews',
     ],
-    accentColor: '#FFB81C',
+    accentColor: '#FFD700',
     iconName: 'Rocket',
   },
 ]

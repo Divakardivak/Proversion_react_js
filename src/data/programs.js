@@ -19,7 +19,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#38BDF8',
+    accentColor: '#7c3aed',
     orbitPosition: [0, 1.85, 0.75],
   },
   {
@@ -37,7 +37,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#2563EB',
+    accentColor: '#6366f1',
     orbitPosition: [-1.9, 1.1, -0.6],
   },
   {
@@ -55,7 +55,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#FFB81C',
+    accentColor: '#a78bfa',
     orbitPosition: [1.9, 1.1, 0.25],
   },
   {
@@ -73,7 +73,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#7C3AED',
+    accentColor: '#c084fc',
     orbitPosition: [-2.0, -0.35, 0.65],
   },
   {
@@ -91,7 +91,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#22D3EE',
+    accentColor: '#818cf8',
     orbitPosition: [2.0, -0.35, -0.6],
   },
   {
@@ -109,7 +109,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#38BDF8',
+    accentColor: '#7c3aed',
     orbitPosition: [-1.15, -1.7, 0.1],
   },
   {
@@ -127,7 +127,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#FFC928',
+    accentColor: '#FFD700',
     orbitPosition: [1.15, -1.7, -0.5],
   },
   {
@@ -145,7 +145,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#C026D3',
+    accentColor: '#c084fc',
     orbitPosition: [-0.85, 0.35, 0.85],
   },
   {
@@ -163,7 +163,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#7C3AED',
+    accentColor: '#a78bfa',
     orbitPosition: [0.85, 0.35, 0.85],
   },
   {
@@ -181,7 +181,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#22D3EE',
+    accentColor: '#818cf8',
     orbitPosition: [-1.5, 1.55, 0.15],
   },
   {
@@ -199,7 +199,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#FFD866',
+    accentColor: '#FFD700',
     orbitPosition: [1.5, 1.55, -0.55],
   },
   {
@@ -217,7 +217,7 @@ export const programsData = [
     ],
     duration: '80–90 Days',
     internship: 'Paid Internship Up to ₹22K/mo',
-    accentColor: '#FFB81C',
+    accentColor: '#6d28d9',
     orbitPosition: [0, -1.0, 0.75],
   },
 ]

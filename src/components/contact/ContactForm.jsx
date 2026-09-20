@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
 import { Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
 import { programsData } from '@/data/programs'
 import { Button } from '@/components/common/Button'
@@ -160,13 +159,13 @@ export function ContactForm() {
 
         <p className="ui-contact-form-success__text">
           Thank you, <strong style={{ color: '#fff' }}>{formData.name}</strong>! Your inquiry for{' '}
-          <strong style={{ color: 'var(--accent-cyan)' }}>{formData.program}</strong> has been successfully validated.
+          <strong style={{ color: '#a78bfa' }}>{formData.program}</strong> has been successfully validated.
         </p>
 
         <p className="ui-contact-form-success__note">
           <span style={{ color: 'var(--text-muted)' }}>Note: </span>
           This is a client-side frontend demo. No remote backend API is currently configured to receive external emails. You can also connect directly via{' '}
-          <a href="tel:+919585340166" style={{ color: 'var(--accent-primary)', textDecoration: 'underline' }}>
+          <a href="tel:+919585340166" style={{ color: '#a78bfa', textDecoration: 'underline' }}>
             +91 95853 40166
           </a>.
         </p>

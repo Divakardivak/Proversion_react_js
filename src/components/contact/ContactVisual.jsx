@@ -27,8 +27,8 @@ export function ContactVisual() {
       >
         <defs>
           <radialGradient id="portalGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#FFB81C" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="#2563EB" stopOpacity="0.14" />
+            <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.3" />
+            <stop offset="50%" stopColor="#6366f1" stopOpacity="0.14" />
             <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </radialGradient>
 
@@ -49,7 +49,7 @@ export function ContactVisual() {
           cx="200"
           cy="200"
           r="140"
-          stroke="rgba(255, 184, 28, 0.35)"
+          stroke="rgba(124, 58, 237, 0.35)"
           strokeWidth="1.2"
           strokeDasharray="4 8"
         />
@@ -57,14 +57,14 @@ export function ContactVisual() {
           cx="200"
           cy="200"
           r="105"
-          stroke="rgba(56, 189, 248, 0.45)"
+          stroke="rgba(167, 139, 250, 0.45)"
           strokeWidth="1.4"
         />
         <circle
           cx="200"
           cy="200"
           r="70"
-          stroke="rgba(255, 184, 28, 0.55)"
+          stroke="rgba(124, 58, 237, 0.55)"
           strokeWidth="1.5"
           strokeDasharray="6 6"
         />
@@ -74,7 +74,7 @@ export function ContactVisual() {
           cx="200"
           cy="200"
           r="125"
-          stroke="rgba(255, 184, 28, 0.65)"
+          stroke="rgba(167, 139, 250, 0.65)"
           strokeWidth="1.6"
           strokeDasharray="20 40"
           animate={
@@ -97,12 +97,12 @@ export function ContactVisual() {
           cx="200"
           cy="200"
           r="24"
-          fill="rgba(8, 11, 26, 0.65)"
-          stroke="#FFB81C"
+          fill="rgba(9, 5, 20, 0.75)"
+          stroke="#7c3aed"
           strokeWidth="2"
           filter="url(#portalFilter)"
         />
-        <circle cx="200" cy="200" r="8" fill="#FFB81C" />
+        <circle cx="200" cy="200" r="8" fill="#a78bfa" />
       </svg>
     </motion.div>
   )

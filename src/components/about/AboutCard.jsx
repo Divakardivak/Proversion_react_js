@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { Target, Eye, Compass, ArrowRight } from 'lucide-react'
+import { Target, Eye, Compass } from 'lucide-react'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 const ICON_MAP = {

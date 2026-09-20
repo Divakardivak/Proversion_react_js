@@ -7,7 +7,7 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
  * 3D Orbital Track Component.
  * Visualizes the celestial orbital trajectory for the program carousel.
  */
-export function ProgramOrbitTrack({ isMobile = false, accentColor = '#38bdf8' }) {
+export function ProgramOrbitTrack({ isMobile = false, accentColor = '#7c3aed' }) {
   const ringRef = useRef()
   const shouldReduceMotion = useReducedMotion()
 

@@ -15,7 +15,7 @@ export const aboutData = {
       tagline: 'Practical Skills & Real-Time Projects',
       description:
         'We give learners industry-ready skills through practical, high-quality training across multiple domains. We provide real-time projects, expert mentorship, and career-focused guidance that prepares students for top MNC placements and entrepreneurial growth, instilling confidence, discipline, and excellence.',
-      accent: '#38bdf8',
+      accent: '#7c3aed',
       icon: 'Target',
     },
     {
@@ -24,7 +24,7 @@ export const aboutData = {
       tagline: 'Cultivating Future Technology Leaders',
       description:
         'To create a generation of skilled, confident leaders who shape the future with excellence. We aim to empower learners with industry-ready capabilities, strong values, and innovative thinking, enabling them to thrive in global environments, influence positive change, and lead with purpose, discipline, and integrity.',
-      accent: '#818cf8',
+      accent: '#a78bfa',
       icon: 'Eye',
     },
     {
@@ -33,7 +33,7 @@ export const aboutData = {
       tagline: 'High-Impact Education & Career Acceleration',
       description:
         'To deliver high-quality, industry-focused education that empowers every learner with practical skills, real-time training, and strong professional values. We guide students toward top career opportunities, cultivate entrepreneurial mindsets, and build a disciplined, supportive environment that transforms potential into long-lasting success.',
-      accent: '#a855f7',
+      accent: '#c084fc',
       icon: 'Compass',
     },
   ],
@@ -55,7 +55,7 @@ export const whyUsData = {
         'Equips learners with strong industry alignment, hands-on exposure, and guided placement support.',
       description:
         'We offer advanced technical training integrated with real-time internships and project-based learning. This equips learners with strong industry alignment, hands-on exposure, and guided placement support, ensuring they transition confidently into high-performance corporate and technical roles.',
-      color: '#38bdf8',
+      color: '#7c3aed',
       position: 'top',
       metrics: ['Real-Time Internships', 'Project-Based Learning', 'Corporate Placement Support'],
     },
@@ -69,7 +69,7 @@ export const whyUsData = {
         'Mirrors real industry workflows to strengthen technical problem-solving and build professional portfolios.',
       description:
         'We provide live project experience, domain-specific internships, and tool-based execution that mirrors real industry workflows. Our programs strengthen technical problem-solving, build professional portfolios, and prepare learners for competitive placement opportunities through continuous assessment and expert guidance.',
-      color: '#818cf8',
+      color: '#a78bfa',
       position: 'bottom-left',
       metrics: ['Industry Workflows', 'Portfolio Construction', 'Continuous Assessment'],
     },
@@ -83,7 +83,7 @@ export const whyUsData = {
         'Accelerates career journeys with job-ready expertise, technical confidence, and professional discipline.',
       description:
         'We deliver industry-aligned skill development through practical training, project cycles, and internship integration. Learners gain job-ready expertise, technical confidence, and professional discipline, supported by placement-focused mentoring that accelerates their career journey and empowers them to secure strong roles in leading organizations.',
-      color: '#FFB81C',
+      color: '#FFD700',
       position: 'bottom-right',
       metrics: ['Job-Ready Expertise', 'Placement Mentoring', 'Fast-Track Onboarding'],
     },
