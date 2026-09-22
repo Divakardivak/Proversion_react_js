@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Sparkles, ArrowDown, ChevronRight, Award, Users, BookOpen } from 'lucide-react'
+import { Sparkles, ArrowDown, ChevronRight, Award, Users, BookOpen, GraduationCap as GradCapIcon } from 'lucide-react'
 import { Container } from '@/components/common/Container'
 import { Button } from '@/components/common/Button'
 import { MagneticButton } from '@/components/common/MagneticButton'
@@ -139,11 +139,14 @@ export function Hero() {
               <HeroScene isMobile={isMobile} />
             ) : (
               <div className="ui-hero__fallback">
-                <div className="ui-hero__fallback-rings">
-                  <div className="ui-hero__fallback-ring ui-hero__fallback-ring--1" />
-                  <div className="ui-hero__fallback-ring ui-hero__fallback-ring--2" />
-                  <div className="ui-hero__fallback-ring ui-hero__fallback-ring--3" />
-                  <div className="ui-hero__fallback-core" />
+                <div className="ui-hero__fallback-education">
+                  <div className="ui-hero__fallback-halo" />
+                  <div className="ui-hero__fallback-cap">
+                    <GradCapIcon size={72} color="#fbbf24" />
+                  </div>
+                  <div className="ui-hero__fallback-book">
+                    <BookOpen size={56} color="#c084fc" />
+                  </div>
                 </div>
               </div>
             )}

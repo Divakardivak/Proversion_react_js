@@ -1,9 +1,11 @@
+/* ═══════════════════════════════════════════════════════════
+   LoadingScreen — Cinematic Reveal
+   Midnight Luxury Tech & Electric Violet theme
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Fullscreen Container ─────────────────────────────────── */
 .ui-loading-screen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
   inset: 0;
   z-index: 99999;
   background-color: var(--bg-primary);
@@ -15,32 +17,432 @@
   user-select: none;
 }
 
+/* Multi-layer ambient glow backdrop */
 .ui-loading-screen__background {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.22) 0%, transparent 65%);
+  background:
+    radial-gradient(ellipse 65% 55% at 50% 42%, rgba(124, 58, 237, 0.25) 0%, transparent 100%),
+    radial-gradient(ellipse 40% 35% at 50% 58%, rgba(255, 215, 0, 0.05) 0%, transparent 100%);
   pointer-events: none;
 }
 
+/* ── Content Stack ────────────────────────────────────────── */
 .ui-loading-screen__content {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
+/* ══════════════════════════════════════════════════════════
+   LOGO WRAP — positions ring, image, sparks together
+   ══════════════════════════════════════════════════════════ */
+.ui-loading-logo-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Outer dimensions match the SVG ring viewBox ratio */
+  width: clamp(140px, 28vw, 200px);
+  height: clamp(140px, 28vw, 200px);
+}
+
+/* ── Ambient floating dust particles (background) ─────────── */
+.ui-loading-particles {
+  position: absolute;
+  inset: -60px;
+  pointer-events: none;
+}
+
+.ui-loading-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  animation: pvParticleFloat linear infinite;
+  opacity: 0;
+}
+
+/* 12 particles at varied positions, sizes, and timings */
+.ui-loading-particle--1 {
+  top: 10%;
+  left: 15%;
+  width: 4px;
+  height: 4px;
+  background: rgba(124, 58, 237, 0.7);
+  animation-duration: 7.0s;
+  animation-delay: 0.0s;
+}
+
+.ui-loading-particle--2 {
+  top: 20%;
+  left: 80%;
+  width: 3px;
+  height: 3px;
+  background: rgba(167, 139, 250, 0.6);
+  animation-duration: 6.0s;
+  animation-delay: 0.8s;
+}
+
+.ui-loading-particle--3 {
+  top: 70%;
+  left: 10%;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 215, 0, 0.5);
+  animation-duration: 8.5s;
+  animation-delay: 1.5s;
+}
+
+.ui-loading-particle--4 {
+  top: 80%;
+  left: 75%;
+  width: 4px;
+  height: 4px;
+  background: rgba(124, 58, 237, 0.5);
+  animation-duration: 6.5s;
+  animation-delay: 0.4s;
+}
+
+.ui-loading-particle--5 {
+  top: 50%;
+  left: 5%;
+  width: 3px;
+  height: 3px;
+  background: rgba(167, 139, 250, 0.7);
+  animation-duration: 7.5s;
+  animation-delay: 2.0s;
+}
+
+.ui-loading-particle--6 {
+  top: 5%;
+  left: 50%;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 215, 0, 0.6);
+  animation-duration: 6.8s;
+  animation-delay: 1.1s;
+}
+
+.ui-loading-particle--7 {
+  top: 35%;
+  left: 90%;
+  width: 3px;
+  height: 3px;
+  background: rgba(124, 58, 237, 0.6);
+  animation-duration: 8.0s;
+  animation-delay: 0.6s;
+}
+
+.ui-loading-particle--8 {
+  top: 90%;
+  left: 35%;
+  width: 4px;
+  height: 4px;
+  background: rgba(167, 139, 250, 0.5);
+  animation-duration: 5.8s;
+  animation-delay: 1.8s;
+}
+
+.ui-loading-particle--9 {
+  top: 15%;
+  left: 42%;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 215, 0, 0.4);
+  animation-duration: 9.0s;
+  animation-delay: 0.2s;
+}
+
+.ui-loading-particle--10 {
+  top: 60%;
+  left: 55%;
+  width: 3px;
+  height: 3px;
+  background: rgba(124, 58, 237, 0.55);
+  animation-duration: 7.2s;
+  animation-delay: 1.3s;
+}
+
+.ui-loading-particle--11 {
+  top: 85%;
+  left: 20%;
+  width: 2px;
+  height: 2px;
+  background: rgba(167, 139, 250, 0.6);
+  animation-duration: 6.3s;
+  animation-delay: 1.0s;
+}
+
+.ui-loading-particle--12 {
+  top: 45%;
+  left: 88%;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 215, 0, 0.5);
+  animation-duration: 7.8s;
+  animation-delay: 2.2s;
+}
+
+@keyframes pvParticleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0px) scale(1);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.5);
+  }
+}
+
+/* ── SVG Ring ────────────────────────────────────────────── */
+.ui-loading-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ring circumference = 2 × π × 96 ≈ 603 */
+.ui-loading-ring__arc {
+  stroke-dasharray: 603;
+  stroke-dashoffset: 603;
+  /* Start from the top of the circle */
+  transform: rotate(-90deg);
+  transform-origin: 110px 110px;
+  animation: pvRingDraw 2.8s cubic-bezier(0.35, 0, 0.15, 1) 0.2s forwards;
+}
+
+.ui-loading-ring__arc--instant {
+  stroke-dashoffset: 0;
+  animation: none;
+}
+
+@keyframes pvRingDraw {
+  0% {
+    stroke-dashoffset: 603;
+    opacity: 0.5;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* Pulse glow when ring completes */
+@keyframes pvRingPulse {
+  0% {
+    filter: drop-shadow(0 0 4px #7c3aed);
+  }
+
+  50% {
+    filter: drop-shadow(0 0 18px #a78bfa) drop-shadow(0 0 32px #7c3aed);
+  }
+
+  100% {
+    filter: drop-shadow(0 0 8px #7c3aed);
+  }
+}
+
+/* ── Logo Image ──────────────────────────────────────────── */
+.ui-loading-logo-img-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cinematic materialise: starts as a blurry bright smear, snaps into focus — slow burn */
+.ui-loading-logo-img-wrap.animated {
+  animation: pvLogoMaterialize 1.3s cubic-bezier(0.34, 1.4, 0.64, 1) 1.0s both;
+}
+
+@keyframes pvLogoMaterialize {
+  0% {
+    opacity: 0;
+    transform: scale(0.35);
+    filter: blur(18px) brightness(5) saturate(0);
+  }
+
+  40% {
+    filter: blur(6px) brightness(2.5) saturate(0.5);
+  }
+
+  70% {
+    filter: blur(1px) brightness(1.3) saturate(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0) brightness(1) saturate(1);
+  }
+}
+
+.ui-loading-logo-img {
+  width: clamp(72px, 15vw, 110px);
+  height: auto;
+  display: block;
+  /* Permanent soft violet glow on the logo */
+  filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.6));
+}
+
+/* ── Gold Flash Overlay ──────────────────────────────────── */
+/* Blooms outward and fades the moment the logo appears */
+.ui-loading-logo-flash {
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.55) 0%, transparent 65%);
+  animation: pvLogoFlash 1.1s ease-out 1.0s forwards;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes pvLogoFlash {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  25% {
+    opacity: 0.9;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+/* ── Spark Burst ─────────────────────────────────────────── */
+.ui-loading-sparks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ui-loading-spark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: pvSparkFly 1.3s ease-out forwards;
+}
+
+@keyframes pvSparkFly {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+
+  30% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--spark-tx)),
+        calc(-50% + var(--spark-ty))) scale(0);
+  }
+}
+
+/* 8 sparks: N NE E SE S SW W NW — alternating violet/lavender/gold */
+.ui-loading-spark--1 {
+  background: #a78bfa;
+  --spark-tx: 0px;
+  --spark-ty: -95px;
+  animation-delay: 0.95s;
+}
+
+.ui-loading-spark--2 {
+  background: #FFD700;
+  --spark-tx: 67px;
+  --spark-ty: -67px;
+  animation-delay: 1.00s;
+}
+
+.ui-loading-spark--3 {
+  background: #7c3aed;
+  --spark-tx: 95px;
+  --spark-ty: 0px;
+  animation-delay: 0.93s;
+  width: 6px;
+  height: 6px;
+}
+
+.ui-loading-spark--4 {
+  background: #FFD700;
+  --spark-tx: 67px;
+  --spark-ty: 67px;
+  animation-delay: 1.05s;
+}
+
+.ui-loading-spark--5 {
+  background: #a78bfa;
+  --spark-tx: 0px;
+  --spark-ty: 95px;
+  animation-delay: 0.97s;
+}
+
+.ui-loading-spark--6 {
+  background: #FFD700;
+  --spark-tx: -67px;
+  --spark-ty: 67px;
+  animation-delay: 1.02s;
+}
+
+.ui-loading-spark--7 {
+  background: #7c3aed;
+  --spark-tx: -95px;
+  --spark-ty: 0px;
+  animation-delay: 0.94s;
+  width: 6px;
+  height: 6px;
+}
+
+.ui-loading-spark--8 {
+  background: #FFD700;
+  --spark-tx: -67px;
+  --spark-ty: -67px;
+  animation-delay: 1.07s;
+}
+
+/* ══════════════════════════════════════════════════════════
+   BRAND TEXT
+   ══════════════════════════════════════════════════════════ */
 .ui-loading-screen__brand {
   display: flex;
   flex-direction: column;
   align-items: center;
-  line-height: 0.9;
+  line-height: 0.88;
 }
 
 .ui-loading-screen__brand-pro {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2rem, 5.5vw, 4rem);
   font-weight: var(--font-extrabold);
   letter-spacing: var(--tracking-tight);
   color: var(--text-primary);
@@ -48,7 +450,7 @@
 
 .ui-loading-screen__brand-version {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2rem, 5.5vw, 4rem);
   font-weight: var(--font-extrabold);
   letter-spacing: var(--tracking-wider);
   background: var(--gradient-accent);
@@ -57,6 +459,9 @@
   background-clip: text;
 }
 
+/* ══════════════════════════════════════════════════════════
+   PROGRESS BAR
+   ══════════════════════════════════════════════════════════ */
 .ui-loading-screen__line {
   width: 140px;
   height: 2px;
@@ -64,7 +469,6 @@
   border-radius: var(--radius-full);
   position: relative;
   overflow: hidden;
-  margin-top: var(--space-2);
 }
 
 .ui-loading-screen__progress {
@@ -78,10 +482,84 @@
   transform-origin: left;
 }
 
+/* ══════════════════════════════════════════════════════════
+   SUBTITLE
+   ══════════════════════════════════════════════════════════ */
 .ui-loading-screen__subtitle {
   font-family: var(--font-sans);
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .ui-loading-logo-wrap {
+    width: clamp(120px, 38vw, 170px);
+    height: clamp(120px, 38vw, 170px);
+  }
+
+  .ui-loading-logo-img {
+    width: clamp(60px, 22vw, 90px);
+  }
+
+  .ui-loading-screen__brand-pro,
+  .ui-loading-screen__brand-version {
+    font-size: clamp(1.6rem, 8vw, 2.8rem);
+  }
+
+  .ui-loading-screen__line {
+    width: 100px;
+  }
+
+  /* Tighter spark radius on small screens */
+  .ui-loading-spark--1 {
+    --spark-ty: -65px;
+  }
+
+  .ui-loading-spark--2 {
+    --spark-tx: 46px;
+    --spark-ty: -46px;
+  }
+
+  .ui-loading-spark--3 {
+    --spark-tx: 65px;
+  }
+
+  .ui-loading-spark--4 {
+    --spark-tx: 46px;
+    --spark-ty: 46px;
+  }
+
+  .ui-loading-spark--5 {
+    --spark-ty: 65px;
+  }
+
+  .ui-loading-spark--6 {
+    --spark-tx: -46px;
+    --spark-ty: 46px;
+  }
+
+  .ui-loading-spark--7 {
+    --spark-tx: -65px;
+  }
+
+  .ui-loading-spark--8 {
+    --spark-tx: -46px;
+    --spark-ty: -46px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .ui-loading-logo-wrap {
+    width: 220px;
+    height: 220px;
+  }
+
+  .ui-loading-logo-img {
+    width: 125px;
+  }
 }
