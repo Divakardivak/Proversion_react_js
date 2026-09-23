@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle2, Clock, Award, ArrowRight } from 'lucide-react'
+import { CheckCircle2, Clock, Award, ArrowRight, BookOpen } from 'lucide-react'
 import { Button } from '@/components/common/Button'
 import { MagneticButton } from '@/components/common/MagneticButton'
+import { CourseDetailsModal } from '@/components/courseDetails'
 
 /**
  * React HTML Details Panel for the currently selected program.
@@ -12,7 +14,19 @@ import { MagneticButton } from '@/components/common/MagneticButton'
  * @param {Object} props.program - Active program data
  */
 export function ProgramDetails({ program }) {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   if (!program) return null
+
+  const handleEnroll = (courseName) => {
+    if (courseName && typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('select-program', { detail: courseName }))
+    }
+    const contactSection = document.getElementById('contact')
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
     <div className="ui-program-details">
@@ -80,10 +94,11 @@ export function ProgramDetails({ program }) {
                 variant="primary"
                 size="sm"
                 href="#contact"
+                onClick={() => handleEnroll(program.title)}
                 icon={<ArrowRight size={15} />}
                 iconPosition="right"
               >
-                Explore Program
+                Enroll Now
               </Button>
             </MagneticButton>
 
@@ -91,14 +106,24 @@ export function ProgramDetails({ program }) {
               <Button
                 variant="glass"
                 size="sm"
-                href="#contact"
+                onClick={() => setIsModalOpen(true)}
+                icon={<BookOpen size={14} />}
+                iconPosition="left"
               >
-                Request Syllabus
+                View Syllabus
               </Button>
             </MagneticButton>
           </div>
         </motion.div>
       </AnimatePresence>
+
+      {/* Interactive 5-Tab Course Deep-Dive Modal */}
+      <CourseDetailsModal
+        course={program}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onEnroll={handleEnroll}
+      />
     </div>
   )
 }

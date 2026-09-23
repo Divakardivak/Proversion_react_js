@@ -1,0 +1,790 @@
+/* ==========================================================================
+   Course Details & Syllabus Modal - ProVersion
+   ========================================================================== */
+
+.course-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 1, 10, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  overflow-y: auto;
+}
+
+.course-modal-window {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  background: #0d071e;
+  background-image: 
+    radial-gradient(ellipse at top right, rgba(124, 58, 237, 0.18), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(79, 70, 229, 0.14), transparent 60%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.75), 0 0 40px rgba(124, 58, 237, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #f8fafc;
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+}
+
+/* Ambient Top Accent Bar */
+.modal-glow-bar {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--modal-accent, #8b5cf6), transparent);
+  border-radius: 2px;
+}
+
+/* Close Button */
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+/* --------------------------------------------------------------------------
+   Modal Hero Header
+   -------------------------------------------------------------------------- */
+.modal-hero-header {
+  padding: 32px 36px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-header-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.modal-category-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--modal-accent, #c084fc);
+  background: rgba(124, 58, 237, 0.12);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(124, 58, 237, 0.25);
+}
+
+.modal-level-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #f1f5f9;
+}
+
+.modal-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: #facc15;
+  font-weight: 700;
+}
+
+.rating-count {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.modal-course-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.modal-course-desc {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  max-width: 780px;
+  margin-bottom: 20px;
+}
+
+/* Quick Milestones */
+.modal-milestones-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.milestone-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 8px 14px;
+}
+
+.milestone-icon {
+  flex-shrink: 0;
+}
+
+.milestone-icon.cyan { color: #38bdf8; }
+.milestone-icon.emerald { color: #34d399; }
+.milestone-icon.amber { color: #fbbf24; }
+
+.m-label {
+  display: block;
+  font-size: 0.68rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.m-val {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+/* --------------------------------------------------------------------------
+   Navigation Tabs Bar
+   -------------------------------------------------------------------------- */
+.modal-nav-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 12px 36px;
+  background: rgba(10, 5, 22, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.modal-nav-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.tab-btn.active {
+  background: rgba(124, 58, 237, 0.18);
+  border-color: rgba(124, 58, 237, 0.4);
+  color: #e2e8f0;
+}
+
+/* --------------------------------------------------------------------------
+   Modal Body Content Scroll Area
+   -------------------------------------------------------------------------- */
+.modal-body-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 36px 36px;
+}
+
+/* Custom scrollbar */
+.modal-body-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-body-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.modal-body-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.pane-intro {
+  margin-bottom: 24px;
+}
+
+.pane-intro h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.pane-intro p {
+  font-size: 0.92rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+   Tab 1: Modules Accordion
+   -------------------------------------------------------------------------- */
+.modules-accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.module-accordion-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.module-accordion-card.expanded {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(124, 58, 237, 0.35);
+}
+
+.module-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.module-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.module-number {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--modal-accent, #c084fc);
+  background: rgba(124, 58, 237, 0.12);
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.module-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.module-duration {
+  font-size: 0.74rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.chevron-icon {
+  color: #94a3b8;
+  transition: transform 0.25s ease;
+}
+
+.chevron-icon.rotated {
+  transform: rotate(180deg);
+  color: #ffffff;
+}
+
+.module-body {
+  padding: 0 20px 18px 58px;
+}
+
+.topics-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.topic-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.topic-check {
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Tab 2: Projects Grid
+   -------------------------------------------------------------------------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 16px;
+}
+
+.project-detail-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-badge-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--modal-accent, #c084fc);
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+
+.project-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.project-desc {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #94a3b8;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.project-tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.p-chip {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 3px 8px;
+  border-radius: 6px;
+  color: #cbd5e1;
+}
+
+/* --------------------------------------------------------------------------
+   Tab 3: Tools & Tech Stack
+   -------------------------------------------------------------------------- */
+.tools-badges-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tool-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.tool-badge-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--modal-accent, #8b5cf6);
+  transform: translateY(-2px);
+}
+
+.tool-icon {
+  color: var(--modal-accent, #c084fc);
+}
+
+/* --------------------------------------------------------------------------
+   Tab 4: Career & Hiring
+   -------------------------------------------------------------------------- */
+.career-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.career-metric-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.metric-title {
+  display: block;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.metric-val {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.metric-val.text-emerald {
+  color: #34d399;
+}
+
+.metric-sub {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.career-section-group {
+  margin-bottom: 24px;
+}
+
+.career-section-group h4 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.roles-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.role-tag {
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: #e2e8f0;
+  padding: 6px 14px;
+  border-radius: 9999px;
+}
+
+.partners-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.partner-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.partner-icon {
+  color: #38bdf8;
+}
+
+/* --------------------------------------------------------------------------
+   Tab 5: Pricing & Tuition
+   -------------------------------------------------------------------------- */
+.pricing-split-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.pricing-plan-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-plan-card.recommended {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.4);
+}
+
+.plan-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #10b981;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+
+.plan-badge.emi {
+  color: #38bdf8;
+}
+
+.pricing-plan-card h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.plan-amount-box {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.plan-price {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.plan-original {
+  font-size: 1rem;
+  color: #64748b;
+  text-decoration: line-through;
+}
+
+.plan-period {
+  font-size: 0.95rem;
+  color: #94a3b8;
+}
+
+.plan-savings-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-bottom: 18px;
+  width: max-content;
+}
+
+.plan-savings-pill.cyan {
+  background: rgba(6, 182, 212, 0.15);
+  color: #38bdf8;
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.plan-perks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+}
+
+.plan-perks li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.text-emerald {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Sticky Bottom Action Bar
+   -------------------------------------------------------------------------- */
+.modal-sticky-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 36px;
+  background: rgba(10, 5, 22, 0.92);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  gap: 20px;
+}
+
+.footer-price-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: #64748b;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.footer-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.footer-amount {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.footer-discount {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-enroll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  border: none;
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+  transition: all 0.2s ease;
+}
+
+.footer-enroll-btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(124, 58, 237, 0.55);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Styles
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .course-modal-backdrop {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .course-modal-window {
+    max-height: 92vh;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .modal-hero-header {
+    padding: 24px 20px 16px;
+  }
+
+  .modal-course-title {
+    font-size: 1.4rem;
+  }
+
+  .modal-milestones-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .modal-nav-tabs {
+    padding: 10px 20px;
+  }
+
+  .modal-body-content {
+    padding: 20px;
+  }
+
+  .projects-grid,
+  .career-metrics-row,
+  .pricing-split-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-sticky-footer {
+    padding: 14px 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .footer-enroll-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -53,6 +53,28 @@ export function ContactForm() {
         setFormData((prev) => ({ ...prev, program: match.title }))
       }
     }
+
+    // Listen for cross-component program selection (e.g. from Course Cards or Syllabus Modal)
+    const handleSelectProgram = (e) => {
+      if (e.detail) {
+        const match = programsData.find(
+          (p) =>
+            p.id.toLowerCase() === e.detail.toLowerCase() ||
+            p.title.toLowerCase().includes(e.detail.toLowerCase()) ||
+            e.detail.toLowerCase().includes(p.title.toLowerCase())
+        )
+        if (match) {
+          setFormData((prev) => ({ ...prev, program: match.title }))
+        } else {
+          setFormData((prev) => ({ ...prev, program: e.detail }))
+        }
+      }
+    }
+    window.addEventListener('select-program', handleSelectProgram)
+
+    return () => {
+      window.removeEventListener('select-program', handleSelectProgram)
+    }
   }, [])
 
   // Validate a single field

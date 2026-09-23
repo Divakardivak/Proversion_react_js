@@ -6,7 +6,7 @@ import { LoadingScreen } from '@/components/common/LoadingScreen/LoadingScreen'
 import { Hero } from '@/components/hero/Hero'
 import { About } from '@/components/about/About'
 import { WhyUs } from '@/components/whyUs/WhyUs'
-import { Programs } from '@/components/programs/Programs'
+import { MobileSales } from '@/components/mobileSales'
 import { Entrepreneurship } from '@/components/entrepreneurship/Entrepreneurship'
 import { CareerPath } from '@/components/careerPath/CareerPath'
 import { Testimonials } from '@/components/testimonials/Testimonials'
@@ -28,7 +28,7 @@ function App() {
           <Hero />
           <About />
           <WhyUs />
-          <Programs />
+          <MobileSales />
           <Entrepreneurship />
           <CareerPath />
           <Testimonials />

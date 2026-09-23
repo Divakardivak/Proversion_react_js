@@ -1,0 +1,729 @@
+/* ==========================================================================
+   ProVersion Course Store & Pricing Matrix - Futuristic Quantum Design
+   ========================================================================== */
+
+.course-store-section {
+  position: relative;
+  background-color: #070314;
+  color: #f8fafc;
+  padding: 120px 0 130px;
+  overflow: hidden;
+  width: 100%;
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   Ambient Cosmic Auroras & Mesh
+   -------------------------------------------------------------------------- */
+.store-ambient-aurora {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  opacity: 0.22;
+  z-index: 0;
+}
+
+.store-ambient-aurora.purple {
+  top: 5%;
+  left: -150px;
+  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+}
+
+.store-ambient-aurora.indigo {
+  bottom: 10%;
+  right: -150px;
+  background: radial-gradient(circle, #4f46e5 0%, #06b6d4 100%);
+}
+
+.store-ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.course-store-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* --------------------------------------------------------------------------
+   Section Header
+   -------------------------------------------------------------------------- */
+.store-header {
+  max-width: 900px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.store-badge-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  color: #c084fc;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+}
+
+.sparkle-icon {
+  color: #fbbf24;
+}
+
+.store-main-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.title-gradient {
+  background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.store-subtitle {
+  font-size: 1.2rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  max-width: 760px;
+  margin: 0 auto 36px;
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Billing Mode Switcher (Scholarship vs EMI)
+   -------------------------------------------------------------------------- */
+.billing-switcher-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(15, 10, 30, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 20px;
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  margin-bottom: 34px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.switcher-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #64748b;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.switcher-label.active {
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+.billing-toggle-btn {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  background: #334155;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  padding: 3px;
+  transition: background-color 0.25s ease;
+}
+
+.billing-toggle-btn.is-emi {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+}
+
+.toggle-slider {
+  display: block;
+  width: 22px;
+  height: 22px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.billing-toggle-btn.is-emi .toggle-slider {
+  transform: translateX(24px);
+}
+
+.emi-label-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.zero-interest-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  letter-spacing: 0.03em;
+}
+
+/* --------------------------------------------------------------------------
+   Category Filter Bar
+   -------------------------------------------------------------------------- */
+.store-category-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.category-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.category-pill.active {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(99, 102, 241, 0.3));
+  border-color: #8b5cf6;
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.cat-count {
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+}
+
+/* --------------------------------------------------------------------------
+   Infinite Quantum Stream (Marquee Showcase)
+   -------------------------------------------------------------------------- */
+.store-marquee-viewport {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+  padding: 30px 0 50px;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.store-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: stretch;
+  animation: quantumStreamGlide 55s linear infinite;
+  will-change: transform;
+}
+
+.store-marquee-track.paused {
+  animation-play-state: paused;
+}
+
+@keyframes quantumStreamGlide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.store-cards-set {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  padding: 0 12px;
+}
+
+/* --------------------------------------------------------------------------
+   Filtered Grid View (When category is selected)
+   -------------------------------------------------------------------------- */
+.store-filtered-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+  padding: 20px 0 50px;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Quantum Glassmorphic Course Card
+   -------------------------------------------------------------------------- */
+.quantum-course-card {
+  position: relative;
+  width: 360px;
+  background: rgba(18, 12, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 26px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  user-select: none;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.quantum-course-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--card-accent, #8b5cf6);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.6), 0 0 30px rgba(124, 58, 237, 0.25);
+}
+
+/* Subtle top glow bar */
+.card-ambient-highlight {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--card-accent, #8b5cf6), transparent);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* Header Row */
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.card-category-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--card-accent, #a78bfa);
+}
+
+.card-level-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+}
+
+/* Course Title */
+.card-course-title {
+  font-size: 1.28rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+  height: 3.3rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Rating Row */
+.card-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+}
+
+.rating-stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #facc15;
+  font-weight: 700;
+}
+
+.rating-divider {
+  color: #475569;
+}
+
+.placed-count {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Meta Chips (Duration & Internship) */
+.card-meta-chips {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.meta-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.meta-chip.duration {
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.meta-chip.stipend {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+/* Curriculum Chips */
+.card-curriculum-container {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+
+.curriculum-header {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.curriculum-tags-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.curriculum-chip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.chip-check {
+  color: var(--card-accent, #8b5cf6);
+  flex-shrink: 0;
+}
+
+/* Pricing Module */
+.card-pricing-module {
+  background: linear-gradient(145deg, rgba(30, 20, 60, 0.6), rgba(15, 10, 30, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+
+.price-display-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.price-main-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.amount-val {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.amount-original {
+  font-size: 0.95rem;
+  color: #64748b;
+  text-decoration: line-through;
+}
+
+.emi-period {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.scholarship-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: #10b981;
+  color: #022c22;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+}
+
+.zero-cost-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: #38bdf8;
+  color: #082f49;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+}
+
+.price-sub-note {
+  font-size: 0.74rem;
+  color: #94a3b8;
+}
+
+.price-sub-note strong {
+  color: #f1f5f9;
+}
+
+/* Card CTA Action Buttons */
+.card-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.enroll-primary-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.enroll-primary-btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+.action-arrow {
+  transition: transform 0.2s ease;
+}
+
+.enroll-primary-btn:hover .action-arrow {
+  transform: translateX(4px);
+}
+
+.syllabus-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.syllabus-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* Footer Guarantee Strip */
+.card-footer-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: #64748b;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-shield {
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Trust & Guarantee 4-Pillar Grid
+   -------------------------------------------------------------------------- */
+.store-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.trust-pillar-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 18px;
+  backdrop-filter: blur(10px);
+}
+
+.pillar-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pillar-icon-box.purple {
+  background: rgba(124, 58, 237, 0.15);
+  color: #a78bfa;
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+.pillar-icon-box.emerald {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.pillar-icon-box.cyan {
+  background: rgba(6, 182, 212, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.pillar-icon-box.amber {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.pillar-info h4 {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.pillar-info p {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .store-trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .course-store-section {
+    padding: 80px 0 90px;
+  }
+
+  .store-main-title {
+    font-size: 2.2rem;
+  }
+
+  .store-subtitle {
+    font-size: 1rem;
+    margin-bottom: 26px;
+  }
+
+  .billing-switcher-wrapper {
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 18px;
+    padding: 12px 18px;
+  }
+
+  .quantum-course-card {
+    width: 300px;
+    padding: 20px 18px;
+  }
+
+  .amount-val {
+    font-size: 1.45rem;
+  }
+
+  .store-trust-grid {
+    grid-template-columns: 1fr;
+  }
+}
