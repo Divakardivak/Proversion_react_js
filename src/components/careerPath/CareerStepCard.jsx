@@ -8,16 +8,32 @@ import {
   Rocket,
   CheckCircle2,
   Check,
+  GraduationCap,
+  Users,
+  Bot,
+  Laptop,
+  Target,
+  ShieldCheck,
+  Sparkles,
 } from 'lucide-react'
 
 // Icon mapping for milestone stages
 const ICON_MAP = {
   BookOpen,
+  GraduationCap,
   Code2,
   Briefcase,
-  FolderGit2: Layers,
+  Users,
   Award,
+  Bot,
+  Layers,
+  Target,
+  Laptop,
   Rocket,
+  ShieldCheck,
+  CheckCircle2,
+  Sparkles,
+  FolderGit2: Layers,
 }
 
 /**

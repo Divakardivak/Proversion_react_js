@@ -104,6 +104,27 @@ export function CareerPath() {
             )
           })}
         </div>
+
+        {/* Final Tagline Banner */}
+        {careerPathHeader.finalTagline && (
+          <Reveal direction="up" distance={30} duration={0.7} delay={0.1}>
+            <div className="ui-career-final-tagline">
+              <div className="ui-career-final-tagline__inner">
+                <div className="ui-career-final-tagline__glow" aria-hidden="true" />
+                <div className="ui-career-final-tagline__badge">
+                  <Sparkles size={14} />
+                  <span>FINAL TAGLINE</span>
+                </div>
+                <h3 className="ui-career-final-tagline__title">
+                  {careerPathHeader.finalTagline.title}
+                </h3>
+                <p className="ui-career-final-tagline__sub">
+                  {careerPathHeader.finalTagline.subtitle}
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        )}
       </Container>
     </section>
   )
