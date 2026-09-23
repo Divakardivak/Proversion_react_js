@@ -54,16 +54,16 @@ export function CentralCore({ scrollOffset = 0 }) {
   return (
     <group ref={groupRef}>
       {/* Precision Dual Point Lights */}
-      <pointLight color="#7c3aed" intensity={2.2} distance={8} decay={2} />
-      <pointLight color="#a78bfa" intensity={1.6} distance={6} decay={2} position={[-1, 1, 1]} />
+      <pointLight color="#2563eb" intensity={2.0} distance={8} decay={2} />
+      <pointLight color="#0ea5e9" intensity={1.5} distance={6} decay={2} position={[-1, 1, 1]} />
 
       {/* Inner Glowing Energy Core */}
       <mesh ref={innerRef}>
         <sphereGeometry args={[0.52, 32, 32]} />
         <meshStandardMaterial
-          color="#7c3aed"
-          emissive="#7c3aed"
-          emissiveIntensity={1.35}
+          color="#2563eb"
+          emissive="#3b82f6"
+          emissiveIntensity={1.2}
           roughness={0.2}
           metalness={0.8}
         />
@@ -73,24 +73,24 @@ export function CentralCore({ scrollOffset = 0 }) {
       <mesh ref={coreRef}>
         <icosahedronGeometry args={[0.82, 2]} />
         <meshStandardMaterial
-          color="#090514"
+          color="#0b1120"
           roughness={0.15}
           metalness={0.92}
           wireframe
-          emissive="#a78bfa"
-          emissiveIntensity={0.38}
+          emissive="#60a5fa"
+          emissiveIntensity={0.35}
           transparent
           opacity={0.65}
         />
       </mesh>
 
-      {/* Primary Luminous Orbital Ring (Electric Violet) */}
+      {/* Primary Luminous Orbital Ring (Sapphire Azure) */}
       <group ref={ring1Ref} rotation={[0.4, 0.2, 0]}>
         <mesh>
           <torusGeometry args={[1.45, 0.014, 16, 100]} />
           <meshStandardMaterial
-            color="#7c3aed"
-            emissive="#7c3aed"
+            color="#2563eb"
+            emissive="#3b82f6"
             emissiveIntensity={0.65}
             roughness={0.2}
             metalness={0.9}
@@ -99,17 +99,17 @@ export function CentralCore({ scrollOffset = 0 }) {
         {/* Orbital Satellite Beaded Spark */}
         <mesh position={[1.45, 0, 0]}>
           <sphereGeometry args={[0.045, 16, 16]} />
-          <meshStandardMaterial color="#FFFFFF" emissive="#7c3aed" emissiveIntensity={2.2} />
+          <meshStandardMaterial color="#FFFFFF" emissive="#3b82f6" emissiveIntensity={2.2} />
         </mesh>
       </group>
 
-      {/* Secondary Luminous Orbital Ring (Lavender) */}
+      {/* Secondary Luminous Orbital Ring (Electric Sky) */}
       <group ref={ring2Ref} rotation={[-0.5, -0.3, 0]}>
         <mesh>
           <torusGeometry args={[1.72, 0.012, 16, 100]} />
           <meshStandardMaterial
-            color="#a78bfa"
-            emissive="#a78bfa"
+            color="#0ea5e9"
+            emissive="#38bdf8"
             emissiveIntensity={0.65}
             roughness={0.2}
             metalness={0.9}
@@ -118,7 +118,7 @@ export function CentralCore({ scrollOffset = 0 }) {
         {/* Orbital Satellite Beaded Spark */}
         <mesh position={[-1.72, 0, 0]}>
           <sphereGeometry args={[0.04, 16, 16]} />
-          <meshStandardMaterial color="#FFFFFF" emissive="#a78bfa" emissiveIntensity={2.2} />
+          <meshStandardMaterial color="#FFFFFF" emissive="#38bdf8" emissiveIntensity={2.2} />
         </mesh>
       </group>
     </group>

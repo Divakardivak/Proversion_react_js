@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkles } from 'lucide-react'
+import { Sparkles, ArrowRight } from 'lucide-react'
 import { smoothScrollTo } from '@/components/common/SmoothScroll'
 import { Container } from '@/components/common/Container'
 import { Button } from '@/components/common/Button'
@@ -10,12 +10,12 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
 import './Navbar.css'
 
 const NAV_LINKS = [
-  { label: 'Home', href: '#' },
+  { label: 'Home', href: '#', active: true },
   { label: 'About', href: '#about' },
+  { label: 'Courses', href: '#programs' },
+  { label: 'Mentors', href: '#why-us' },
   { label: 'Why Us', href: '#why-us' },
-  { label: 'Programs', href: '#programs' },
-  { label: 'Career Path', href: '#career-path' },
-  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Blog', href: '#programs' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -100,16 +100,18 @@ export function Navbar() {
     <header className={`ui-navbar ${isScrolled ? 'ui-navbar--scrolled' : ''}`}>
       <Container size="xl">
         <div className="ui-navbar__inner">
-          {/* Brand Logo */}
+          {/* Brand Logo with Mockup-Exact Gradient 'P' Icon */}
           <a
             href="#"
             className="ui-navbar__brand"
             aria-label="ProVersion Home"
             onClick={(e) => handleNavClick(e, '#')}
           >
-            <AnimatedLogo variant="navbar" size="small" />
+            <div className="ui-navbar__brand-badge">
+              <span>P</span>
+            </div>
             <span className="ui-navbar__brand-text">
-              PRO<span className="ui-navbar__brand-highlight">VERSION</span>
+              Pro<span className="ui-navbar__brand-highlight">Version</span>
             </span>
           </a>
 
@@ -119,7 +121,7 @@ export function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="ui-navbar__link"
+                className={`ui-navbar__link ${link.active ? 'ui-navbar__link--active' : ''}`}
                 onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.label}
@@ -127,19 +129,17 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Actions / CTA */}
+          {/* Actions / CTA ("Join Now →") */}
           <div className="ui-navbar__actions">
             <MagneticButton strength={0.25}>
-              <Button
-                variant="primary"
-                size="md"
+              <a
                 href="#contact"
-                icon={<Sparkles size={15} />}
-                iconPosition="right"
+                className="ui-navbar__btn-join"
                 onClick={(e) => handleNavClick(e, '#contact')}
               >
-                Start Your Journey
-              </Button>
+                <span>Join Now</span>
+                <ArrowRight size={15} />
+              </a>
             </MagneticButton>
 
             {/* Mobile Hamburger Button */}
@@ -192,16 +192,14 @@ export function Navbar() {
             </nav>
 
             <div className="ui-navbar__mobile-actions">
-              <Button
-                variant="primary"
-                size="lg"
+              <a
                 href="#contact"
+                className="ui-navbar__btn-join mobile-join-btn"
                 onClick={(e) => handleNavClick(e, '#contact')}
-                icon={<Sparkles size={16} />}
-                iconPosition="right"
               >
-                Start Your Journey
-              </Button>
+                <span>Join Now</span>
+                <ArrowRight size={16} />
+              </a>
             </div>
           </motion.div>
         )}

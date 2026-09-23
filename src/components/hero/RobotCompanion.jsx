@@ -48,22 +48,22 @@ function useRobotMaterials() {
     })
 
     const purpleNeon = new THREE.MeshBasicMaterial({
-      color: '#c084fc',
+      color: '#38bdf8',
       toneMapped: false,
     })
 
     const rockMaterial = new THREE.MeshStandardMaterial({
-      color: '#0d071a',
-      roughness: 0.88,
-      metalness: 0.15,
-      flatShading: true,
+      color: '#0f172a',
+      roughness: 0.75,
+      metalness: 0.12,
+      flatShading: false,
     })
 
     const rockAccent = new THREE.MeshStandardMaterial({
-      color: '#1a0e30',
-      roughness: 0.82,
-      metalness: 0.2,
-      flatShading: true,
+      color: '#1e293b',
+      roughness: 0.7,
+      metalness: 0.15,
+      flatShading: false,
     })
 
     return {
@@ -116,11 +116,11 @@ function RobotEar({ side = 'left', materials }) {
         <sphereGeometry args={[0.16, 24, 24]} />
       </mesh>
 
-      {/* 6. Glowing Purple Point Light for authentic rim radiance */}
+      {/* 6. Glowing Sky Blue Point Light for authentic rim radiance */}
       <pointLight
         position={[0, 0.15, 0]}
-        color="#c084fc"
-        intensity={2.8}
+        color="#38bdf8"
+        intensity={2.2}
         distance={1.4}
       />
     </group>
@@ -419,53 +419,38 @@ function RobotLeg({ side = 'left', materials }) {
 }
 
 /**
- * Craggy Sci-Fi Rocky Ground Terrain
+ * Smooth Natural Boulder under robot feet matching reference mockup
  */
 function RockyTerrain({ materials }) {
-  const rocks = useMemo(() => {
-    return [
-      { pos: [-1.4, -1.45, 0.3], scale: [0.65, 0.4, 0.5], rot: [0.2, 0.4, 0.1] },
-      { pos: [1.4, -1.48, 0.25], scale: [0.7, 0.42, 0.55], rot: [-0.3, 0.8, -0.2] },
-      { pos: [-0.9, -1.52, 0.75], scale: [0.45, 0.28, 0.4], rot: [0.4, -0.2, 0.3] },
-      { pos: [0.85, -1.54, 0.7], scale: [0.5, 0.3, 0.45], rot: [-0.1, 0.5, -0.3] },
-      { pos: [-1.9, -1.35, -0.6], scale: [0.9, 0.7, 0.7], rot: [0.1, 0.9, 0.4] },
-      { pos: [2.0, -1.3, -0.5], scale: [0.95, 0.75, 0.65], rot: [-0.2, -0.7, 0.2] },
-    ]
-  }, [])
-
   return (
     <group position={[0, -0.05, 0]}>
-      {/* Central Rock Pedestal */}
+      {/* Natural compact rock directly under the robot */}
       <mesh
         material={materials.rockMaterial}
-        position={[0, -1.62, 0]}
-        scale={[2.8, 0.48, 2.1]}
+        position={[0, -1.48, 0]}
+        scale={[1.1, 0.28, 0.9]}
         receiveShadow
       >
-        <dodecahedronGeometry args={[1, 1]} />
+        <cylinderGeometry args={[0.55, 0.68, 0.7, 18]} />
       </mesh>
 
-      {/* Crags */}
-      {rocks.map((rock, index) => (
-        <mesh
-          key={index}
-          material={materials.rockAccent}
-          position={rock.pos}
-          scale={rock.scale}
-          rotation={rock.rot}
-          receiveShadow
-        >
-          <dodecahedronGeometry args={[1, 0]} />
-        </mesh>
-      ))}
+      {/* Front natural rock lip */}
+      <mesh
+        material={materials.rockAccent}
+        position={[-0.05, -1.54, 0.25]}
+        scale={[0.95, 0.22, 0.5]}
+        receiveShadow
+      >
+        <cylinderGeometry args={[0.5, 0.6, 0.5, 16]} />
+      </mesh>
 
-      {/* Purple Ground Glow Disc */}
-      <mesh position={[0, -1.48, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[4.6, 3.4]} />
+      {/* Subtle blue ground reflection */}
+      <mesh position={[0, -1.34, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[1.3, 1.0]} />
         <meshBasicMaterial
-          color="#9333ea"
+          color="#38bdf8"
           transparent
-          opacity={0.36}
+          opacity={0.15}
           blending={THREE.AdditiveBlending}
         />
       </mesh>
@@ -583,7 +568,7 @@ export function RobotCompanion({ isMobile = false }) {
   const scale = isMobile ? 1.0 : 1.18
 
   return (
-    <group ref={rootRef} position={[0, -0.06, 0]} scale={[scale, scale, scale]}>
+    <group ref={rootRef} position={[isMobile ? 0 : 0.45, -0.06, 0]} scale={[scale, scale, scale]}>
       {/* Torso & Upper Body */}
       <group ref={torsoRef}>
         {/* Glossy White Round Torso / Belly */}
@@ -592,23 +577,23 @@ export function RobotCompanion({ isMobile = false }) {
             <sphereGeometry args={[1, 36, 32]} />
           </mesh>
 
-          {/* Chest Seam Detail */}
-          <mesh
-            material={materials.darkJoint}
-            position={[0, 0.18, 0.46]}
-            scale={[0.28, 0.014, 0.08]}
-          >
-            <boxGeometry args={[1, 1, 1]} />
-          </mesh>
-
-          {/* Belly Seam Detail */}
-          <mesh
-            material={materials.darkJoint}
-            position={[0, -0.12, 0.48]}
-            scale={[0.34, 0.014, 0.08]}
-          >
-            <boxGeometry args={[1, 1, 1]} />
-          </mesh>
+          {/* ProVersion "P" Chest Emblem matching reference */}
+          <group position={[0, 0.08, 0.49]}>
+            {/* Soft luminous purple emblem disc */}
+            <mesh scale={[0.13, 0.15, 0.02]}>
+              <cylinderGeometry args={[1, 1, 1, 32]} />
+              <meshBasicMaterial color="#9333ea" toneMapped={false} />
+            </mesh>
+            {/* Bold white 'P' core */}
+            <mesh position={[-0.02, 0, 0.015]} scale={[0.024, 0.18, 0.02]}>
+              <boxGeometry args={[1, 1, 1]} />
+              <meshBasicMaterial color="#ffffff" toneMapped={false} />
+            </mesh>
+            <mesh position={[0.02, 0.045, 0.015]} rotation={[0, 0, -Math.PI / 2]} scale={[0.06, 0.06, 0.02]}>
+              <torusGeometry args={[0.7, 0.28, 16, 24, Math.PI]} />
+              <meshBasicMaterial color="#ffffff" toneMapped={false} />
+            </mesh>
+          </group>
         </group>
 
         {/* Arms with EXACT Double Thumbs-Up Matching Reference */}

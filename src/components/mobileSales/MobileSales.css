@@ -4,7 +4,7 @@
 
 .course-store-section {
   position: relative;
-  background-color: #070314;
+  background: linear-gradient(180deg, #090e24 0%, #0d1738 50%, #090e24 100%);
   color: #f8fafc;
   padding: 120px 0 130px;
   overflow: hidden;
@@ -23,20 +23,20 @@
   border-radius: 50%;
   filter: blur(140px);
   pointer-events: none;
-  opacity: 0.22;
+  opacity: 0.18;
   z-index: 0;
 }
 
 .store-ambient-aurora.purple {
   top: 5%;
   left: -150px;
-  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+  background: radial-gradient(circle, #2563eb 0%, transparent 70%);
 }
 
 .store-ambient-aurora.indigo {
   bottom: 10%;
   right: -150px;
-  background: radial-gradient(circle, #4f46e5 0%, #06b6d4 100%);
+  background: radial-gradient(circle, #0ea5e9 0%, #3b82f6 100%);
 }
 
 .store-ambient-grid {
@@ -47,7 +47,7 @@
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 64px 64px;
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.4;
   z-index: 0;
 }
 
@@ -75,15 +75,15 @@
   gap: 8px;
   padding: 6px 16px;
   border-radius: 9999px;
-  background: rgba(124, 58, 237, 0.15);
-  border: 1px solid rgba(124, 58, 237, 0.35);
-  color: #c084fc;
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  color: #60a5fa;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 22px;
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.14);
 }
 
 .sparkle-icon {
@@ -100,7 +100,7 @@
 }
 
 .title-gradient {
-  background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #38bdf8 100%);
+  background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 50%, #818cf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -121,8 +121,8 @@
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  background: rgba(15, 10, 30, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 8px 20px;
   border-radius: 9999px;
   backdrop-filter: blur(12px);
@@ -156,7 +156,7 @@
 }
 
 .billing-toggle-btn.is-emi {
-  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
 }
 
 .toggle-slider {
@@ -225,10 +225,10 @@
 }
 
 .category-pill.active {
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(99, 102, 241, 0.3));
-  border-color: #8b5cf6;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(79, 70, 229, 0.25));
+  border-color: #3b82f6;
   color: #ffffff;
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.25);
 }
 
 .cat-count {
@@ -297,14 +297,15 @@
 .quantum-course-card {
   position: relative;
   width: 360px;
-  background: rgba(18, 12, 38, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(13, 23, 56, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 24px;
   padding: 26px 24px 22px;
   display: flex;
   flex-direction: column;
   backdrop-filter: blur(20px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
   user-select: none;
   flex-shrink: 0;
@@ -313,8 +314,8 @@
 
 .quantum-course-card:hover {
   transform: translateY(-8px);
-  border-color: var(--card-accent, #8b5cf6);
-  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.6), 0 0 30px rgba(124, 58, 237, 0.25);
+  border-color: var(--card-accent, #3b82f6);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.6), 0 0 30px rgba(37, 99, 235, 0.2);
 }
 
 /* Subtle top glow bar */
@@ -430,8 +431,8 @@
 
 /* Curriculum Chips */
 .card-curriculum-container {
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(9, 14, 36, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   padding: 12px 14px;
   margin-bottom: 20px;
@@ -469,7 +470,7 @@
 
 /* Pricing Module */
 .card-pricing-module {
-  background: linear-gradient(145deg, rgba(30, 20, 60, 0.6), rgba(15, 10, 30, 0.8));
+  background: linear-gradient(145deg, rgba(20, 32, 76, 0.7), rgba(13, 23, 56, 0.85));
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 14px 16px;
@@ -647,9 +648,9 @@
 }
 
 .pillar-icon-box.purple {
-  background: rgba(124, 58, 237, 0.15);
-  color: #a78bfa;
-  border: 1px solid rgba(124, 58, 237, 0.3);
+  background: rgba(37, 99, 235, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
 .pillar-icon-box.emerald {

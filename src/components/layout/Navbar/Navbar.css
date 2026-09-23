@@ -13,10 +13,10 @@
 
 .ui-navbar--scrolled {
   height: 4.25rem;
-  background: rgba(9, 5, 20, 0.95);
+  background: rgba(11, 15, 25, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(124, 58, 237, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
@@ -31,12 +31,27 @@
 .ui-navbar__brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: 10px;
   text-decoration: none;
   font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: var(--font-bold);
-  letter-spacing: var(--tracking-tight);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+.ui-navbar__brand-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0ea5e9, #8b5cf6 50%, #ec4899);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.45);
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .ui-navbar__brand-text {
@@ -44,7 +59,7 @@
 }
 
 .ui-navbar__brand-highlight {
-  background: linear-gradient(to right, #c084fc, #8b5cf6, #d946ef);
+  background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -68,22 +83,23 @@
 }
 
 .ui-navbar__link:hover {
-  color: #c4b5fd;
+  color: #60a5fa;
 }
 
 .ui-navbar__link--active {
-  color: #a78bfa !important;
+  color: #f472b6 !important;
+  font-weight: 600;
 }
 
 .ui-navbar__link::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: -4px;
   left: 0;
   width: 0;
-  height: 2px;
-  background: #7c3aed;
-  box-shadow: 0 0 10px #7c3aed;
+  height: 2.5px;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.7);
   transition: width var(--transition-normal);
   border-radius: var(--radius-full);
 }
@@ -98,6 +114,28 @@
   display: flex;
   align-items: center;
   gap: var(--space-4);
+}
+
+.ui-navbar__btn-join {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 22px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 45%, #ec4899 100%);
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(236, 72, 153, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.ui-navbar__btn-join:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 26px rgba(236, 72, 153, 0.55);
 }
 
 /* Hamburger Button */
@@ -147,7 +185,7 @@
 .ui-navbar__mobile-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(9, 5, 20, 0.96);
+  background: rgba(11, 15, 25, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   z-index: var(--z-header);

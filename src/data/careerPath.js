@@ -27,7 +27,7 @@ export const careerMilestones = [
       'Structured Online Classes',
       'Assessments & Practical Activities',
     ],
-    accentColor: '#7c3aed',
+    accentColor: '#2563eb',
     iconName: 'GraduationCap',
   },
   {
@@ -42,7 +42,7 @@ export const careerMilestones = [
       '2 Major Real-Time Projects',
       'Industry Scenarios & Modern Tools',
     ],
-    accentColor: '#6366f1',
+    accentColor: '#3b82f6',
     iconName: 'Code2',
   },
   {
@@ -57,7 +57,7 @@ export const careerMilestones = [
       'Aptitude & Problem-Solving',
       'Resume-Building & Workplace Readiness',
     ],
-    accentColor: '#8b5cf6',
+    accentColor: '#4f46e5',
     iconName: 'Briefcase',
   },
   {
@@ -72,7 +72,7 @@ export const careerMilestones = [
       'Doubt-Clearing & Feedback Sessions',
       'Experienced Industry Insights',
     ],
-    accentColor: '#a78bfa',
+    accentColor: '#0284c7',
     iconName: 'Users',
   },
   {
@@ -87,7 +87,7 @@ export const careerMilestones = [
       'Tangible Proof of Learning',
       'Recognized Project Credentials',
     ],
-    accentColor: '#c084fc',
+    accentColor: '#0ea5e9',
     iconName: 'Award',
   },
   {

@@ -44,43 +44,43 @@ export function HeroScene({ isMobile = false }) {
         frameloop={shouldReduceMotion || !isInView ? 'demand' : 'always'}
         style={{ pointerEvents: 'auto', width: '100%', height: '100%' }}
       >
-        {/* Deep Atmospheric Sci-Fi Purple Ambient Light */}
-        <ambientLight intensity={0.8} color="#2e1065" />
+        {/* Deep Slate Atmospheric Ambient Light */}
+        <ambientLight intensity={0.9} color="#0f172a" />
 
         {/* Primary Crisp Key Light (Front-Top-Right) for clean glossy white highlights */}
         <directionalLight
           position={[3.5, 6, 5]}
-          intensity={2.0}
+          intensity={2.2}
           color="#ffffff"
         />
 
-        {/* Dramatic Vibrant Violet/Magenta Rim Light (Back-Right-Top) matching the reference */}
+        {/* Executive Sapphire Blue Rim Light (Back-Right-Top) */}
         <directionalLight
           position={[5.5, 4.5, -4]}
-          intensity={4.2}
-          color="#c084fc"
+          intensity={3.8}
+          color="#60a5fa"
         />
 
-        {/* Secondary Purple Rim Light (Back-Left) for symmetrical glowing silhouette */}
+        {/* Secondary Sky Blue Rim Light (Back-Left) for symmetrical glowing silhouette */}
         <directionalLight
           position={[-5, 3.5, -3.5]}
-          intensity={2.8}
-          color="#a855f7"
+          intensity={2.5}
+          color="#38bdf8"
         />
 
-        {/* Soft Cool Cyan Fill Light (Front-Left-Bottom) */}
+        {/* Soft Cool Azure Fill Light (Front-Left-Bottom) */}
         <directionalLight
           position={[-5, -1.5, 4]}
-          intensity={1.2}
-          color="#38bdf8"
+          intensity={1.4}
+          color="#0ea5e9"
         />
 
         {/* Ground Rim Glow Light beneath the rocky platform */}
         <pointLight
           position={[0, -2, 1.5]}
-          intensity={3.2}
+          intensity={2.8}
           distance={5}
-          color="#9333ea"
+          color="#2563eb"
         />
 
         <Suspense fallback={null}>
@@ -90,7 +90,7 @@ export function HeroScene({ isMobile = false }) {
           {/* Floating Atmospheric Spark Particles */}
           <ParticleField
             count={isMobile ? 32 : 65}
-            color="#c084fc"
+            color="#38bdf8"
             size={0.026}
             radius={6.5}
             speed={0.03}

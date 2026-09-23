@@ -31,10 +31,10 @@ function ProVersionLoaderLogo({ reduceMotion }) {
         aria-hidden="true"
       >
         <defs>
-          {/* Ring gradient: violet → lavender → gold */}
+          {/* Ring gradient: sapphire → sky blue → gold */}
           <linearGradient id="pvRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#7c3aed" />
-            <stop offset="55%" stopColor="#a78bfa" />
+            <stop offset="0%" stopColor="#2563eb" />
+            <stop offset="55%" stopColor="#38bdf8" />
             <stop offset="100%" stopColor="#FFD700" />
           </linearGradient>
 
@@ -51,7 +51,7 @@ function ProVersionLoaderLogo({ reduceMotion }) {
         {/* Subtle track ring (always visible) */}
         <circle
           cx="110" cy="110" r="96"
-          stroke="rgba(124,58,237,0.14)"
+          stroke="rgba(37, 99, 235, 0.16)"
           strokeWidth="1.5"
         />
 

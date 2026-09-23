@@ -22,7 +22,7 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 65% 55% at 50% 42%, rgba(124, 58, 237, 0.25) 0%, transparent 100%),
+    radial-gradient(ellipse 65% 55% at 50% 42%, rgba(37, 99, 235, 0.22) 0%, transparent 100%),
     radial-gradient(ellipse 40% 35% at 50% 58%, rgba(255, 215, 0, 0.05) 0%, transparent 100%);
   pointer-events: none;
 }
@@ -72,7 +72,7 @@
   left: 15%;
   width: 4px;
   height: 4px;
-  background: rgba(124, 58, 237, 0.7);
+  background: rgba(37, 99, 235, 0.7);
   animation-duration: 7.0s;
   animation-delay: 0.0s;
 }
@@ -82,7 +82,7 @@
   left: 80%;
   width: 3px;
   height: 3px;
-  background: rgba(167, 139, 250, 0.6);
+  background: rgba(56, 189, 248, 0.6);
   animation-duration: 6.0s;
   animation-delay: 0.8s;
 }
@@ -102,7 +102,7 @@
   left: 75%;
   width: 4px;
   height: 4px;
-  background: rgba(124, 58, 237, 0.5);
+  background: rgba(37, 99, 235, 0.5);
   animation-duration: 6.5s;
   animation-delay: 0.4s;
 }
@@ -112,7 +112,7 @@
   left: 5%;
   width: 3px;
   height: 3px;
-  background: rgba(167, 139, 250, 0.7);
+  background: rgba(56, 189, 248, 0.7);
   animation-duration: 7.5s;
   animation-delay: 2.0s;
 }
@@ -132,7 +132,7 @@
   left: 90%;
   width: 3px;
   height: 3px;
-  background: rgba(124, 58, 237, 0.6);
+  background: rgba(37, 99, 235, 0.6);
   animation-duration: 8.0s;
   animation-delay: 0.6s;
 }
@@ -142,7 +142,7 @@
   left: 35%;
   width: 4px;
   height: 4px;
-  background: rgba(167, 139, 250, 0.5);
+  background: rgba(56, 189, 248, 0.5);
   animation-duration: 5.8s;
   animation-delay: 1.8s;
 }
@@ -162,7 +162,7 @@
   left: 55%;
   width: 3px;
   height: 3px;
-  background: rgba(124, 58, 237, 0.55);
+  background: rgba(37, 99, 235, 0.55);
   animation-duration: 7.2s;
   animation-delay: 1.3s;
 }
@@ -172,7 +172,7 @@
   left: 20%;
   width: 2px;
   height: 2px;
-  background: rgba(167, 139, 250, 0.6);
+  background: rgba(56, 189, 248, 0.6);
   animation-duration: 6.3s;
   animation-delay: 1.0s;
 }
@@ -249,15 +249,15 @@
 /* Pulse glow when ring completes */
 @keyframes pvRingPulse {
   0% {
-    filter: drop-shadow(0 0 4px #7c3aed);
+    filter: drop-shadow(0 0 4px #2563eb);
   }
 
   50% {
-    filter: drop-shadow(0 0 18px #a78bfa) drop-shadow(0 0 32px #7c3aed);
+    filter: drop-shadow(0 0 18px #38bdf8) drop-shadow(0 0 32px #2563eb);
   }
 
   100% {
-    filter: drop-shadow(0 0 8px #7c3aed);
+    filter: drop-shadow(0 0 8px #2563eb);
   }
 }
 
@@ -301,8 +301,8 @@
   width: clamp(72px, 15vw, 110px);
   height: auto;
   display: block;
-  /* Permanent soft violet glow on the logo */
-  filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.6));
+  /* Permanent soft sapphire glow on the logo */
+  filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.5));
 }
 
 /* ── Gold Flash Overlay ──────────────────────────────────── */
@@ -369,9 +369,9 @@
   }
 }
 
-/* 8 sparks: N NE E SE S SW W NW — alternating violet/lavender/gold */
+/* 8 sparks: N NE E SE S SW W NW — alternating sky/sapphire/gold */
 .ui-loading-spark--1 {
-  background: #a78bfa;
+  background: #38bdf8;
   --spark-tx: 0px;
   --spark-ty: -95px;
   animation-delay: 0.95s;
@@ -385,7 +385,7 @@
 }
 
 .ui-loading-spark--3 {
-  background: #7c3aed;
+  background: #2563eb;
   --spark-tx: 95px;
   --spark-ty: 0px;
   animation-delay: 0.93s;
@@ -401,7 +401,7 @@
 }
 
 .ui-loading-spark--5 {
-  background: #a78bfa;
+  background: #38bdf8;
   --spark-tx: 0px;
   --spark-ty: 95px;
   animation-delay: 0.97s;
@@ -415,7 +415,7 @@
 }
 
 .ui-loading-spark--7 {
-  background: #7c3aed;
+  background: #2563eb;
   --spark-tx: -95px;
   --spark-ty: 0px;
   animation-delay: 0.94s;
@@ -478,7 +478,7 @@
   height: 100%;
   width: 100%;
   background: var(--gradient-accent);
-  box-shadow: 0 0 16px rgba(124, 58, 237, 0.85);
+  box-shadow: 0 0 16px rgba(37, 99, 235, 0.7);
   transform-origin: left;
 }
 
