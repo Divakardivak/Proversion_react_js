@@ -18,7 +18,11 @@ html {
   text-rendering: optimizeLegibility;
   scroll-behavior: auto !important;
   color-scheme: dark;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
+
 
 body {
   min-height: 100vh;

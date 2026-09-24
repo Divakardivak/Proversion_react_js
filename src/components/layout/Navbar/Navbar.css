@@ -185,41 +185,59 @@
 .ui-navbar__mobile-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(11, 15, 25, 0.96);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(8, 14, 38, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   z-index: var(--z-header);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: var(--space-12) var(--space-6);
+  justify-content: flex-start;
+  align-items: center;
+  padding: 6rem var(--space-6) var(--space-8);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .ui-navbar__mobile-nav {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: 1.25rem;
   align-items: center;
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-8);
+  width: 100%;
 }
 
 .ui-navbar__mobile-link {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: var(--font-semibold);
+  font-size: clamp(1.25rem, 5vw, 1.75rem);
+  font-weight: 700;
   color: var(--text-secondary);
   transition: color var(--transition-fast), transform var(--transition-fast);
+  padding: 8px 16px;
+  border-radius: var(--radius-lg);
+  text-align: center;
 }
 
-.ui-navbar__mobile-link:hover {
-  color: var(--text-primary);
-  transform: translateX(4px);
+.ui-navbar__mobile-link:hover,
+.ui-navbar__mobile-link:active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  transform: scale(1.04);
 }
 
 .ui-navbar__mobile-actions {
   display: flex;
   justify-content: center;
   width: 100%;
+  max-width: 280px;
+  padding-bottom: 2rem;
+}
+
+.mobile-join-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 1rem;
 }
 
 /* Responsive Media Queries */
@@ -228,11 +246,31 @@
     display: none;
   }
 
-  .ui-navbar__actions .ui-btn {
-    display: none;
-  }
-
   .ui-navbar__hamburger {
     display: flex;
   }
 }
+
+@media (max-width: 580px) {
+  .ui-navbar__inner {
+    padding: 0 4px;
+  }
+
+  .ui-navbar__brand-text {
+    font-size: 1.15rem;
+  }
+
+  .ui-navbar__btn-join {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 420px) {
+  /* On very small phones, keep header clean with brand and hamburger */
+  .ui-navbar__actions .ui-navbar__btn-join {
+    display: none;
+  }
+}
+

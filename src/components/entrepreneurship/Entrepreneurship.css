@@ -447,47 +447,148 @@
   font-weight: 500;
 }
 
-/* Mobile Vertical Journey */
-.ui-journey-vertical {
-  position: relative;
+/* --------------------------------------------------------------------------
+   Streamlined Mobile Touch Stepper (Replaces bulky vertical circles)
+   -------------------------------------------------------------------------- */
+.ui-journey-mobile-stepper {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  padding-left: var(--space-8);
-  margin-bottom: var(--space-6);
-}
-
-.ui-journey-vertical__track {
-  position: absolute;
-  left: 14px;
-  top: 10px;
-  bottom: 10px;
-  width: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-full);
-}
-
-.ui-journey-vertical__progress {
   width: 100%;
-  background: linear-gradient(180deg, #7c3aed 0%, #8b5cf6 25%, #a78bfa 55%, #c084fc 80%, #FFD700 100%);
-  border-radius: var(--radius-full);
-  box-shadow: 0 0 12px rgba(124, 58, 237, 0.45);
-  transition: height var(--transition-normal);
+  margin-bottom: 1.25rem;
 }
 
-.ui-journey-vertical__list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.ui-journey-vertical__item {
+.ui-journey-mobile-tabs {
   display: flex;
   align-items: center;
-  cursor: pointer;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 2px 10px;
+  width: 100%;
 }
 
-/* Responsive Adaptations */
+.ui-journey-mobile-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.ui-journey-mobile-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ui-journey-mobile-tab:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.ui-journey-mobile-tab.is-active {
+  background: rgba(124, 58, 237, 0.16);
+  border-color: var(--stage-accent, #7c3aed);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.25);
+}
+
+.mobile-tab-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--stage-accent, #a78bfa);
+}
+
+.mobile-tab-text {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.mobile-tab-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  opacity: 0.75;
+}
+
+.mobile-tab-title {
+  font-weight: 700;
+}
+
+.mobile-tab-active-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--stage-accent, #c084fc);
+  box-shadow: 0 0 6px var(--stage-accent, #c084fc);
+}
+
+.ui-journey-mobile-progress-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  margin: 2px 0 10px;
+  overflow: hidden;
+}
+
+.ui-journey-mobile-progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.35s ease, background-color 0.35s ease;
+}
+
+.ui-journey-mobile-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 2px;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+.mobile-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.mobile-nav-indicator {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+}
+
+.mobile-nav-indicator strong {
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adaptations & Card Alignment
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .ui-entrepreneurship {
     padding: var(--space-16) 0;
@@ -510,34 +611,90 @@
 
 @media (max-width: 768px) {
   .ui-entrepreneurship {
-    padding: var(--space-12) 0;
+    padding: 70px 0 80px;
+  }
+
+  /* Neat, perfectly aligned card on mobile */
+  .ui-entrepreneurship-details__card {
+    padding: 22px 18px;
+    border-radius: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .ui-entrepreneurship-details__eyebrow-row {
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .ui-entrepreneurship-details__step-badge,
+  .ui-entrepreneurship-details__free-badge,
+  .ui-entrepreneurship-details__gov-badge {
+    font-size: 10px;
+    padding: 3px 9px;
   }
 
   .ui-entrepreneurship-details__content-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-5);
+    gap: 18px;
+  }
+
+  .ui-entrepreneurship-details__title {
+    font-size: clamp(1.45rem, 5.5vw, 1.85rem);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .ui-entrepreneurship-details__tagline {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+
+  .ui-entrepreneurship-details__description {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+
+  .ui-entrepreneurship-details__points-header {
+    font-size: 10.5px;
+    margin-bottom: 8px;
   }
 
   .ui-entrepreneurship-details__points-grid {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .ui-entrepreneurship {
-    padding: var(--space-10) 0;
+    gap: 8px;
   }
 
-  .ui-entrepreneurship-details__card {
-    padding: var(--space-4);
+  .ui-entrepreneurship-details__point-item {
+    padding: 10px 12px;
+    border-radius: 12px;
+    gap: 10px;
+  }
+
+  .ui-entrepreneurship-details__point-text {
+    font-size: 12px;
+    line-height: 1.45;
   }
 
   .ui-entrepreneurship-details__actions {
     flex-direction: column;
     width: 100%;
+    gap: 8px;
+    margin-top: 14px;
   }
 
-  .ui-entrepreneurship-details__actions .ui-btn {
+  .ui-entrepreneurship-details__actions .ui-btn,
+  .ui-entrepreneurship-details__actions a {
     width: 100%;
+    justify-content: center;
   }
 }
+
+@media (max-width: 480px) {
+  .ui-entrepreneurship-details__card {
+    padding: 18px 14px;
+  }
+}
+

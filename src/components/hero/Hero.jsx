@@ -1,57 +1,38 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Sparkles, 
   ArrowRight, 
   Play, 
-  BookOpen, 
   Users, 
   GraduationCap, 
-  TrendingUp, 
-  Code2, 
-  Bot, 
-  Laptop, 
-  X
+  X,
+  Star
 } from 'lucide-react'
 import { Container } from '@/components/common/Container'
-import { HeroScene } from './HeroScene'
-import { useMediaQuery } from '@/hooks/useMediaQuery'
-import campusBg from '@/assets/campus_hero_bg.jpg'
+import { smoothScrollTo } from '@/components/common/SmoothScroll'
+import heroScenicMaster from '@/assets/hero_scenic_master.jpg'
+import heroMascotMobile from '@/assets/hero_mascot_mobile.jpg'
 import './Hero.css'
 
-/**
- * Check if WebGL is supported in the current environment.
- */
-function isWebGLAvailable() {
-  try {
-    const canvas = document.createElement('canvas')
-    return !!(
-      window.WebGLRenderingContext &&
-      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
-    )
-  } catch {
-    return false
-  }
-}
-
 export function Hero() {
-  const [webglSupported, setWebglSupported] = useState(true)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
-  const isMobile = useMediaQuery('(max-width: 768px)')
 
-  useEffect(() => {
-    setWebglSupported(isWebGLAvailable())
-  }, [])
+  const handleExploreClick = (e) => {
+    e.preventDefault()
+    smoothScrollTo('#programs', { offset: -80 })
+  }
 
   return (
     <section id="home" className="ui-hero" aria-label="Introduction">
-      {/* ── Panoramic Campus Backdrop ── */}
+      {/* ── High-Fidelity Master Campus Scenic Backdrop ── */}
       <div 
         className="ui-hero__scenic-bg" 
-        style={{ backgroundImage: `url(${campusBg})` }}
+        style={{ backgroundImage: `url(${heroScenicMaster})` }}
         aria-hidden="true"
       />
-      {/* Atmospheric Blending Overlays */}
+
+      {/* Atmospheric Contrast Overlays */}
       <div className="ui-hero__scenic-overlay" aria-hidden="true" />
       <div className="ui-hero__bg-glow-primary" aria-hidden="true" />
       <div className="ui-hero__bg-glow-secondary" aria-hidden="true" />
@@ -69,6 +50,8 @@ export function Hero() {
             >
               <span>PREMIUM ONLINE TRAINING PROGRAM</span>
             </motion.div>
+
+            {/* Main Headline matching reference mockup */}
             <motion.h1 
               className="ui-hero__headline"
               initial={{ opacity: 0, y: 20 }}
@@ -122,7 +105,11 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <a href="#programs" className="ui-hero__cta-primary">
+              <a 
+                href="#programs" 
+                className="ui-hero__cta-primary"
+                onClick={handleExploreClick}
+              >
                 <span>Explore Our Courses</span>
                 <ArrowRight size={18} className="ui-hero__btn-arrow" />
               </a>
@@ -131,6 +118,7 @@ export function Hero() {
                 type="button" 
                 className="ui-hero__cta-secondary"
                 onClick={() => setIsVideoModalOpen(true)}
+                aria-label="Watch video overview"
               >
                 <span className="ui-hero__play-circle">
                   <Play size={13} fill="currentColor" />
@@ -140,126 +128,40 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Right Column: 3D Scene + Study Props + Holographic Badges ── */}
+          {/* ── Right Column: Visual Stage (Desktop Script + Mobile Showcase) ── */}
           <div className="ui-hero__scene-container">
-            {/* Ambient Energy Neon Arc encircling Robot */}
-            <div className="ui-hero__energy-ring" aria-hidden="true" />
-
-            {/* 3D Robot Mascot Canvas */}
-            <div className="ui-hero__canvas-layer">
-              {webglSupported ? (
-                <HeroScene isMobile={isMobile} />
-              ) : (
-                <div className="ui-hero__fallback-view">
-                  <GraduationCap size={72} color="#38bdf8" />
-                </div>
-              )}
-            </div>
-
-            {/* Floating Holographic Tech Badges around Robot */}
-            <div className="ui-hero__hologram-layer" aria-hidden="true">
-              {/* Code Diamond Badge </ > */}
-              <div className="ui-hologram-chip chip-code">
-                <Code2 size={18} />
-              </div>
-
-              {/* AI Neural Badge */}
-              <div className="ui-hologram-chip chip-ai">
-                <Bot size={15} />
-                <span>AI</span>
-              </div>
-
-              {/* Bar Chart 📈 Badge */}
-              <div className="ui-hologram-chip chip-chart">
-                <TrendingUp size={16} />
-              </div>
-
-              {/* Laptop Badge */}
-              <div className="ui-hologram-chip chip-laptop">
-                <Laptop size={15} />
-              </div>
-
-              {/* Graduation Cap Badge */}
-              <div className="ui-hologram-chip chip-cap">
-                <GraduationCap size={16} />
-              </div>
-
-              {/* Whimsical Handwritten Script: Learn Build Grow */}
-              <div className="ui-hero__handwritten-script">
-                <span>Learn</span>
-                <span>Build</span>
-                <span>Grow</span>
-                <Sparkles size={14} className="script-sparkle" />
+            {/* Desktop Glowing Handwritten Script: Learn Build Grow */}
+            <div className="ui-hero__handwritten-script" aria-hidden="true">
+              <span className="script-word">Learn</span>
+              <span className="script-word">Build</span>
+              <span className="script-word">Grow</span>
+              <div className="script-sparkles-row">
+                <Sparkles size={16} className="script-sparkle gold" />
+                <Sparkles size={11} className="script-sparkle cyan" />
               </div>
             </div>
 
-            {/* Physical Study Props on Ledge: Laptop + Coffee Tumbler + Stack of 4 Books */}
-            <div className="ui-hero__study-props">
-              {/* 1. Sleek Aluminum Laptop */}
-              <div className="prop-laptop" aria-hidden="true">
-                <div className="prop-laptop-display">
-                  <div className="laptop-screen-header">
-                    <span className="dot red" />
-                    <span className="dot yellow" />
-                    <span className="dot green" />
-                  </div>
-                  <div className="laptop-screen-code">
-                    <span className="code-line c-blue" />
-                    <span className="code-line c-purple" />
-                    <span className="code-line c-cyan short" />
-                  </div>
-                </div>
-                <div className="prop-laptop-deck">
-                  <span className="prop-laptop-trackpad" />
-                </div>
+            {/* Mobile Mascot Showcase (Active on screens <= 768px) */}
+            <div className="ui-hero__mobile-mascot-card">
+              <div className="mobile-mascot-img-wrap">
+                <img 
+                  src={heroMascotMobile} 
+                  alt="ProVersion AI Robot Mascot with Textbooks and Laptop" 
+                  className="mobile-mascot-img"
+                  loading="eager"
+                />
+                <div className="mobile-mascot-glow-ring" aria-hidden="true" />
               </div>
-
-              {/* 2. Insulated Coffee Tumbler with Purple P Logo */}
-              <div className="prop-coffee-cup" aria-hidden="true">
-                <div className="cup-cap">
-                  <div className="cup-spout" />
-                </div>
-                <div className="cup-flask">
-                  <div className="cup-brand-badge">P</div>
-                </div>
-              </div>
-
-              {/* 3. Stack of 4 Crisp Textbooks matching reference mockup */}
-              <div className="prop-books-stack" aria-hidden="true">
-                {/* Book 1: Python (Blue) */}
-                <div className="book-volume book-python">
-                  <div className="book-cover-spine">
-                    <span>Python</span>
-                  </div>
-                  <div className="book-pages" />
-                </div>
-                {/* Book 2: Data Science (Purple) */}
-                <div className="book-volume book-datascience">
-                  <div className="book-cover-spine">
-                    <span>Data Science</span>
-                  </div>
-                  <div className="book-pages" />
-                </div>
-                {/* Book 3: Web Development (Orange) */}
-                <div className="book-volume book-webdev">
-                  <div className="book-cover-spine">
-                    <span>Web Development</span>
-                  </div>
-                  <div className="book-pages" />
-                </div>
-                {/* Book 4: AI & Tech (Teal) */}
-                <div className="book-volume book-aitech">
-                  <div className="book-cover-spine">
-                    <span>AI & Tech</span>
-                  </div>
-                  <div className="book-pages" />
-                </div>
+              <div className="mobile-script-badge">
+                <span className="mobile-script-dot" />
+                <span>Learn • Build • Grow</span>
+                <Sparkles size={13} className="script-sparkle gold" />
               </div>
             </div>
           </div>
         </div>
 
-        {/* ── Hiring Partner Logos Floating Dock with Authentic Brand Icons ── */}
+        {/* ── Hiring Partner Logos Floating Dock ── */}
         <div className="ui-hero__partners-dock">
           {/* Google */}
           <div className="dock-logo-item">
@@ -270,7 +172,7 @@ export function Hero() {
 
           {/* Microsoft with 4-square icon */}
           <div className="dock-logo-item">
-            <svg className="dock-icon ms-icon" viewBox="0 0 16 16" width="15" height="15" fill="currentColor">
+            <svg className="dock-icon ms-icon" viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true">
               <path d="M0 0h7.2v7.2H0zm8.8 0H16v7.2H8.8zM0 8.8h7.2V16H0zm8.8 0H16V16H8.8z" />
             </svg>
             <span className="dock-brand-text ms">Microsoft</span>
@@ -280,7 +182,7 @@ export function Hero() {
 
           {/* Meta with infinity loop */}
           <div className="dock-logo-item">
-            <svg className="dock-icon meta-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <svg className="dock-icon meta-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
               <path d="M12 15.5c-1.8 0-3.3-1.4-4-2.8-.7 1.4-2.2 2.8-4 2.8-2.6 0-4-2.1-4-4.8C0 7.7 2 5.5 5 5.5c2.3 0 4.1 1.6 5.5 3.5 1.4-1.9 3.2-3.5 5.5-3.5 3 0 5 2.2 5 5.2 0 2.7-1.4 4.8-4 4.8-1.8 0-3.3-1.4-4-2.8-.7 1.4-2.2 2.8-4 2.8zm-7-7.8C3.4 7.7 2.2 9 2.2 10.7c0 1.6 1 2.8 2.5 2.8 1.4 0 2.6-1.1 3.5-2.6-1-1.8-2-3.2-3.2-3.2zm14 0c-1.2 0-2.2 1.4-3.2 3.2.9 1.5 2.1 2.6 3.5 2.6 1.5 0 2.5-1.2 2.5-2.8 0-1.7-1.2-3-2.8-3z" />
             </svg>
             <span className="dock-brand-text meta">Meta</span>
@@ -288,10 +190,10 @@ export function Hero() {
 
           <div className="dock-divider" />
 
-          {/* Amazon with smile */}
+          {/* Amazon with signature smile */}
           <div className="dock-logo-item amazon-item">
             <span className="dock-brand-text amazon">amazon</span>
-            <svg className="amazon-smile-svg" viewBox="0 0 48 10" width="38" height="8" fill="none">
+            <svg className="amazon-smile-svg" viewBox="0 0 48 10" width="38" height="8" fill="none" aria-hidden="true">
               <path d="M2 3C15 9 32 9 46 2" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" />
             </svg>
           </div>
@@ -307,7 +209,7 @@ export function Hero() {
 
           {/* Adobe with A icon */}
           <div className="dock-logo-item">
-            <svg className="dock-icon adobe-icon" viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+            <svg className="dock-icon adobe-icon" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
               <path d="M13.96 0L24 24H16.4l-3.36-8.16h-4.32l3.48-8.28L8.64 0h5.32zM0 0h5.32L0 24V0z" />
             </svg>
             <span className="dock-brand-text adobe">Adobe</span>
@@ -353,7 +255,7 @@ export function Hero() {
             </div>
 
             <div className="ribbon-metric-item">
-              <Sparkles size={18} className="ribbon-icon purple" />
+              <Star size={18} className="ribbon-icon purple" />
               <div className="metric-text-stack">
                 <span className="metric-num">500+</span>
                 <span className="metric-label">Top Recruiters</span>

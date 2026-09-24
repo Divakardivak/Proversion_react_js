@@ -50,7 +50,7 @@ export default function Contact() {
           <div className="ui-contact__info-col">
             <ContactVisual />
 
-            <Reveal animation="fadeUp" delay={0.35}>
+            <Reveal animation="fadeUp" delay={0.35} className="ui-contact__info-reveal">
               <ContactInfo />
             </Reveal>
           </div>

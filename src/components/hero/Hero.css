@@ -1,20 +1,20 @@
 /* ==========================================================================
    Hero Section Styles — Campus Scenery & Digital Futures Theme
-   Directly matching reference mockup (input_file_1.png)
+   100% Exact Reference Mockup Match + Comprehensive Mobile Responsiveness
    ========================================================================== */
 
 .ui-hero {
   position: relative;
   height: 100vh;
-  min-height: 620px;
+  min-height: 640px;
   max-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 4.75rem;
+  padding-top: 5rem;
   padding-bottom: 0.6rem;
   overflow: hidden;
-  background-color: #090e24;
+  background-color: #03081e;
 }
 
 .ui-hero .ui-container {
@@ -26,39 +26,40 @@
   height: 100%;
 }
 
-/* ── 1. Panoramic Campus Backdrop Layer ── */
+/* ── 1. Panoramic Campus Master Artwork Layer ── */
 .ui-hero__scenic-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center right;
+  background-position: right 45% center;
   background-repeat: no-repeat;
-  opacity: 0.75;
-  filter: contrast(1.08) saturate(1.15);
+  opacity: 1;
+  filter: contrast(1.05) saturate(1.08);
   pointer-events: none;
   z-index: 0;
+  transition: transform 0.6s ease-out;
 }
 
-/* Dark Twilight & Readability Overlay Mask */
+/* Atmospheric Legibility Mask: smooth dark navy on left, crystal clear sunset campus on right */
 .ui-hero__scenic-overlay {
   position: absolute;
   inset: 0;
   background: 
-    linear-gradient(to right, rgba(9, 14, 36, 0.96) 0%, rgba(9, 14, 36, 0.82) 42%, rgba(9, 14, 36, 0.28) 75%, rgba(9, 14, 36, 0.4) 100%),
-    linear-gradient(to top, rgba(9, 14, 36, 1) 0%, rgba(9, 14, 36, 0.75) 12%, transparent 45%),
-    linear-gradient(to bottom, rgba(9, 14, 36, 0.85) 0%, transparent 25%);
+    linear-gradient(to right, rgba(3, 8, 30, 0.92) 0%, rgba(3, 8, 30, 0.72) 36%, rgba(3, 8, 30, 0.15) 60%, rgba(3, 8, 30, 0) 100%),
+    linear-gradient(to top, rgba(3, 8, 30, 0.95) 0%, rgba(3, 8, 30, 0.45) 8%, transparent 22%),
+    linear-gradient(to bottom, rgba(3, 8, 30, 0.8) 0%, transparent 16%);
   pointer-events: none;
   z-index: 1;
 }
 
-/* Cosmic Halos */
+/* Subtle Ambient Glows */
 .ui-hero__bg-glow-primary {
   position: absolute;
-  top: 10%;
-  left: 15%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, transparent 65%);
+  top: 12%;
+  left: 8%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.16) 0%, transparent 65%);
   filter: blur(80px);
   pointer-events: none;
   z-index: 1;
@@ -66,21 +67,21 @@
 
 .ui-hero__bg-glow-secondary {
   position: absolute;
-  top: 25%;
-  right: 15%;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.16) 0%, rgba(99, 102, 241, 0.12) 45%, transparent 70%);
+  top: 20%;
+  right: 18%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
   filter: blur(85px);
   pointer-events: none;
   z-index: 1;
 }
 
-/* ── 2. Grid Layout (Text Left 48%, 3D Mascot Right 52%) ── */
+/* ── 2. Grid Layout (Text Left, Visual Mascot Right) ── */
 .ui-hero__grid {
   flex: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   align-items: center;
   gap: var(--space-8);
   position: relative;
@@ -97,7 +98,7 @@
   max-width: 580px;
 }
 
-/* Eyebrow Badge */
+/* Eyebrow Pill Badge */
 .ui-hero__badge {
   display: inline-flex;
   align-items: center;
@@ -113,15 +114,16 @@
   color: #38bdf8;
   margin-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 0 16px rgba(14, 165, 233, 0.2);
 }
 
 /* Main Headline */
 .ui-hero__headline {
   font-family: var(--font-display);
-  font-size: clamp(2.35rem, 4vw, 4.15rem);
+  font-size: clamp(2.35rem, 4.2vw, 4.25rem);
   font-weight: 900;
-  line-height: 1.04;
+  line-height: 1.05;
   letter-spacing: -0.025em;
   color: #ffffff;
   margin-bottom: clamp(0.75rem, 1.5vh, 1.15rem);
@@ -170,7 +172,7 @@
   font-size: clamp(0.92rem, 1.2vw, 1.05rem);
   line-height: 1.55;
   color: #cbd5e1;
-  margin-bottom: clamp(1rem, 2vh, 1.5rem);
+  margin-bottom: clamp(1.1rem, 2.2vh, 1.6rem);
   max-width: 520px;
 }
 
@@ -249,336 +251,72 @@
   color: #ffffff;
 }
 
-/* ── 3. Right Column: Mascot, 3D Canvas & Hologram Elements ── */
+/* ── 3. Right Column: Stage & Overlays ── */
 .ui-hero__scene-container {
   position: relative;
   width: 100%;
-  height: 480px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 3D Canvas Layer */
-.ui-hero__canvas-layer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
   height: 100%;
-  z-index: 2;
-}
-
-/* Luminous Looping Energy Ring encircling mascot */
-.ui-hero__energy-ring {
-  position: absolute;
-  top: 15%;
-  left: 20%;
-  right: 15%;
-  bottom: 25%;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  border-top-color: #38bdf8;
-  border-right-color: #ec4899;
-  border-bottom-color: #818cf8;
-  filter: blur(1px) drop-shadow(0 0 15px rgba(56, 189, 248, 0.6));
-  animation: energyRingSpin 18s linear infinite;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.65;
-}
-
-@keyframes energyRingSpin {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.04); }
-  100% { transform: rotate(360deg) scale(1); }
-}
-
-/* ── Holographic Floating Tech Chips ── */
-.ui-hero__hologram-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.ui-hologram-chip {
-  position: absolute;
+  min-height: 380px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 5px;
-  border-radius: 12px;
-  background: rgba(14, 165, 233, 0.15);
-  border: 1px solid rgba(56, 189, 248, 0.45);
-  color: #38bdf8;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 15px rgba(56, 189, 248, 0.3);
-  animation: chipFloat 4s ease-in-out infinite alternate;
+  justify-content: flex-end;
 }
 
-/* Chip 1: Code </ > Diamond */
-.chip-code {
-  top: 10%;
-  left: 12%;
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
-  transform: rotate(12deg);
-  animation-delay: 0s;
-}
-
-/* Chip 2: AI Neural Badge */
-.chip-ai {
-  top: 24%;
-  left: 6%;
-  padding: 6px 12px;
-  font-size: 0.82rem;
-  font-weight: 800;
-  animation-delay: 0.8s;
-}
-
-/* Chip 3: Bar Chart 📈 */
-.chip-chart {
-  top: 8%;
-  right: 28%;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  animation-delay: 1.4s;
-}
-
-/* Chip 4: Laptop */
-.chip-laptop {
-  top: 20%;
-  right: 18%;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  animation-delay: 2.1s;
-}
-
-/* Chip 5: Graduation Cap */
-.chip-cap {
-  top: 34%;
-  right: 12%;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  animation-delay: 1.1s;
-}
-
-@keyframes chipFloat {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-10px) rotate(3deg); }
-}
-
-/* Whimsical Handwritten Script: Learn Build Grow */
+/* Glowing Handwritten Script: Learn Build Grow (top-right of mascot) */
 .ui-hero__handwritten-script {
   position: absolute;
-  top: 12%;
-  right: 10%;
+  top: 6%;
+  right: 5%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-family: 'Outfit', cursive, sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
   line-height: 1.15;
-  color: #f8fafc;
-  transform: rotate(6deg);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  transform: rotate(5deg);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6), 0 0 16px rgba(56, 189, 248, 0.6);
+  pointer-events: none;
+  z-index: 4;
 }
 
-.script-sparkle {
-  color: #fbbf24;
-  margin-top: 3px;
+.script-word {
+  display: block;
+  letter-spacing: 0.02em;
+}
+
+.script-sparkles-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
   align-self: flex-end;
 }
 
-/* ── 4. Study Props on Ledge (Laptop + Tumbler + Books Stack) ── */
-.ui-hero__study-props {
-  position: absolute;
-  bottom: 24px;
-  left: 32px;
-  display: flex;
-  align-items: flex-end;
-  gap: 14px;
-  z-index: 5;
+.script-sparkle.gold {
+  color: #fbbf24;
+  filter: drop-shadow(0 0 8px #fbbf24);
+  animation: sparkleGlow 2s ease-in-out infinite alternate;
 }
 
-/* 1. Sleek Aluminum Laptop */
-.prop-laptop {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: perspective(600px) rotateY(16deg) rotateX(4deg);
+.script-sparkle.cyan {
+  color: #38bdf8;
+  filter: drop-shadow(0 0 6px #38bdf8);
+  animation: sparkleGlow 2s ease-in-out infinite alternate 1s;
 }
 
-.prop-laptop-display {
-  width: 94px;
-  height: 60px;
-  background: #090e24;
-  border: 1.5px solid #475569;
-  border-radius: 6px 6px 0 0;
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
-  display: flex;
-  flex-direction: column;
-  padding: 4px 6px;
-  gap: 4px;
+@keyframes sparkleGlow {
+  0% { transform: scale(0.85); opacity: 0.8; }
+  100% { transform: scale(1.15); opacity: 1; }
 }
 
-.laptop-screen-header {
-  display: flex;
-  gap: 3px;
-  margin-bottom: 2px;
+/* Mobile Mascot Showcase (Hidden on desktop, shown on mobile) */
+.ui-hero__mobile-mascot-card {
+  display: none;
 }
 
-.laptop-screen-header .dot {
-  width: 3.5px;
-  height: 3.5px;
-  border-radius: 50%;
-}
-.dot.red { background: #ef4444; }
-.dot.yellow { background: #f59e0b; }
-.dot.green { background: #10b981; }
-
-.laptop-screen-code {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.code-line {
-  height: 2.5px;
-  border-radius: 1.5px;
-  width: 100%;
-}
-.code-line.c-blue { background: #38bdf8; width: 85%; }
-.code-line.c-purple { background: #a855f7; width: 70%; }
-.code-line.c-cyan { background: #06b6d4; }
-.code-line.short { width: 50%; }
-
-.prop-laptop-deck {
-  width: 106px;
-  height: 6px;
-  background: linear-gradient(180deg, #94a3b8 0%, #475569 100%);
-  border-radius: 1px 1px 3px 3px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.prop-laptop-trackpad {
-  width: 24px;
-  height: 2px;
-  background: #64748b;
-  border-radius: 1px;
-}
-
-/* 2. Insulated Coffee Tumbler */
-.prop-coffee-cup {
-  width: 34px;
-  height: 52px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
-}
-
-.cup-cap {
-  width: 36px;
-  height: 7px;
-  background: #1e293b;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 4px;
-  align-items: center;
-}
-
-.cup-spout {
-  width: 5px;
-  height: 3px;
-  background: #475569;
-  border-radius: 1px;
-}
-
-.cup-flask {
-  width: 30px;
-  height: 45px;
-  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-  border-radius: 1px 1px 5px 5px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cup-brand-badge {
-  font-size: 0.82rem;
-  font-weight: 900;
-  color: #c084fc;
-  text-shadow: 0 0 8px rgba(192, 132, 252, 0.8);
-}
-
-/* 3. Stack of 4 Books matching mockup */
-.prop-books-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5px;
-  transform: perspective(600px) rotateY(-10deg) rotateX(4deg);
-}
-
-.book-volume {
-  position: relative;
-  display: flex;
-  align-items: center;
-  border-radius: 4px 7px 7px 4px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
-}
-
-.book-cover-spine {
-  padding: 4px 14px;
-  border-radius: 4px 0 0 4px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-.book-pages {
-  width: 10px;
-  align-self: stretch;
-  background: repeating-linear-gradient(to bottom, #ffffff, #f1f5f9 1.5px, #94a3b8 2px);
-  border-radius: 0 5px 5px 0;
-  border-left: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.book-python .book-cover-spine {
-  background: linear-gradient(90deg, #1d4ed8, #3b82f6);
-  border-left: 3px solid #60a5fa;
-}
-
-.book-datascience .book-cover-spine {
-  background: linear-gradient(90deg, #6d28d9, #8b5cf6);
-  border-left: 3px solid #c084fc;
-}
-
-.book-webdev .book-cover-spine {
-  background: linear-gradient(90deg, #ea580c, #f97316);
-  border-left: 3px solid #fdba74;
-}
-
-.book-aitech .book-cover-spine {
-  background: linear-gradient(90deg, #0d9488, #14b8a6);
-  border-left: 3px solid #5eead4;
-}
-
-/* ── 5. Hiring Partner Logos Floating Dock ── */
+/* ── 4. Hiring Partner Logos Floating Dock ── */
 .ui-hero__partners-dock {
   position: relative;
   z-index: 5;
@@ -586,17 +324,23 @@
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  background: rgba(13, 23, 56, 0.85);
+  background: rgba(11, 20, 48, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 9999px;
   padding: 8px 32px;
-  margin: 8px auto 6px;
+  margin: 6px auto 6px;
   max-width: 1060px;
   width: 100%;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ui-hero__partners-dock::-webkit-scrollbar {
+  display: none;
 }
 
 .dock-logo-item {
@@ -655,7 +399,7 @@
   flex-shrink: 0;
 }
 
-/* ── 6. Bottom Trust Metrics Ribbon ── */
+/* ── 5. Bottom Trust Metrics Ribbon ── */
 .ui-hero__trust-ribbon {
   position: relative;
   z-index: 5;
@@ -686,8 +430,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #a855f7;
-  box-shadow: 0 0 10px #c084fc;
+  background: #ec4899;
+  box-shadow: 0 0 10px #f43f5e;
   animation: dotPulse 2s infinite ease-in-out;
 }
 
@@ -728,13 +472,13 @@
   color: #94a3b8;
 }
 
-/* ── 7. Video Overview Modal ── */
+/* ── 6. Video Overview Modal ── */
 .ui-video-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(3, 7, 18, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(3, 7, 24, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   z-index: 999999;
   display: flex;
   align-items: center;
@@ -747,38 +491,39 @@
   width: 100%;
   max-width: 840px;
   background: #0f172a;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(56, 189, 248, 0.25);
 }
 
 .video-close-btn {
   position: absolute;
   top: 14px;
   right: 14px;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .video-close-btn:hover {
-  transform: rotate(90deg);
+  transform: rotate(90deg) scale(1.05);
+  background: rgba(236, 72, 153, 0.8);
 }
 
 .video-player-container {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  padding-bottom: 56.25%;
   height: 0;
 }
 
@@ -791,11 +536,28 @@
   border: none;
 }
 
-/* ── 8. Responsive Media Queries ── */
+/* ==========================================================================
+   Comprehensive Mobile & Tablet Responsiveness
+   ========================================================================== */
+
+/* Tablet (1024px and down) */
 @media (max-width: 1024px) {
+  .ui-hero {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+  }
+
+  .ui-hero__scenic-bg {
+    background-position: center right;
+  }
+
   .ui-hero__grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
   }
 
   .ui-hero__content {
@@ -805,7 +567,9 @@
   }
 
   .ui-hero__description {
-    max-width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .ui-hero__actions {
@@ -813,12 +577,19 @@
   }
 
   .ui-hero__scene-container {
-    height: 420px;
+    min-height: 300px;
+    justify-content: center;
+  }
+
+  .ui-hero__handwritten-script {
+    top: 0;
+    right: 15%;
   }
 
   .ui-hero__partners-dock {
     border-radius: 20px;
-    padding: 12px 20px;
+    padding: 12px 24px;
+    margin-bottom: 16px;
   }
 
   .ui-hero__trust-ribbon {
@@ -830,32 +601,250 @@
   .ribbon-metrics-group {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 24px;
   }
 }
 
+/* Mobile Devices (768px and down) */
 @media (max-width: 768px) {
   .ui-hero {
-    padding-top: 5rem;
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    padding-top: 4.5rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .ui-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .ui-hero__content {
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ui-hero__badge {
+    padding: 3px 11px;
+    font-size: 0.66rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.06em;
   }
 
   .ui-hero__headline {
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 6.5vw, 2.25rem);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    text-align: center;
   }
 
-  .ui-hero__study-props {
-    display: none;
+  .ui-hero__brush-underline {
+    bottom: -8px;
+    height: 11px;
+  }
+
+  .ui-hero__description {
+    font-size: 0.85rem;
+    line-height: 1.45;
+    padding: 0 4px;
+    margin-bottom: 0.9rem;
+    max-width: 380px;
+  }
+
+  /* Neat, compact inline action buttons */
+  .ui-hero__actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto 0.5rem;
+  }
+
+  .ui-hero__cta-primary {
+    padding: 9px 16px;
+    font-size: 0.82rem;
+    gap: 6px;
+    flex: 1;
+    max-width: 190px;
+    justify-content: center;
+  }
+
+  .ui-hero__cta-secondary {
+    padding: 9px 13px;
+    font-size: 0.82rem;
+    gap: 6px;
+    flex: 1;
+    max-width: 160px;
+    justify-content: center;
+  }
+
+  .ui-hero__play-circle {
+    width: 20px;
+    height: 20px;
   }
 
   .ui-hero__handwritten-script {
     display: none;
   }
 
+  .ui-hero__scene-container {
+    min-height: auto;
+    height: auto;
+    justify-content: center;
+    margin: 0.25rem auto 0.75rem;
+    width: 100%;
+  }
+
+  /* Sleek, borderless mascot showcase with ambient glow */
+  .ui-hero__mobile-mascot-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 270px;
+    margin: 0 auto;
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .mobile-mascot-img-wrap {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), 0 0 25px rgba(56, 189, 248, 0.22);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+  }
+
+  .mobile-mascot-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.05;
+    object-fit: cover;
+    display: block;
+  }
+
+  .mobile-script-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 4px 12px;
+    background: rgba(13, 23, 56, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 9999px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #f8fafc;
+    letter-spacing: 0.04em;
+    backdrop-filter: blur(8px);
+  }
+
+  .mobile-script-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 6px #38bdf8;
+  }
+
+  /* Partner Logos Dock: Sleek, compact touch swipe */
   .ui-hero__partners-dock {
-    gap: 12px;
+    border-radius: 14px;
+    padding: 8px 16px;
+    gap: 14px;
+    margin: 6px auto 8px;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
   }
 
   .dock-brand-text {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
+  }
+
+  /* Trust metrics: neat compact horizontal row or 2-column grid */
+  .ui-hero__trust-ribbon {
+    padding: 8px 4px 4px;
+    gap: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .ribbon-pill-left {
+    display: inline-flex;
+    margin-bottom: 2px;
+  }
+
+  .ribbon-slogan-text {
+    font-size: 0.76rem;
+  }
+
+  .ribbon-metrics-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    width: 100%;
+  }
+
+  .ribbon-metric-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .metric-num {
+    font-size: 0.86rem;
+  }
+
+  .metric-label {
+    font-size: 0.72rem;
+  }
+}
+
+/* Small Mobile Screens (380px and down) */
+@media (max-width: 380px) {
+  .ui-hero__badge {
+    font-size: 0.62rem;
+    padding: 3px 8px;
+  }
+
+  .ui-hero__headline {
+    font-size: 1.65rem;
+  }
+
+  .ui-hero__description {
+    font-size: 0.8rem;
+  }
+
+  .ui-hero__actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .ui-hero__cta-primary,
+  .ui-hero__cta-secondary {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .ui-hero__mobile-mascot-card {
+    max-width: 240px;
+  }
+
+  .ribbon-metrics-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 }

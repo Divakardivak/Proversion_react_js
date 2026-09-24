@@ -5,7 +5,7 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
  * ContactVisual Component.
  * High-performance SVG communication portal representing connectivity,
  * next-stage career progression, and active technological engagement.
- * Elevated as an interactive foreground holographic overlay.
+ * Positioned in the background as an ambient luminous reflection backdrop.
  */
 export function ContactVisual() {
   const shouldReduceMotion = useReducedMotion()
@@ -14,10 +14,10 @@ export function ContactVisual() {
     <motion.div
       className="ui-contact-visual"
       aria-hidden="true"
-      initial={shouldReduceMotion ? { opacity: 0.9 } : { opacity: 0, scale: 0.85 }}
+      initial={shouldReduceMotion ? { opacity: 0.85 } : { opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 0.95, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
     >
       <svg
         viewBox="0 0 400 400"
@@ -27,13 +27,20 @@ export function ContactVisual() {
       >
         <defs>
           <radialGradient id="portalGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="#6366f1" stopOpacity="0.14" />
+            <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.55" />
+            <stop offset="35%" stopColor="#6366f1" stopOpacity="0.28" />
+            <stop offset="70%" stopColor="#38bdf8" stopOpacity="0.12" />
             <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </radialGradient>
 
-          <filter id="portalFilter" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="6" result="blur" />
+          <linearGradient id="radarSweepGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0" />
+            <stop offset="65%" stopColor="#a78bfa" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="#c084fc" stopOpacity="0.42" />
+          </linearGradient>
+
+          <filter id="portalFilter" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="8" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -41,8 +48,31 @@ export function ContactVisual() {
           </filter>
         </defs>
 
-        {/* Ambient Radial Core */}
-        <circle cx="200" cy="200" r="160" fill="url(#portalGlow)" />
+        {/* Ambient Radial Core Backdrop Reflection */}
+        <circle cx="200" cy="200" r="175" fill="url(#portalGlow)" />
+
+        {/* Pulsing Sonar / Radar Reflection Wave */}
+        <motion.circle
+          cx="200"
+          cy="200"
+          stroke="rgba(167, 139, 250, 0.45)"
+          strokeWidth="1.2"
+          fill="none"
+          initial={{ r: 45, opacity: 0.7 }}
+          animate={
+            shouldReduceMotion
+              ? {}
+              : {
+                  r: [45, 175],
+                  opacity: [0.75, 0],
+                }
+          }
+          transition={{
+            duration: 4.5,
+            repeat: Infinity,
+            ease: 'easeOut',
+          }}
+        />
 
         {/* Concentric Communication Rings */}
         <circle
@@ -69,6 +99,26 @@ export function ContactVisual() {
           strokeDasharray="6 6"
         />
 
+        {/* Rotating Luminous Radar Reflection Sweep */}
+        <motion.path
+          d="M 200 200 L 340 200 A 140 140 0 0 0 299 101 Z"
+          fill="url(#radarSweepGlow)"
+          opacity="0.35"
+          animate={
+            shouldReduceMotion
+              ? {}
+              : {
+                  rotate: [0, 360],
+                }
+          }
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+          style={{ transformOrigin: '200px 200px' }}
+        />
+
         {/* Animated Gyroscopic Outer Ring */}
         <motion.circle
           cx="200"
@@ -85,7 +135,7 @@ export function ContactVisual() {
                 }
           }
           transition={{
-            duration: 32,
+            duration: 28,
             repeat: Infinity,
             ease: 'linear',
           }}

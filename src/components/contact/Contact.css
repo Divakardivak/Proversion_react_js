@@ -92,7 +92,13 @@
   flex-direction: column;
   gap: var(--space-6);
   position: relative;
-  z-index: 5;
+  z-index: 1;
+}
+
+.ui-contact__info-reveal {
+  position: relative;
+  z-index: 2;
+  width: 100%;
 }
 
 .ui-contact__form-col {
@@ -100,15 +106,39 @@
   z-index: 1;
 }
 
+/* Background Animated Communication Portal (Sits behind cards and reflects in background) */
 .ui-contact-visual {
   position: absolute;
-  top: -24px;
-  right: -36px;
-  width: 270px;
-  height: 270px;
+  top: -36px;
+  right: -55px;
+  width: 330px;
+  height: 330px;
   pointer-events: none;
-  z-index: 20;
-  filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.35));
+  z-index: 0;
+  filter: drop-shadow(0 0 35px rgba(124, 58, 237, 0.45));
+}
+
+.ui-contact-visual::before {
+  content: '';
+  position: absolute;
+  inset: -18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.32) 0%, rgba(99, 102, 241, 0.16) 42%, transparent 72%);
+  filter: blur(35px);
+  pointer-events: none;
+  z-index: -1;
+  animation: visualPulseReflection 6s ease-in-out infinite alternate;
+}
+
+@keyframes visualPulseReflection {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(1.12);
+    opacity: 0.95;
+  }
 }
 
 .ui-contact-visual__svg {
@@ -122,18 +152,21 @@
   flex-direction: column;
   gap: var(--space-6);
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .ui-contact-info__cards {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  position: relative;
+  z-index: 2;
 }
 
 .ui-contact-card {
   position: relative;
-  background: rgba(13, 23, 56, 0.88);
+  z-index: 2;
+  background: rgba(13, 23, 56, 0.82);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -414,7 +447,12 @@
   }
 
   .ui-contact-visual {
-    display: none;
+    top: -20px;
+    right: 5%;
+    width: 250px;
+    height: 250px;
+    opacity: 0.65;
+    z-index: 0;
   }
 }
 
@@ -432,6 +470,13 @@
 @media (max-width: 480px) {
   .ui-contact {
     padding: var(--space-10) 0;
+  }
+
+  .ui-contact-visual {
+    right: -10px;
+    width: 200px;
+    height: 200px;
+    opacity: 0.55;
   }
 
   .ui-contact-form-card {

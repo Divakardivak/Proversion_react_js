@@ -14,118 +14,16 @@ import {
 } from 'lucide-react'
 import { programsData, programCategories } from '@/data/programs'
 import { CourseDetailsModal } from '@/components/courseDetails'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import './MobileSales.css'
 
-// Enriched program pricing, badges, and placement stats
-const PROGRAM_PRICING = {
-  'ai-ml': {
-    price: '₹28,999',
-    originalPrice: '₹52,000',
-    discount: '44% OFF',
-    emi: '₹2,416/mo',
-    rating: 4.9,
-    students: '1,840+',
-    badge: 'Bestseller',
-  },
-  'aws-cloud': {
-    price: '₹26,999',
-    originalPrice: '₹48,000',
-    discount: '43% OFF',
-    emi: '₹2,250/mo',
-    rating: 4.9,
-    students: '1,620+',
-    badge: 'High Demand',
-  },
-  'full-stack': {
-    price: '₹24,999',
-    originalPrice: '₹45,000',
-    discount: '45% OFF',
-    emi: '₹2,083/mo',
-    rating: 4.8,
-    students: '2,100+',
-    badge: 'Most Popular',
-  },
-  'cyber-security': {
-    price: '₹27,999',
-    originalPrice: '₹50,000',
-    discount: '44% OFF',
-    emi: '₹2,333/mo',
-    rating: 4.9,
-    students: '1,450+',
-    badge: 'Trending',
-  },
-  'data-analytics': {
-    price: '₹22,999',
-    originalPrice: '₹42,000',
-    discount: '45% OFF',
-    emi: '₹1,916/mo',
-    rating: 4.8,
-    students: '1,780+',
-    badge: 'Top Rated',
-  },
-  iot: {
-    price: '₹23,999',
-    originalPrice: '₹44,000',
-    discount: '45% OFF',
-    emi: '₹1,999/mo',
-    rating: 4.7,
-    students: '980+',
-    badge: 'IoT & Edge',
-  },
-  vlsi: {
-    price: '₹29,999',
-    originalPrice: '₹55,000',
-    discount: '45% OFF',
-    emi: '₹2,499/mo',
-    rating: 4.9,
-    students: '820+',
-    badge: 'Semiconductor',
-  },
-  embedded: {
-    price: '₹24,999',
-    originalPrice: '₹46,000',
-    discount: '45% OFF',
-    emi: '₹2,083/mo',
-    rating: 4.8,
-    students: '1,150+',
-    badge: 'Hardware Core',
-  },
-  'ui-ux': {
-    price: '₹19,999',
-    originalPrice: '₹38,000',
-    discount: '47% OFF',
-    emi: '₹1,666/mo',
-    rating: 4.9,
-    students: '1,390+',
-    badge: 'Creative Tech',
-  },
-  'hr-analytics': {
-    price: '₹18,999',
-    originalPrice: '₹36,000',
-    discount: '47% OFF',
-    emi: '₹1,583/mo',
-    rating: 4.7,
-    students: '760+',
-    badge: 'Analytics',
-  },
-  autocad: {
-    price: '₹19,999',
-    originalPrice: '₹38,000',
-    discount: '47% OFF',
-    emi: '₹1,666/mo',
-    rating: 4.8,
-    students: '920+',
-    badge: 'CAD & 3D',
-  },
-  'digital-marketing': {
-    price: '₹17,999',
-    originalPrice: '₹35,000',
-    discount: '48% OFF',
-    emi: '₹1,499/mo',
-    rating: 4.8,
-    students: '1,540+',
-    badge: 'Growth Engine',
-  },
+
+// Uniform Special Offer Pricing: ₹10,000 struck through -> ₹6,999
+const UNIFORM_OFFER = {
+  originalPrice: '₹10,000',
+  price: '₹6,999',
+  discount: '30% OFF',
+  emi: '₹1,166/mo',
 }
 
 export function MobileSales() {
@@ -134,21 +32,14 @@ export function MobileSales() {
   const [isPaused, setIsPaused] = useState(false)
   const [activeModalCourse, setActiveModalCourse] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const isMobile = useMediaQuery('(max-width: 768px)')
   const trackRef = useRef(null)
 
-  // Enrich all 12 programs
-  const enrichedPrograms = programsData.map((prog) => {
-    const details = PROGRAM_PRICING[prog.id] || {
-      price: '₹24,999',
-      originalPrice: '₹45,000',
-      discount: '45% OFF',
-      emi: '₹2,083/mo',
-      rating: 4.8,
-      students: '1,000+',
-      badge: 'Certified',
-    }
-    return { ...prog, ...details }
-  })
+  // Enrich all 13 programs with uniform ₹6,999 offer and ₹10,000 strikethrough
+  const enrichedPrograms = programsData.map((prog) => ({
+    ...prog,
+    ...UNIFORM_OFFER,
+  }))
 
   const handleOpenModal = (course) => {
     setActiveModalCourse(course)
@@ -255,16 +146,22 @@ export function MobileSales() {
 
           {/* Category Filter Pills */}
           <div className="store-category-bar">
-            {programCategories.map((cat) => (
-              <button
-                key={cat}
-                className={`category-pill ${selectedCategory === cat ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(cat)}
-              >
-                <span>{cat}</span>
-                {cat === 'All Programs' && <span className="cat-count">12</span>}
-              </button>
-            ))}
+            {programCategories.map((cat) => {
+              const count =
+                cat === 'All Programs'
+                  ? enrichedPrograms.length
+                  : enrichedPrograms.filter((p) => p.category === cat).length
+              return (
+                <button
+                  key={cat}
+                  className={`category-pill ${selectedCategory === cat ? 'active' : ''}`}
+                  onClick={() => setSelectedCategory(cat)}
+                >
+                  <span>{cat}</span>
+                  <span className="cat-count">{count}</span>
+                </button>
+              )
+            })}
           </div>
         </div>
 
@@ -273,7 +170,24 @@ export function MobileSales() {
             If "All Programs" -> Seamless Infinite Quantum Stream Marquee
             If Filtered -> Responsive Grid
             ------------------------------------------------------------------ */}
-        {isAllPrograms ? (
+        {isMobile ? (
+          <div className="store-mobile-swipe-viewport">
+            <div className="store-mobile-swipe-track">
+              {(isAllPrograms ? enrichedPrograms : filteredPrograms).map((course) => (
+                <CourseCard
+                  key={`mobile-${course.id}`}
+                  course={course}
+                  billingMode={billingMode}
+                  onEnroll={scrollToContact}
+                  onViewDetails={handleOpenModal}
+                />
+              ))}
+            </div>
+            <div className="store-mobile-swipe-hint">
+              <span>← Swipe left/right to browse {isAllPrograms ? `all ${enrichedPrograms.length} programs` : `${filteredPrograms.length} programs`} →</span>
+            </div>
+          </div>
+        ) : isAllPrograms ? (
           <div
             className="store-marquee-viewport"
             onMouseEnter={() => setIsPaused(true)}
@@ -323,6 +237,7 @@ export function MobileSales() {
             ))}
           </div>
         )}
+
 
         {/* Trust & Guarantee Banner */}
         <div className="store-trust-grid">
@@ -390,13 +305,33 @@ function CourseCard({ course, billingMode, onEnroll, onViewDetails }) {
         '--card-accent': course.accentColor,
       }}
     >
-      {/* Top Card Glow Accent */}
+      {/* Top Card Ambient Glow Accent */}
       <div className="card-ambient-highlight" />
 
-      {/* Header Row: Category Tag & Badge */}
-      <div className="card-top-row">
-        <span className="card-category-badge">{course.category}</span>
-        <span className="card-level-badge">{course.badge}</span>
+      {/* Course Image Header with Floating Badges & Hover Zoom */}
+      <div
+        className="card-media-wrapper"
+        onClick={() => onViewDetails?.(course)}
+        title="Click to view full curriculum, projects & career paths"
+      >
+        <img
+          src={course.image}
+          alt={course.title}
+          className="card-media-img"
+          loading="lazy"
+          onError={(e) => {
+            e.currentTarget.onerror = null
+            e.currentTarget.src = 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=700&q=80'
+          }}
+        />
+        <div className="card-media-overlay" />
+        <div className="card-media-shine" />
+
+        {/* Floating Badges over Image */}
+        <div className="card-media-badges">
+          <span className="card-category-badge">{course.category}</span>
+          <span className="card-level-badge">{course.badge}</span>
+        </div>
       </div>
 
       {/* Course Title (Clickable to open deep-dive) */}
