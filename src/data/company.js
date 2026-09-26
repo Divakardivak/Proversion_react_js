@@ -90,8 +90,8 @@ export const whyUsData = {
   ],
   ecosystemMetrics: [
     { label: 'Experienced Mentors', value: '10+ Years', detail: 'Seasoned industry veterans', icon: 'Users' },
-    { label: 'Domain Bootcamps', value: '80–90 Days', detail: 'Intensive practical training', icon: 'Clock' },
-    { label: 'Industrial Stipend', value: 'Up to ₹22K/mo', detail: 'Interview-based internships', icon: 'Coins' },
+    { label: 'Domain Bootcamps', value: '120 Days', detail: 'Intensive practical training', icon: 'Clock' },
+    { label: 'Performance-Based', value: 'Basic Package', detail: 'Based on performance', icon: 'Coins' },
     { label: 'Placement Focus', value: '100%', detail: 'Corporate connect network', icon: 'Target' },
   ],
 }

@@ -17,9 +17,8 @@ import './Contact.css';
 export default function Contact() {
   return (
     <section id="contact" className="ui-contact" aria-labelledby="contact-heading">
-      {/* Ambient background glows */}
-      <div className="ui-contact__bg-glow ui-contact__bg-glow--cyan" aria-hidden="true" />
-      <div className="ui-contact__bg-glow ui-contact__bg-glow--purple" aria-hidden="true" />
+      {/* Modern Fluid Animated Aurora Gradient Background */}
+      <ContactVisual />
 
       <Container size="xl">
         {/* Section Header */}
@@ -45,11 +44,9 @@ export default function Contact() {
           </Reveal>
         </div>
 
-        {/* Two-column layout: Info & Visual on left, Interactive Form on right */}
+        {/* Two-column layout: Info on left, Interactive Form on right */}
         <div className="ui-contact__grid">
           <div className="ui-contact__info-col">
-            <ContactVisual />
-
             <Reveal animation="fadeUp" delay={0.35} className="ui-contact__info-reveal">
               <ContactInfo />
             </Reveal>

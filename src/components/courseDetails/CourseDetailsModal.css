@@ -560,6 +560,12 @@
   gap: 20px;
 }
 
+.pricing-split-grid.single-plan {
+  grid-template-columns: 1fr;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
 .pricing-plan-card {
   position: relative;
   background: rgba(255, 255, 255, 0.03);

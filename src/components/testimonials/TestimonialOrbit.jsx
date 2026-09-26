@@ -100,20 +100,19 @@ export function TestimonialOrbit({
           return (
             <motion.div
               key={item.id}
-              className={`ui-testimonial-orbit__item ${
-                isCenter ? 'ui-testimonial-orbit__item--center' : 'ui-testimonial-orbit__item--flank'
-              }`}
+              className={`ui-testimonial-orbit__item ${isCenter ? 'ui-testimonial-orbit__item--center' : 'ui-testimonial-orbit__item--flank'
+                }`}
               animate={
                 shouldReduceMotion
                   ? { opacity: isCenter ? 1 : 0, scale: isCenter ? 1 : 0.95 }
                   : {
-                      x: xPos,
-                      scale,
-                      rotateY,
-                      z: zDepth,
-                      opacity,
-                      filter: `blur(${blurAmount}px)`,
-                    }
+                    x: xPos,
+                    scale,
+                    rotateY,
+                    z: zDepth,
+                    opacity,
+                    filter: `blur(${blurAmount}px)`,
+                  }
               }
               transition={{
                 type: 'spring',
@@ -141,14 +140,6 @@ export function TestimonialOrbit({
             </motion.div>
           )
         })}
-      </div>
-
-      {/* 3D Interaction Navigation Cue */}
-      <div className="ui-testimonial-orbit__hint-wrap" aria-hidden="true">
-        <span className="ui-testimonial-orbit__hint-pill">
-          <span className="ui-testimonial-orbit__hint-icon">⇄</span>
-          <span>Scroll, drag, or click to explore in 3D</span>
-        </span>
       </div>
     </div>
   )

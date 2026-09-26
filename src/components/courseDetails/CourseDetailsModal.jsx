@@ -123,8 +123,8 @@ export function CourseDetailsModal({ course, isOpen, onClose, onEnroll }) {
               <div className="milestone-chip">
                 <Briefcase size={14} className="milestone-icon emerald" />
                 <div>
-                  <span className="m-label">Guaranteed Internship</span>
-                  <span className="m-val">Up to ₹22,000/mo Stipend</span>
+                  <span className="m-label">Internship Opportunity</span>
+                  <span className="m-val">Basic Package (Performance Based)</span>
                 </div>
               </div>
 
@@ -177,7 +177,7 @@ export function CourseDetailsModal({ course, isOpen, onClose, onEnroll }) {
               onClick={() => setActiveTab('pricing')}
             >
               <DollarSign size={15} />
-              <span>Tuition & EMI</span>
+              <span>Tuition & Pricing</span>
             </button>
           </div>
 
@@ -313,7 +313,7 @@ export function CourseDetailsModal({ course, isOpen, onClose, onEnroll }) {
             {/* 5. PRICING & TUITION TAB */}
             {activeTab === 'pricing' && (
               <div className="tab-pane pricing-pane">
-                <div className="pricing-split-grid">
+                <div className="pricing-split-grid single-plan">
                   {/* Upfront Option */}
                   <div className="pricing-plan-card recommended">
                     <div className="plan-badge">Scholarship Special</div>
@@ -325,26 +325,9 @@ export function CourseDetailsModal({ course, isOpen, onClose, onEnroll }) {
                     <span className="plan-savings-pill">Save {discount} Instantly</span>
                     <ul className="plan-perks">
                       <li><CheckCircle2 size={13} className="text-emerald" /> 100% Full Curriculum & Code Access</li>
-                      <li><CheckCircle2 size={13} className="text-emerald" /> Paid Internship: Up to ₹22,000/mo</li>
+                      <li><CheckCircle2 size={13} className="text-emerald" /> Internship: Basic Package Based on Performance</li>
                       <li><CheckCircle2 size={13} className="text-emerald" /> MNC Dual-Certification</li>
-                      <li><CheckCircle2 size={13} className="text-emerald" /> Dedicated 1-on-1 Mentor Calls</li>
-                    </ul>
-                  </div>
-
-                  {/* Monthly EMI Option */}
-                  <div className="pricing-plan-card">
-                    <div className="plan-badge emi">Zero Cost EMI</div>
-                    <h4>Monthly Installment</h4>
-                    <div className="plan-amount-box">
-                      <span className="plan-price">{emi}</span>
-                      <span className="plan-period">/month</span>
-                    </div>
-                    <span className="plan-savings-pill cyan">0% Interest · 12 Months</span>
-                    <ul className="plan-perks">
-                      <li><CheckCircle2 size={13} className="text-emerald" /> Instant Approval with Major Banks</li>
-                      <li><CheckCircle2 size={13} className="text-emerald" /> Zero Down Payment Required</li>
-                      <li><CheckCircle2 size={13} className="text-emerald" /> Same Mentorship & Internship Stipend</li>
-                      <li><CheckCircle2 size={13} className="text-emerald" /> Flexible 3, 6, 9, or 12 Months tenure</li>
+                      <li><CheckCircle2 size={13} className="text-emerald" /> Dedicated 1-on-1 Guidance</li>
                     </ul>
                   </div>
                 </div>

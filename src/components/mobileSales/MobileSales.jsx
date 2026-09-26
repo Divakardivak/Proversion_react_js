@@ -8,7 +8,6 @@ import {
   ArrowRight,
   ShieldCheck,
   Award,
-  CreditCard,
   Zap,
   ChevronRight,
 } from 'lucide-react'
@@ -23,12 +22,10 @@ const UNIFORM_OFFER = {
   originalPrice: '₹10,000',
   price: '₹6,999',
   discount: '30% OFF',
-  emi: '₹1,166/mo',
 }
 
 export function MobileSales() {
   const [selectedCategory, setSelectedCategory] = useState('All Programs')
-  const [billingMode, setBillingMode] = useState('upfront') // 'upfront' | 'emi'
   const [isPaused, setIsPaused] = useState(false)
   const [activeModalCourse, setActiveModalCourse] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -118,31 +115,9 @@ export function MobileSales() {
           </h2>
 
           <p className="store-subtitle">
-            Master in-demand tech domains with production-grade MNC project simulations, guaranteed paid
-            internships up to ₹22,000/month, and direct hiring pipelines with top enterprises.
+            Master in-demand tech domains with production-grade MNC project simulations, performance-based
+            internships with basic package, and direct hiring pipelines with top enterprises.
           </p>
-
-          {/* Interactive Billing Mode Switcher (Scholarship vs No-Cost EMI) */}
-          <div className="billing-switcher-wrapper">
-            <span className={`switcher-label ${billingMode === 'upfront' ? 'active' : ''}`}>
-              Full Upfront (Up to 48% Scholarship)
-            </span>
-
-            <button
-              className={`billing-toggle-btn ${billingMode === 'emi' ? 'is-emi' : ''}`}
-              onClick={() => setBillingMode((prev) => (prev === 'upfront' ? 'emi' : 'upfront'))}
-              aria-label="Toggle between upfront scholarship pricing and monthly EMI"
-            >
-              <span className="toggle-slider" />
-            </button>
-
-            <div className="emi-label-group">
-              <span className={`switcher-label ${billingMode === 'emi' ? 'active' : ''}`}>
-                Flexible No-Cost EMI
-              </span>
-              <span className="zero-interest-pill">0% Interest</span>
-            </div>
-          </div>
 
           {/* Category Filter Pills */}
           <div className="store-category-bar">
@@ -177,7 +152,6 @@ export function MobileSales() {
                 <CourseCard
                   key={`mobile-${course.id}`}
                   course={course}
-                  billingMode={billingMode}
                   onEnroll={scrollToContact}
                   onViewDetails={handleOpenModal}
                 />
@@ -203,7 +177,6 @@ export function MobileSales() {
                   <CourseCard
                     key={`stream-1-${course.id}`}
                     course={course}
-                    billingMode={billingMode}
                     onEnroll={scrollToContact}
                     onViewDetails={handleOpenModal}
                   />
@@ -216,7 +189,6 @@ export function MobileSales() {
                   <CourseCard
                     key={`stream-2-${course.id}`}
                     course={course}
-                    billingMode={billingMode}
                     onEnroll={scrollToContact}
                     onViewDetails={handleOpenModal}
                   />
@@ -230,7 +202,6 @@ export function MobileSales() {
               <CourseCard
                 key={`filtered-${course.id}`}
                 course={course}
-                billingMode={billingMode}
                 onEnroll={scrollToContact}
                 onViewDetails={handleOpenModal}
               />
@@ -256,8 +227,8 @@ export function MobileSales() {
               <Briefcase size={22} />
             </div>
             <div className="pillar-info">
-              <h4>Paid Internship Included</h4>
-              <p>Earn up to ₹22,000/month stipend while building enterprise-grade portfolio projects.</p>
+              <h4>Performance-Based Internship</h4>
+              <p>Basic package based on performance while building enterprise-grade portfolio projects.</p>
             </div>
           </div>
 
@@ -268,16 +239,6 @@ export function MobileSales() {
             <div className="pillar-info">
               <h4>100% Placement Assurance</h4>
               <p>Dedicated resume reviews, 1-on-1 mock interviews, and direct referral pipeline.</p>
-            </div>
-          </div>
-
-          <div className="trust-pillar-card">
-            <div className="pillar-icon-box amber">
-              <CreditCard size={22} />
-            </div>
-            <div className="pillar-info">
-              <h4>Zero-Cost EMI Financing</h4>
-              <p>Instant approvals, 0% interest, and flexible 3 to 12 months tenure with major banks.</p>
             </div>
           </div>
         </div>
@@ -297,7 +258,7 @@ export function MobileSales() {
 /**
  * High-Converting Glassmorphic Course Card Component
  */
-function CourseCard({ course, billingMode, onEnroll, onViewDetails }) {
+function CourseCard({ course, onEnroll, onViewDetails }) {
   return (
     <div
       className="quantum-course-card"
@@ -354,17 +315,17 @@ function CourseCard({ course, billingMode, onEnroll, onViewDetails }) {
         <span className="placed-count">{course.students} Enrolled</span>
       </div>
 
-      {/* Program Milestones (Duration & Paid Internship) */}
-      <div className="card-meta-chips">
-        <div className="meta-chip duration">
-          <Clock size={12} className="chip-icon" />
-          <span>{course.duration}</span>
+        {/* Program Milestones (Duration & Performance Package) */}
+        <div className="card-meta-chips">
+          <div className="meta-chip duration">
+            <Clock size={12} className="chip-icon" />
+            <span>{course.duration}</span>
+          </div>
+          <div className="meta-chip stipend">
+            <Briefcase size={12} className="chip-icon" />
+            <span>{course.internship}</span>
+          </div>
         </div>
-        <div className="meta-chip stipend">
-          <Briefcase size={12} className="chip-icon" />
-          <span>Stipend Up to ₹22K/mo</span>
-        </div>
-      </div>
 
       {/* Curriculum Highlights (Clickable to open course plan) */}
       <div
@@ -384,35 +345,15 @@ function CourseCard({ course, billingMode, onEnroll, onViewDetails }) {
         </div>
       </div>
 
-      {/* Pricing Module (Upfront vs. EMI Mode) */}
+      {/* Pricing Module */}
       <div className="card-pricing-module">
-        {billingMode === 'upfront' ? (
-          <>
-            <div className="price-display-row">
-              <div className="price-main-amount">
-                <span className="amount-val">{course.price}</span>
-                <span className="amount-original">{course.originalPrice}</span>
-              </div>
-              <span className="scholarship-badge">{course.discount}</span>
-            </div>
-            <div className="price-sub-note">
-              <span>Or pay <strong>{course.emi}</strong> with No-Cost EMI</span>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="price-display-row">
-              <div className="price-main-amount">
-                <span className="amount-val">{course.emi}</span>
-                <span className="emi-period">/month</span>
-              </div>
-              <span className="zero-cost-badge">0% EMI</span>
-            </div>
-            <div className="price-sub-note">
-              <span>Total Course Fee: <strong>{course.price}</strong> (Save {course.discount})</span>
-            </div>
-          </>
-        )}
+        <div className="price-display-row">
+          <div className="price-main-amount">
+            <span className="amount-val">{course.price}</span>
+            <span className="amount-original">{course.originalPrice}</span>
+          </div>
+          <span className="scholarship-badge">{course.discount}</span>
+        </div>
       </div>
 
       {/* CTA Enrollment Buttons */}

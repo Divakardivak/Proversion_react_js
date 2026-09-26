@@ -159,7 +159,7 @@ export function initSmoothScrollController() {
     if (e.ctrlKey || e.metaKey || e.altKey) return
 
     // Fast O(1) DOM check — NO getComputedStyle or layout querying!
-    if (e.target && e.target.closest && e.target.closest('[data-scroll-container], textarea, select')) {
+    if (e.target && e.target.closest && e.target.closest('[data-scroll-container], .ui-sidebar-drawer, textarea, select')) {
       return
     }
 

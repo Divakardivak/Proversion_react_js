@@ -33,3 +33,18 @@
 .ui-container--fluid {
   max-width: 100%;
 }
+
+@media (max-width: 768px) {
+  .ui-container {
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ui-container {
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+}
+

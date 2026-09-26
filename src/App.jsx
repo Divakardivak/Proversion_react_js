@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { AppShell } from '@/components/layout/AppShell'
 import { SmoothScroll } from '@/components/common/SmoothScroll'
@@ -13,7 +13,26 @@ import { Testimonials } from '@/components/testimonials/Testimonials'
 import { Contact } from '@/components/contact'
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      return !params.has('no-loader')
+    }
+    return true
+  })
+
+  // Auto-scroll to target section if hash is present in URL
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.location.hash) return
+    const targetId = window.location.hash
+    const timer = setTimeout(() => {
+      const el = document.querySelector(targetId)
+      if (el) {
+        el.scrollIntoView({ behavior: 'auto' })
+      }
+    }, 200)
+    return () => clearTimeout(timer)
+  }, [isLoading])
 
   return (
     <>
