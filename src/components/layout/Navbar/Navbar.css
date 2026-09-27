@@ -712,3 +712,23 @@
     display: none;
   }
 }
+
+@media (max-width: 360px) {
+  .ui-navbar {
+    height: 4rem;
+  }
+
+  .ui-navbar__brand-text {
+    font-size: 1rem;
+  }
+
+  .ui-navbar__hamburger {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ui-sidebar-drawer {
+    width: 100vw;
+    padding: 16px 14px 30px;
+  }
+}

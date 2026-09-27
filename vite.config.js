@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // https://vite.dev/config/
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/Proversion_react_js/' : '/',
+  base: '/',
   plugins: [react()],
   resolve: {
     alias: {

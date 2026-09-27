@@ -204,15 +204,11 @@ export function Hero() {
 
           {/* ── Right Column: Visual Stage (Desktop Script + Mobile Showcase) ── */}
           <div className="ui-hero__scene-container">
-            {/* Desktop Glowing Handwritten Script: Learn Build Grow */}
-            <div className="ui-hero__handwritten-script" aria-hidden="true">
-              <span className="script-word">Learn</span>
-              <span className="script-word">Build</span>
-              <span className="script-word">Grow</span>
-              <div className="script-sparkles-row">
-                <Sparkles size={16} className="script-sparkle gold" />
-                <Sparkles size={11} className="script-sparkle cyan" />
-              </div>
+            {/* Desktop Stage Badge: Innovation at every stage */}
+            <div className="ui-hero__stage-badge" aria-hidden="true">
+              <span className="stage-badge-dot" />
+              <span className="stage-badge-text">Innovation at every stage</span>
+              <Sparkles size={14} className="script-sparkle gold" />
             </div>
 
             {/* Mobile Mascot Showcase (Active on screens <= 768px) */}
@@ -228,7 +224,7 @@ export function Hero() {
               </div>
               <div className="mobile-script-badge">
                 <span className="mobile-script-dot" />
-                <span>Learn • Build • Grow</span>
+                <span>Innovation at every stage</span>
                 <Sparkles size={13} className="script-sparkle gold" />
               </div>
             </div>
