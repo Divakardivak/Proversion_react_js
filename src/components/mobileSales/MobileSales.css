@@ -244,8 +244,9 @@
    -------------------------------------------------------------------------- */
 .store-marquee-viewport {
   position: relative;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
   overflow: hidden;
   padding: 30px 0 50px;
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -870,6 +871,7 @@
   /* Native Touch Swipe Carousel on Mobile (Replaces Marquee) */
   .store-mobile-swipe-viewport {
     width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
@@ -891,7 +893,7 @@
   }
 
   .store-mobile-swipe-track .quantum-course-card {
-    width: calc(100vw - 44px);
+    width: min(325px, calc(100vw - 48px));
     max-width: 325px;
     scroll-snap-align: center;
     flex-shrink: 0;

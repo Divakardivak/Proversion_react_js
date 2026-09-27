@@ -3,6 +3,10 @@
   padding: 3.5rem 0 4rem 0;
   background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(13, 23, 56, 0.7) 50%, var(--bg-primary) 100%);
   overflow: hidden;
+  overflow-x: hidden;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
   scroll-margin-top: 80px;
 }
 

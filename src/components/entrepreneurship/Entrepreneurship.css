@@ -3,6 +3,10 @@
   padding: var(--space-24) 0;
   background: linear-gradient(180deg, var(--bg-primary) 0%, #0d061d 50%, var(--bg-primary) 100%);
   overflow: hidden;
+  overflow-x: hidden;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Ambient Background Lighting */

@@ -9,6 +9,10 @@
   padding: var(--space-12) 0 var(--space-6);
   margin-top: auto;
   overflow: hidden;
+  overflow-x: hidden;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
   color: var(--pv-text-secondary);
 }
 

@@ -16,6 +16,8 @@
   padding-top: 5rem;
   padding-bottom: 0.6rem;
   overflow: hidden;
+  overflow-x: hidden;
+  overflow-x: clip;
   background-color: #03081e;
   width: 100%;
   max-width: 100%;
@@ -678,6 +680,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 8px;
     width: 100%;
     max-width: 360px;
@@ -778,6 +781,10 @@
 
   /* Partner Logos Dock: Sleek auto-scroll marquee */
   .ui-hero__partners-dock {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
     border-radius: 9999px;
     padding: 8px 0;
     margin: 6px auto 10px;
