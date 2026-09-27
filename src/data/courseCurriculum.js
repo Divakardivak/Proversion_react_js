@@ -595,4 +595,138 @@ export const courseCurriculumData = {
     salaryRange: '₹6.0 LPA – ₹17.0 LPA',
     hiringPartners: ['Dentsu', 'Ogilvy', 'Zomato', 'Nykaa', 'GrowthX', 'GroupM', 'Amazon Marketing'],
   },
+
+  'data-science': {
+    modules: [
+      {
+        title: 'Module 1: Advanced Python & Vectorized Scientific Computing',
+        duration: 'Weeks 1–3',
+        topics: [
+          'Python Object-Oriented Architecture, Generators, and Decorators',
+          'High-performance data manipulation with NumPy, Pandas, and Polars',
+          'Data cleaning, missing value imputation, and automated exploratory analysis',
+          'Exploratory data visualization with Seaborn, Matplotlib, and Plotly',
+        ],
+      },
+      {
+        title: 'Module 2: Applied Statistics, Hypothesis Testing & Machine Learning',
+        duration: 'Weeks 4–6',
+        topics: [
+          'Descriptive and inferential statistics, probability distributions, and p-values',
+          'A/B testing methodology, Chi-Square, ANOVA, and Central Limit Theorem',
+          'Supervised learning: Linear/Logistic Regression, Decision Trees, and Random Forests',
+          'Ensemble methods (XGBoost, LightGBM), cross-validation, and Optuna tuning',
+        ],
+      },
+      {
+        title: 'Module 3: Deep Learning, Time Series & Feature Engineering',
+        duration: 'Weeks 7–9',
+        topics: [
+          'Neural network architectures with PyTorch and TensorFlow / Keras',
+          'Time series forecasting using ARIMA, SARIMAX, and Prophet',
+          'High-dimensional dimensionality reduction with PCA and t-SNE',
+          'Building production predictive pipelines with Scikit-Learn ColumnTransformer',
+        ],
+      },
+      {
+        title: 'Module 4: Big Data Pipelines with PySpark & Cloud Deployment',
+        duration: 'Weeks 10–12',
+        topics: [
+          'Distributed Big Data processing with Apache Spark and PySpark DataFrames',
+          'Advanced SQL querying, window functions, and relational database design',
+          'Deploying machine learning models as REST APIs using FastAPI and Docker',
+          'Interactive executive BI dashboards with Streamlit and Tableau',
+        ],
+      },
+    ],
+    projects: [
+      {
+        name: 'Enterprise Customer Churn Predictive Platform',
+        description: 'End-to-end churn prediction pipeline using LightGBM with 94.2% ROC-AUC, deployed as an interactive Streamlit application with explainable AI (SHAP).',
+        tech: ['Python', 'LightGBM', 'SHAP', 'Streamlit', 'Docker', 'FastAPI'],
+      },
+      {
+        name: 'Real-Time E-Commerce Recommendation Engine',
+        description: 'Collaborative filtering and content-based recommendation model handling 500K+ SKU catalogs with sub-25ms inference latency.',
+        tech: ['PySpark', 'Scikit-Learn', 'FastAPI', 'Redis', 'PostgreSQL'],
+      },
+    ],
+    tools: ['Python', 'Pandas', 'NumPy', 'PyTorch', 'Scikit-Learn', 'Apache Spark', 'SQL', 'FastAPI', 'Tableau', 'Docker'],
+    careerRoles: ['Data Scientist', 'Senior Data Analyst', 'Quantitative Analyst', 'Machine Learning Consultant', 'Business Intelligence Lead'],
+    salaryRange: '₹8.0 LPA – ₹22.0 LPA',
+    hiringPartners: ['Microsoft', 'Amazon', 'Fractal Analytics', 'Mu Sigma', 'Deloitte', 'Tiger Analytics', 'Infosys'],
+  },
+
+  'stock-marketing': {
+    modules: [
+      {
+        title: 'Module 1: Market Mechanics, Price Action & Candlestick Psychology',
+        duration: 'Weeks 1–3',
+        topics: [
+          'Financial markets microstructure: Equities, Derivatives, Commodities, and Forex',
+          'Auction market theory, order book depth, and institutional liquidity concepts',
+          'Advanced multi-timeframe price action, support/resistance, and supply-demand zones',
+          'Candlestick pattern psychology, false breakout identification, and trap detection',
+        ],
+      },
+      {
+        title: 'Module 2: Technical Indicators, Trend Analysis & Chart Patterns',
+        duration: 'Weeks 4–6',
+        topics: [
+          'Moving averages (EMA/SMA crossovers), VWAP institutional benchmark trading',
+          'Momentum oscillators: RSI divergences, MACD, and Bollinger Band squeezes',
+          'Classical chart patterns: Head & Shoulders, Flags, Pennants, and Cup & Handle',
+          'Volume Spread Analysis (VSA) and open interest (OI) accumulation/distribution',
+        ],
+      },
+      {
+        title: 'Module 3: Derivatives Strategies: Futures & Options Hedging',
+        duration: 'Weeks 7–9',
+        topics: [
+          'Options fundamentals: Call/Put payoff diagrams, Moneyness, and Greeks (Delta, Theta, Vega)',
+          'Non-directional options strategies: Iron Condor, Short Straddle, and Strangle',
+          'Directional hedging: Bull Call Spreads, Bear Put Spreads, and Protective Puts',
+          'Implied Volatility (IV) rank, volatility skew, and max pain strike analysis',
+        ],
+      },
+      {
+        title: 'Module 4: Algorithmic Trading with Python & Risk Management Psychology',
+        duration: 'Weeks 10–12',
+        topics: [
+          'Python for finance: Quantitative data retrieval using Yahoo Finance and NSE Python APIs',
+          'Automated trading bot architecture with Zerodha Kite Connect and Angel One SmartAPI',
+          'Strategy backtesting with Backtrader: Sharpe Ratio, Sortino Ratio, and Max Drawdown',
+          'Position sizing (Kelly Criterion), risk-reward modeling, and professional trader mindset',
+        ],
+      },
+    ],
+    projects: [
+      {
+        name: 'Automated Intra-Day Momentum Trading Bot',
+        description: 'Algorithmic trading engine with automated order placement via Kite Connect API, incorporating real-time VWAP and Supertrend signals with strict stop-loss rules.',
+        tech: ['Python', 'Zerodha Kite API', 'Pandas', 'Backtrader', 'Telegram Webhooks'],
+      },
+      {
+        name: 'Multi-Asset Quantitative Portfolio Optimizer',
+        description: 'Risk parity and modern portfolio theory (MPT) asset allocation engine computing efficient frontier, Value-at-Risk (VaR), and stress-testing.',
+        tech: ['Python', 'NumPy', 'SciPy', 'Matplotlib', 'Streamlit'],
+      },
+    ],
+    tools: ['TradingView', 'Python', 'Zerodha Kite API', 'NSE Python', 'Pandas', 'Backtrader', 'Excel VBA', 'Google Sheets'],
+    careerRoles: ['Equity Research Analyst', 'Derivative Trader', 'Quantitative Trading Assistant', 'Portfolio Risk Analyst', 'Technical Analyst'],
+    salaryRange: '₹6.5 LPA – ₹20.0 LPA',
+    hiringPartners: ['Zerodha', 'Groww', 'Angel One', 'Motilal Oswal', 'HDFC Securities', 'ICICI Direct', 'QuantInsti'],
+  },
 }
+
+// Map alias IDs to ensure every course slug from programsData resolves directly
+courseCurriculumData['cloud-computing'] = courseCurriculumData['aws-cloud']
+courseCurriculumData['artificial-intelligence'] = courseCurriculumData['ai-ml']
+courseCurriculumData['machine-learning'] = courseCurriculumData['ai-ml']
+courseCurriculumData['web-development'] = courseCurriculumData['full-stack']
+courseCurriculumData['iot-robotics'] = courseCurriculumData['iot']
+courseCurriculumData['embedded-systems'] = courseCurriculumData['embedded']
+courseCurriculumData['human-resource'] = courseCurriculumData['hr-analytics']
+courseCurriculumData['ai'] = courseCurriculumData['ai-ml']
+courseCurriculumData['cloud'] = courseCurriculumData['aws-cloud']
+

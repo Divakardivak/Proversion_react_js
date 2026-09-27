@@ -25,6 +25,24 @@ const RESPONSE = 18
 // Wheel multiplier for comfortable notch travel without sluggish drag
 const WHEEL_MULTIPLIER = 1.15
 
+let scrollStateTimeout = null
+
+function markScrolling() {
+  if (typeof document === 'undefined') return
+  if (!document.body.classList.contains('is-scrolling')) {
+    document.body.classList.add('is-scrolling')
+  }
+  if (scrollStateTimeout) {
+    clearTimeout(scrollStateTimeout)
+  }
+  scrollStateTimeout = setTimeout(() => {
+    if (typeof document !== 'undefined') {
+      document.body.classList.remove('is-scrolling')
+    }
+    scrollStateTimeout = null
+  }, 120)
+}
+
 /**
  * Time-based exponential interpolation step
  * Mathematically consistent across 60Hz, 120Hz, 144Hz, 165Hz, and 240Hz
@@ -32,12 +50,12 @@ const WHEEL_MULTIPLIER = 1.15
 function animate(currentTime) {
   if (!isAnimating) return
 
-  // Calculate elapsed time in seconds; support high-refresh rates (144Hz=6.9ms, 165Hz=6.0ms, 240Hz=4.1ms)
+  // Calculate elapsed time in seconds; support high-refresh rates
   const dt = Math.max(0.001, Math.min((currentTime - lastTime) / 1000, 0.05))
   lastTime = currentTime
 
-  // Frame-rate independent exponential interpolation
-  const alpha = 1 - Math.exp(-RESPONSE * dt)
+  // Frame-rate independent exponential interpolation (snappy 22 response for Chrome)
+  const alpha = 1 - Math.exp(-22 * dt)
   currentScroll += (targetScroll - currentScroll) * alpha
 
   // Check sub-pixel threshold
@@ -49,7 +67,6 @@ function animate(currentTime) {
     isAnimating = false
     isProgrammaticScroll = false
     rafId = null
-    document.documentElement.classList.remove('is-scrolling')
     return // Stop loop: zero CPU/GPU load while stationary
   }
 
@@ -60,10 +77,10 @@ function animate(currentTime) {
 }
 
 function startAnimation() {
+  markScrolling()
   if (!isAnimating) {
     isAnimating = true
     lastTime = performance.now()
-    document.documentElement.classList.add('is-scrolling')
     rafId = requestAnimationFrame(animate)
   }
 }
@@ -75,7 +92,13 @@ function stopAnimation() {
   }
   isAnimating = false
   isProgrammaticScroll = false
-  document.documentElement.classList.remove('is-scrolling')
+  if (scrollStateTimeout) {
+    clearTimeout(scrollStateTimeout)
+    scrollStateTimeout = null
+  }
+  if (typeof document !== 'undefined') {
+    document.body.classList.remove('is-scrolling')
+  }
 }
 
 /**
@@ -159,7 +182,20 @@ export function initSmoothScrollController() {
     if (e.ctrlKey || e.metaKey || e.altKey) return
 
     // Fast O(1) DOM check — NO getComputedStyle or layout querying!
-    if (e.target && e.target.closest && e.target.closest('[data-scroll-container], .ui-sidebar-drawer, textarea, select')) {
+    if (
+      e.target &&
+      e.target.closest &&
+      e.target.closest(
+        '[data-scroll-container], .course-modal-backdrop, .course-modal-window, .modal-body-content, .ui-sidebar-drawer, textarea, select'
+      )
+    ) {
+      return
+    }
+
+    // Precision trackpad detection (deltaMode 0 with small or fractional deltas)
+    // Let trackpads scroll with native OS compositor acceleration in Chrome
+    const isTrackpad = e.deltaMode === 0 && (!Number.isInteger(e.deltaY) || Math.abs(e.deltaY) < 35)
+    if (isTrackpad) {
       return
     }
 

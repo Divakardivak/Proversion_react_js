@@ -29,9 +29,21 @@ export function AboutCard({ pillar, index }) {
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), springConfig)
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), springConfig)
 
-  const handleMouseMove = (e) => {
+  const rectRef = useRef(null)
+
+  const handleMouseEnter = () => {
     if (shouldReduceMotion || !cardRef.current) return
-    const rect = cardRef.current.getBoundingClientRect()
+    rectRef.current = cardRef.current.getBoundingClientRect()
+  }
+
+  const handleMouseMove = (e) => {
+    if (shouldReduceMotion) return
+    if (!rectRef.current && cardRef.current) {
+      rectRef.current = cardRef.current.getBoundingClientRect()
+    }
+    const rect = rectRef.current
+    if (!rect || rect.width === 0 || rect.height === 0) return
+
     const x = (e.clientX - rect.left) / rect.width - 0.5
     const y = (e.clientY - rect.top) / rect.height - 0.5
     mouseX.set(x)
@@ -39,6 +51,7 @@ export function AboutCard({ pillar, index }) {
   }
 
   const handleMouseLeave = () => {
+    rectRef.current = null
     mouseX.set(0)
     mouseY.set(0)
   }
@@ -49,6 +62,7 @@ export function AboutCard({ pillar, index }) {
     <motion.div
       ref={cardRef}
       className="ui-about-card"
+      onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={

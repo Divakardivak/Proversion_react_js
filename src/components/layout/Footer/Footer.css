@@ -305,7 +305,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 2fr 1fr 1.2fr 1.8fr;
+  grid-template-columns: 1.6fr 1fr 1.4fr;
   gap: var(--space-10);
   padding-bottom: var(--space-12);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -333,29 +333,49 @@
 .ui-footer__brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 12px;
   text-decoration: none;
   margin-bottom: var(--space-4);
   width: fit-content;
+  transition: opacity 0.2s ease;
 }
 
-.ui-footer__brand-icon {
+.ui-footer__brand:hover {
+  opacity: 0.95;
+}
+
+.ui-footer__brand-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(79, 70, 229, 0.2));
-  border: 1px solid rgba(37, 99, 235, 0.35);
-  color: var(--primary-light);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+  background: #0f172a;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.ui-footer__brand:hover .ui-footer__brand-badge {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 22px rgba(139, 92, 246, 0.6);
+}
+
+.ui-footer__brand-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .ui-footer__brand-text {
   font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: var(--font-bold);
-  letter-spacing: var(--tracking-wider);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
 }
 

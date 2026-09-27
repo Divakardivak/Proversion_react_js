@@ -20,8 +20,8 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Disable expensive hover recalculations and hit-testing in Chrome during active scroll */
-html.is-scrolling,
-html.is-scrolling * {
+/* Disable hover hit-testing on the body layer during active programmatic scroll
+   without using the universal '*' selector which forces full-tree style invalidation in Chrome */
+body.is-scrolling {
   pointer-events: none !important;
 }

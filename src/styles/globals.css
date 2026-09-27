@@ -47,6 +47,9 @@ body::before {
     radial-gradient(circle at 50% 30%, rgba(37, 99, 235, 0.12), transparent 60%),
     var(--bg-midnight);
   pointer-events: none;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
 }
 
 /* Ensure anchor links have breathing room below fixed navbar */

@@ -13,10 +13,9 @@ import {
 import { Container } from '@/components/common/Container'
 import { Button } from '@/components/common/Button'
 import { MagneticButton } from '@/components/common/MagneticButton'
-import { AnimatedLogo } from '@/components/common/AnimatedLogo'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
-import { programsData } from '@/data/programs'
 import { contactDetails } from '@/data/contact'
+import proversionEmblem from '@/assets/proversion-emblem.jpg'
 import './Footer.css'
 
 const QUICK_LINKS = [
@@ -198,10 +197,18 @@ export function Footer() {
           {/* Column 1: Brand & Overview */}
           <motion.div className="ui-footer__col ui-footer__col--brand" variants={itemVariants}>
             <p className="ui-footer__col-title">Platform</p>
-            <a href="#" className="ui-footer__brand" aria-label="ProVersion Home">
-              <AnimatedLogo variant="footer" size="small" />
+            <a href="#" className="ui-footer__brand" aria-label="ProVersion Home" onClick={scrollToTop}>
+              <div className="ui-footer__brand-badge">
+                <img
+                  src={proversionEmblem}
+                  alt="ProVersion Logo"
+                  className="ui-footer__brand-logo"
+                  width="36"
+                  height="36"
+                />
+              </div>
               <span className="ui-footer__brand-text">
-                PRO<span className="ui-footer__brand-highlight">VERSION</span>
+                Pro<span className="ui-footer__brand-highlight">Version</span>
               </span>
             </a>
 
@@ -235,24 +242,6 @@ export function Footer() {
             </ul>
           </motion.div>
 
-          {/* Column 3: Academic & Career Programs */}
-          <motion.div className="ui-footer__col" variants={itemVariants}>
-            <h3 className="ui-footer__col-title">Programs</h3>
-            <ul className="ui-footer__link-list" role="list">
-              {programsData.map((program) => (
-                <li key={program.id}>
-                  <a
-                    href={`#programs`}
-                    className="ui-footer__link"
-                    title={program.title}
-                  >
-                    <ChevronRight size={13} className="ui-footer__link-arrow" aria-hidden="true" />
-                    <span>{program.shortTitle}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
 
           {/* Column 4: Contact & Social Ecosystem */}
           <motion.div className="ui-footer__col" variants={itemVariants}>

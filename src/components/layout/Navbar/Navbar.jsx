@@ -20,6 +20,7 @@ import { smoothScrollTo } from '@/components/common/SmoothScroll'
 import { Container } from '@/components/common/Container'
 import { MagneticButton } from '@/components/common/MagneticButton'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import proversionEmblem from '@/assets/proversion-emblem.jpg'
 import './Navbar.css'
 
 /**
@@ -47,7 +48,7 @@ export function Navbar() {
   const shouldReduceMotion = useReducedMotion()
   const drawerRef = useRef(null)
 
-  // Scroll Spy to detect currently active section
+  // Combined RAF-throttled scroll listener for scroll-spy and elevation blur
   useEffect(() => {
     // 1. Initial check from URL hash
     if (typeof window !== 'undefined' && window.location.hash) {
@@ -58,42 +59,59 @@ export function Navbar() {
     }
 
     const sectionIds = ALL_NAV_LINKS.map((l) => l.id)
+    let rafId = null
 
-    const handleScrollSpy = () => {
-      // Top boundary
-      if (window.scrollY < 120) {
-        setActiveSection('home')
+    const updateScrollState = () => {
+      const scrollY = window.scrollY
+
+      // 1. Navbar elevation state
+      const scrolled = scrollY > 20
+      setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev))
+
+      // 2. Top boundary check
+      if (scrollY < 120) {
+        setActiveSection((prev) => (prev !== 'home' ? 'home' : prev))
+        rafId = null
         return
       }
 
-      // Bottom boundary (if reached end of page, contact is active)
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 120) {
-        setActiveSection('contact')
+      // 3. Bottom boundary check
+      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 120) {
+        setActiveSection((prev) => (prev !== 'contact' ? 'contact' : prev))
+        rafId = null
         return
       }
 
-      const scrollTrigger = window.scrollY + 220
-
+      // 4. Section detection
+      const scrollTrigger = scrollY + 220
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const id = sectionIds[i]
         const el = document.getElementById(id)
         if (el) {
           const top = el.offsetTop
           if (scrollTrigger >= top) {
-            setActiveSection(id)
+            setActiveSection((prev) => (prev !== id ? id : prev))
             break
           }
         }
       }
+      rafId = null
     }
 
-    handleScrollSpy()
-    window.addEventListener('scroll', handleScrollSpy, { passive: true })
-    window.addEventListener('hashchange', handleScrollSpy)
+    const onScroll = () => {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(updateScrollState)
+      }
+    }
+
+    updateScrollState()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('hashchange', onScroll)
 
     return () => {
-      window.removeEventListener('scroll', handleScrollSpy)
-      window.removeEventListener('hashchange', handleScrollSpy)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('hashchange', onScroll)
+      if (rafId !== null) cancelAnimationFrame(rafId)
     }
   }, [])
 
@@ -117,18 +135,6 @@ export function Navbar() {
     },
     []
   )
-
-  // Scroll listener for navbar elevation blur
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY > 20
-      setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev))
-    }
-
-    handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   // Close sidebar on Escape key & lock background body scroll when open
   useEffect(() => {
@@ -162,7 +168,13 @@ export function Navbar() {
               onClick={(e) => handleNavClick(e, '#')}
             >
               <div className="ui-navbar__brand-badge">
-                <span>P</span>
+                <img
+                  src={proversionEmblem}
+                  alt="ProVersion Logo"
+                  className="ui-navbar__brand-logo"
+                  width="36"
+                  height="36"
+                />
               </div>
               <span className="ui-navbar__brand-text">
                 Pro<span className="ui-navbar__brand-highlight">Version</span>
@@ -240,7 +252,13 @@ export function Navbar() {
               <div className="ui-sidebar-header">
                 <div className="ui-sidebar-brand">
                   <div className="ui-navbar__brand-badge">
-                    <span>P</span>
+                    <img
+                      src={proversionEmblem}
+                      alt="ProVersion Logo"
+                      className="ui-navbar__brand-logo"
+                      width="36"
+                      height="36"
+                    />
                   </div>
                   <div className="sidebar-brand-info">
                     <span className="sidebar-brand-name">

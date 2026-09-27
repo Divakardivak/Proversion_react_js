@@ -23,25 +23,33 @@ export function CustomCursor() {
     const isTouchDevice = window.matchMedia('(pointer: coarse)').matches
     if (isTouchDevice) return
 
+    let mouseRaf = null
+    let latestX = 0
+    let latestY = 0
+
+    const renderCursor = () => {
+      cursorX.set(latestX)
+      cursorY.set(latestY)
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate3d(${latestX}px, ${latestY}px, 0) translate(-50%, -50%)`
+      }
+      mouseRaf = null
+    }
+
     const handleMouseMove = (e) => {
       if (!isVisible) setIsVisible(true)
-      cursorX.set(e.clientX)
-      cursorY.set(e.clientY)
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`
+      latestX = e.clientX
+      latestY = e.clientY
+      if (!mouseRaf) {
+        mouseRaf = requestAnimationFrame(renderCursor)
       }
     }
 
     const handleMouseOver = (e) => {
       const target = e.target
+      if (!target || !target.closest) return
       const isInteractive = Boolean(
-        target.closest('a') ||
-        target.closest('button') ||
-        target.closest('input') ||
-        target.closest('textarea') ||
-        target.closest('select') ||
-        target.closest('[role="button"]') ||
-        target.closest('[data-cursor="pointer"]')
+        target.closest('a, button, input, textarea, select, [role="button"], [data-cursor="pointer"]')
       )
       if (ringRef.current) {
         ringRef.current.classList.toggle('ui-cursor--hover', isInteractive)
@@ -61,6 +69,7 @@ export function CustomCursor() {
       document.removeEventListener('mouseover', handleMouseOver)
       document.documentElement.removeEventListener('mouseleave', handleMouseLeave)
       document.documentElement.removeEventListener('mouseenter', handleMouseEnter)
+      if (mouseRaf) cancelAnimationFrame(mouseRaf)
     }
   }, [cursorX, cursorY, isVisible, shouldReduceMotion])
 
