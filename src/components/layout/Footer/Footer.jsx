@@ -15,7 +15,7 @@ import { Button } from '@/components/common/Button'
 import { MagneticButton } from '@/components/common/MagneticButton'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { contactDetails } from '@/data/contact'
-import proversionEmblem from '@/assets/proversion-emblem.jpg'
+import proversionLogo from '@/assets/proversion-logo.png'
 import './Footer.css'
 
 const QUICK_LINKS = [
@@ -200,10 +200,10 @@ export function Footer() {
             <a href="#" className="ui-footer__brand" aria-label="ProVersion Home" onClick={scrollToTop}>
               <div className="ui-footer__brand-badge">
                 <img
-                  src={proversionEmblem}
+                  src={proversionLogo}
                   alt="ProVersion Logo"
                   className="ui-footer__brand-logo"
-                  width="36"
+                  width="32"
                   height="36"
                 />
               </div>
@@ -314,11 +314,8 @@ export function Footer() {
           </motion.div>
         </motion.div>
 
-        {/* Footer Bottom Bar: Copyright, Status, Back To Top */}
+        {/* Footer Bottom Bar: Status & Back To Top */}
         <div className="ui-footer__bottom">
-          <p className="ui-footer__copyright">
-            &copy; {new Date().getFullYear()} ProVersion Innovations Pvt. Ltd. All rights reserved.
-          </p>
 
           <div className="ui-footer__status" aria-label="System status">
             <span className="ui-footer__status-dot" aria-hidden="true" />

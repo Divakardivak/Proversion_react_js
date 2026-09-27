@@ -32,23 +32,35 @@
   clip-path: inset(0);
 }
 
-/* Two-Column Grid */
+/* Centered Two-Column Symmetrical Grid */
 .ui-about__grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: var(--space-12);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
   align-items: start;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
 }
 
-/* Left Column */
-.ui-about__content {
+/* Left Column: Sticky Narrative Container */
+.ui-about__sticky-wrapper {
+  position: -webkit-sticky;
   position: sticky;
-  top: 7rem;
+  top: clamp(5.5rem, 12vh, 7.5rem);
+  height: fit-content;
+  align-self: start;
+  z-index: 2;
+}
+
+.ui-about__content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  max-width: 520px;
+  width: 100%;
 }
 
 .ui-about__badge {
@@ -84,7 +96,7 @@
   line-height: var(--leading-relaxed);
   color: var(--pv-text-secondary);
   margin-bottom: var(--space-8);
-  max-width: 480px;
+  max-width: 500px;
 }
 
 .ui-about__quote {
@@ -93,7 +105,7 @@
   font-size: var(--text-sm);
   font-style: italic;
   color: var(--pv-text-muted);
-  max-width: 440px;
+  max-width: 480px;
   line-height: var(--leading-relaxed);
 }
 
@@ -109,10 +121,11 @@
 .ui-about__cards-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-10);
+  gap: clamp(3.5rem, 7vh, 5.5rem);
   position: relative;
   z-index: 1;
   width: 100%;
+  padding-bottom: clamp(6rem, 12vh, 10rem);
 }
 
 /* About Card */
@@ -123,7 +136,8 @@
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-2xl);
-  padding: var(--space-8);
+  padding: clamp(2.25rem, 3.5vw, 3rem);
+  min-height: 290px;
   box-shadow: var(--shadow-glass);
   overflow: hidden;
   transform: translateZ(0);
@@ -208,8 +222,22 @@
   color: var(--text-secondary);
 }
 
-/* Responsive Adaptations */
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 769px) {
+  .ui-about {
+    padding: var(--space-16) 0;
+  }
+
+  .ui-about__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .ui-about__title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 768px) {
   .ui-about {
     padding: var(--space-16) 0;
   }
@@ -219,10 +247,15 @@
     gap: var(--space-10);
   }
 
-  .ui-about__content {
+  .ui-about__sticky-wrapper {
     position: static;
+  }
+
+  .ui-about__content {
     align-items: center;
     text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   .ui-about__description,

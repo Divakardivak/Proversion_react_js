@@ -320,33 +320,54 @@
 .ui-hero__partners-dock {
   position: relative;
   z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
   background: rgba(11, 20, 48, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 9999px;
-  padding: 8px 32px;
-  margin: 6px auto 6px;
+  padding: 10px 0;
+  margin: 6px auto 10px;
   max-width: 1060px;
   width: 100%;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 
-.ui-hero__partners-dock::-webkit-scrollbar {
-  display: none;
+.dock-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: heroDockScroll 34s linear infinite;
+  will-change: transform;
+}
+
+.ui-hero__partners-dock:hover .dock-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes heroDockScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.dock-item-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding-right: 18px;
+  flex-shrink: 0;
 }
 
 .dock-logo-item {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   justify-content: center;
   flex-shrink: 0;
 }
@@ -368,13 +389,14 @@
 }
 
 .dock-brand-text {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: #f1f5f9;
   opacity: 0.9;
   transition: opacity 0.2s ease, transform 0.2s ease;
   user-select: none;
+  white-space: nowrap;
 }
 
 .dock-brand-text:hover {
@@ -387,64 +409,45 @@
 .dock-brand-text.ms { font-family: 'Segoe UI', sans-serif; font-weight: 600; }
 .dock-brand-text.meta { font-family: sans-serif; font-weight: 800; letter-spacing: -0.03em; }
 .dock-brand-text.amazon { font-family: sans-serif; font-weight: 700; }
+.dock-brand-text.apple { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 600; }
+.dock-brand-text.netflix { font-family: 'Arial Black', sans-serif; font-weight: 900; letter-spacing: 0.08em; color: #ef4444; }
 .dock-brand-text.tcs { font-family: monospace; font-weight: 800; text-transform: lowercase; }
 .dock-brand-text.adobe { font-family: sans-serif; font-weight: 800; letter-spacing: 0.05em; }
 .dock-brand-text.ibm { font-family: monospace; font-weight: 900; letter-spacing: 0.12em; }
-.dock-brand-text.intel { font-family: sans-serif; font-weight: 700; }
+.dock-brand-text.intel { font-family: sans-serif; font-weight: 700; color: #38bdf8; }
+.dock-brand-text.oracle { font-family: sans-serif; font-weight: 800; letter-spacing: 0.06em; color: #f87171; }
+.dock-brand-text.cisco { font-family: sans-serif; font-weight: 800; letter-spacing: 0.08em; color: #38bdf8; }
+.dock-brand-text.infosys { font-family: sans-serif; font-weight: 700; color: #60a5fa; }
+.dock-brand-text.salesforce { font-family: sans-serif; font-weight: 700; color: #38bdf8; }
+.dock-brand-text.wipro { font-family: sans-serif; font-weight: 700; color: #e2e8f0; }
 
 .dock-divider {
   width: 1px;
-  height: 16px;
+  height: 15px;
   background: rgba(255, 255, 255, 0.12);
   flex-shrink: 0;
 }
 
-/* ── 5. Bottom Trust Metrics Ribbon ── */
+/* ── 5. Bottom Trust Metrics Ribbon (Centered & Balanced) ── */
 .ui-hero__trust-ribbon {
   position: relative;
   z-index: 5;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   max-width: 1060px;
   margin: 0 auto;
-  padding: 5px 12px;
+  padding: 8px 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.ribbon-pill-left {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.ribbon-slogan-text {
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: #94a3b8;
-  letter-spacing: 0.03em;
-}
-
-.ribbon-pulsing-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ec4899;
-  box-shadow: 0 0 10px #f43f5e;
-  animation: dotPulse 2s infinite ease-in-out;
-}
-
-@keyframes dotPulse {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  50% { transform: scale(1.4); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.8; }
 }
 
 .ribbon-metrics-group {
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
 }
 
 .ribbon-metric-item {
@@ -587,21 +590,20 @@
   }
 
   .ui-hero__partners-dock {
-    border-radius: 20px;
-    padding: 12px 24px;
+    border-radius: 9999px;
+    padding: 10px 0;
     margin-bottom: 16px;
   }
 
   .ui-hero__trust-ribbon {
-    flex-direction: column;
-    gap: 16px;
+    justify-content: center;
     text-align: center;
   }
 
   .ribbon-metrics-group {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 24px;
+    gap: 28px;
   }
 }
 
@@ -756,36 +758,28 @@
     box-shadow: 0 0 6px #38bdf8;
   }
 
-  /* Partner Logos Dock: Sleek, compact touch swipe */
+  /* Partner Logos Dock: Sleek auto-scroll marquee */
   .ui-hero__partners-dock {
-    border-radius: 14px;
-    padding: 8px 16px;
-    gap: 14px;
-    margin: 6px auto 8px;
-    justify-content: flex-start;
-    -webkit-overflow-scrolling: touch;
-    mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    border-radius: 9999px;
+    padding: 8px 0;
+    margin: 6px auto 10px;
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+
+  .dock-marquee-track {
+    animation-duration: 26s;
   }
 
   .dock-brand-text {
     font-size: 0.88rem;
   }
 
-  /* Trust metrics: neat compact horizontal row or 2-column grid */
+  /* Trust metrics: neat compact centered row */
   .ui-hero__trust-ribbon {
-    padding: 8px 4px 4px;
-    gap: 8px;
+    padding: 8px 8px 4px;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .ribbon-pill-left {
-    display: inline-flex;
-    margin-bottom: 2px;
-  }
-
-  .ribbon-slogan-text {
-    font-size: 0.76rem;
+    justify-content: center;
   }
 
   .ribbon-metrics-group {
@@ -793,7 +787,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px 18px;
+    gap: 10px 22px;
     width: 100%;
   }
 

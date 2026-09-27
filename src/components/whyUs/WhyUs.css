@@ -256,8 +256,13 @@
 }
 
 @keyframes ui-why-us-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* 3D Orbital Node Buttons - Base & Dedicated Node Placements */
@@ -324,14 +329,12 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 260deg,
-    var(--node-color, #7c3aed) 320deg,
-    #ffffff 352deg,
-    var(--node-color, #7c3aed) 360deg
-  );
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 260deg,
+      var(--node-color, #7c3aed) 320deg,
+      #ffffff 352deg,
+      var(--node-color, #7c3aed) 360deg);
   animation: ui-why-us-beam-spin 3.5s linear infinite;
   pointer-events: none;
 }
@@ -367,7 +370,9 @@
 }
 
 @keyframes ui-node-ping {
-  75%, 100% {
+
+  75%,
+  100% {
     transform: scale(2.2);
     opacity: 0;
   }
@@ -561,14 +566,12 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 260deg,
-    var(--active-color, #7c3aed) 320deg,
-    #ffffff 352deg,
-    var(--active-color, #7c3aed) 360deg
-  );
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 260deg,
+      var(--active-color, #7c3aed) 320deg,
+      #ffffff 352deg,
+      var(--active-color, #7c3aed) 360deg);
   animation: ui-why-us-beam-spin 4s linear infinite;
   pointer-events: none;
 }
@@ -577,6 +580,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -882,13 +886,94 @@
   }
 }
 
+@media (max-width: 768px) {
+  .ui-why-us {
+    padding: 5rem 0 3rem;
+    scroll-margin-top: 5rem;
+  }
+
+  /* Hide the big gyro hub on mobile — too much vertical space */
+  .ui-why-us__center {
+    transform: scale(0.72);
+    margin: 0 auto -0.5rem auto;
+    transform-origin: center top;
+  }
+
+  /* Switch diagram to vertical stack */
+  .ui-why-us__diagram {
+    gap: 0.65rem;
+    padding: 0 1rem;
+  }
+
+  /* Make the 3 nodes compact selector cards in a row */
+  .ui-why-us__node {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 14px;
+    margin: 0;
+  }
+
+  /* Hide verbose tagline text on mobile for compact look */
+  .ui-why-us__node-tagline {
+    display: none;
+  }
+
+  /* Wrap the 3 nodes as a row */
+  .ui-why-us__diagram .ui-why-us__node--top,
+  .ui-why-us__diagram .ui-why-us__node--bottom-left,
+  .ui-why-us__diagram .ui-why-us__node--bottom-right {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* !! Key fix: make the diagram a single column with nodes below the hub !! */
+  .ui-why-us__diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Hide duplicate telemetry tab bar — nodes already act as tab selectors */
+  .ui-why-us__telemetry-bar {
+    display: none !important;
+  }
+
+  /* Compact detail card on mobile */
+  .ui-why-us__detail-card {
+    padding: 1.4rem 1.2rem;
+  }
+
+  .ui-why-us__detail-title {
+    font-size: 1.2rem;
+  }
+
+  .ui-why-us__detail-panel {
+    margin-bottom: 2rem;
+  }
+}
+
 @media (max-width: 520px) {
   .ui-why-us {
-    padding: 2.5rem 0;
+    padding: 4.5rem 0 2.5rem;
+  }
+
+  .ui-why-us__center {
+    transform: scale(0.65);
+    margin-bottom: -1rem;
+  }
+
+  .ui-why-us__diagram {
+    padding: 0 0.75rem;
   }
 
   .ui-why-us__node {
     max-width: 100%;
+    padding: 10px 12px;
   }
 
   .ui-why-us__metrics-grid {
@@ -899,17 +984,11 @@
     padding: 1.25rem 1rem;
   }
 
-  .ui-why-us__telemetry-bar {
-    flex-direction: column;
-    gap: 8px;
+  .ui-why-us__header {
+    margin-bottom: 1.5rem;
   }
 
-  .ui-why-us__telemetry-line {
-    display: none;
-  }
-
-  .ui-why-us__nav-pill {
-    padding: 4px 10px;
-    font-size: 10px;
+  .ui-why-us__title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
   }
 }

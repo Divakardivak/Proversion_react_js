@@ -52,7 +52,59 @@
   z-index: 25;
 }
 
-/* Mobile Close Button (shown only on screens <= 880px) */
+/* Pinned Mobile Top Bar (visible ONLY on mobile <= 880px) */
+.modal-mobile-top-bar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(9, 14, 26, 0.98);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  z-index: 30;
+}
+
+.mobile-top-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+  flex: 1;
+}
+
+.modal-mobile-top-close-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.modal-mobile-top-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* Scrollable body that contains sidebar + main panel */
+.modal-body-scroll {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Mobile Close Button inside sidebar (hidden on mobile, shown on desktop if needed) */
 .modal-mobile-close-btn {
   display: none;
   margin-left: auto;
@@ -935,31 +987,59 @@
     align-items: flex-end;
   }
 
+  /* Modal slides up from bottom as a sheet */
   .course-modal-window {
     flex-direction: column;
-    height: 94vh;
-    max-height: 94vh;
+    height: 92vh;
+    max-height: 92vh;
     min-height: auto;
-    border-radius: 24px 24px 0 0;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
   }
 
+  /* Show the pinned mobile top bar */
+  .modal-mobile-top-bar {
+    display: flex;
+  }
+
+  /* On mobile, body-scroll stacks sidebar + main vertically in ONE unified scroll */
+  .modal-body-scroll {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Sidebar becomes a flat section — no competing scroll */
   .modal-sidebar {
     width: 100%;
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     height: auto;
-    max-height: 34vh;
-    overflow-y: auto;
+    max-height: none;
+    overflow: visible;
     flex-shrink: 0;
   }
 
   .sidebar-scroll-wrapper {
-    padding: 20px 20px 16px;
+    padding: 16px 20px 14px;
     height: auto;
+    overflow: visible;
+  }
+
+  /* Hide the sidebar-badge-row close btn — now handled by top bar */
+  .modal-mobile-close-btn {
+    display: none;
   }
 
   .sidebar-title {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
+  }
+
+  .sidebar-desc {
+    display: none; /* Save space; key info is in pillars */
   }
 
   .sidebar-pillars-list {
@@ -970,11 +1050,20 @@
   }
 
   .sidebar-pricing-card {
-    display: none; /* Moved to mobile-bottom-bar */
+    display: none; /* Moved to modal-mobile-bottom-bar */
   }
 
-  .modal-mobile-close-btn {
-    display: flex;
+  /* main panel fills remaining space — NO separate scroll, inherits from modal-body-scroll */
+  .modal-main-panel {
+    flex: none;
+    min-height: auto;
+  }
+
+  .modal-panel-scroll {
+    overflow: visible;
+    flex: none;
+    min-height: auto;
+    padding: 16px 18px 20px;
   }
 
   .modal-header-actions {
@@ -984,14 +1073,15 @@
   .modal-panel-header {
     padding: 8px 16px;
     min-height: 48px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(9, 14, 26, 0.95);
+    backdrop-filter: blur(12px);
   }
 
   .modal-panel-nav {
     padding: 0;
-  }
-
-  .modal-panel-scroll {
-    padding: 18px;
   }
 
   .career-metrics-row {
@@ -1004,7 +1094,17 @@
     gap: 8px;
   }
 
+  /* Sticky bottom enroll bar */
+  /* Hide sidebar-badge-row — already shown in pinned mobile-top-bar */
+  .sidebar-badge-row {
+    display: none;
+  }
+
   .modal-mobile-bottom-bar {
     display: flex;
+    position: sticky;
+    bottom: 0;
+    flex-shrink: 0;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 }

@@ -254,117 +254,135 @@ export function CourseDetailsModal({ course, isOpen, onClose, onEnroll }) {
             {/* Top Accent Line */}
             <div className="modal-glow-bar" />
 
-            {/* ── LEFT DOSSIER SIDEBAR (Desktop Overview & CTA) ── */}
-            <aside className="modal-sidebar">
-              <div className="sidebar-scroll-wrapper">
-                {/* Category & Badge + Mobile Close Button */}
-                <div className="sidebar-badge-row">
-                  <span className="sidebar-cat-pill">{course.category}</span>
-                  <span className="sidebar-level-pill">{course.badge || 'Certified'}</span>
-                  <button
-                    type="button"
-                    className="modal-mobile-close-btn"
-                    onClick={onClose}
-                    aria-label="Close Course Details"
-                  >
-                    <X size={18} />
-                  </button>
-                </div>
-
-                {/* Course Title */}
-                <h2 className="sidebar-title">{course.title}</h2>
-
-                {/* Rating & Social Proof */}
-                <div className="sidebar-rating-row">
-                  <div className="sidebar-stars">
-                    <Star size={13} fill="#facc15" color="#facc15" />
-                    <span className="sidebar-score">{course.rating || '4.9'}</span>
-                  </div>
-                  <span className="sidebar-dot">•</span>
-                  <span className="sidebar-enrolled">{course.students || '1,620+'} enrolled</span>
-                </div>
-
-                {/* Description */}
-                <p className="sidebar-desc">{course.description}</p>
-
-                {/* Key Program Pillars (Sleek Micro-Cards) */}
-                <div className="sidebar-pillars-list">
-                  <div className="pillar-item">
-                    <div className="pillar-icon-box cyan">
-                      <Clock size={16} />
-                    </div>
-                    <div className="pillar-text">
-                      <span className="pillar-label">Duration</span>
-                      <span className="pillar-val">{course.duration || '120 Days'} Intensive</span>
-                    </div>
-                  </div>
-
-                  <div className="pillar-item">
-                    <div className="pillar-icon-box emerald">
-                      <Briefcase size={16} />
-                    </div>
-                    <div className="pillar-text">
-                      <span className="pillar-label">Internship</span>
-                      <span className="pillar-val">Basic Package (Performance Based)</span>
-                    </div>
-                  </div>
-
-                  <div className="pillar-item">
-                    <div className="pillar-icon-box amber">
-                      <TrendingUp size={16} />
-                    </div>
-                    <div className="pillar-text">
-                      <span className="pillar-label">Avg Package</span>
-                      <span className="pillar-val">{curriculum.salaryRange}</span>
-                    </div>
-                  </div>
-
-                  <div className="pillar-item">
-                    <div className="pillar-icon-box purple">
-                      <Award size={16} />
-                    </div>
-                    <div className="pillar-text">
-                      <span className="pillar-label">Credentials</span>
-                      <span className="pillar-val">MNC Dual Accreditation</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Pinned Pricing & Enrollment Block */}
-                <div className="sidebar-pricing-card">
-                  <div className="pricing-top-row">
-                    <span className="pricing-tag">Special Scholarship Offer</span>
-                    <span className="pricing-discount-badge">{discount} Applied</span>
-                  </div>
-                  <div className="pricing-amount-row">
-                    <span className="pricing-amount">{price}</span>
-                    <span className="pricing-original">{originalPrice}</span>
-                  </div>
-                  <div className="pricing-emi-text">
-                    Zero-Cost EMI from <strong>{emi}</strong> for 6 mos
-                  </div>
-
-                  <button
-                    type="button"
-                    className="sidebar-enroll-btn"
-                    onClick={handleEnrollClick}
-                  >
-                    <span>Apply & Enroll with Scholarship</span>
-                    <ArrowRight size={15} />
-                  </button>
-
-                  <div className="sidebar-trust-row">
-                    <ShieldCheck size={14} className="text-emerald" />
-                    <span>Instant Verification • Performance Internship</span>
-                  </div>
-                </div>
+            {/* Dedicated Pinned Mobile Header Bar (Only visible <= 880px) */}
+            <div className="modal-mobile-top-bar">
+              <div className="mobile-top-badges">
+                <span className="sidebar-cat-pill">{course.category}</span>
+                <span className="sidebar-level-pill">{course.badge || 'Certified'}</span>
               </div>
-            </aside>
+              <button
+                type="button"
+                className="modal-mobile-top-close-btn"
+                onClick={onClose}
+                aria-label="Close Course Details"
+              >
+                <X size={18} />
+              </button>
+            </div>
 
-            {/* ── RIGHT CONTENT CANVAS (Expansive Full-Height Scroll) ── */}
-            <main className="modal-main-panel">
-              {/* Sticky Top Header with Tabs & Desktop Close Button */}
-              <header className="modal-panel-header">
+            {/* Scrollable Modal Content Body (Unified single-scroll on mobile, 2-column on desktop) */}
+            <div className="modal-body-scroll">
+              {/* ── LEFT DOSSIER SIDEBAR (Desktop Overview & CTA) ── */}
+              <aside className="modal-sidebar">
+                <div className="sidebar-scroll-wrapper">
+                  {/* Category & Badge + Desktop close btn row (mobile handled by top bar) */}
+                  <div className="sidebar-badge-row">
+                    <span className="sidebar-cat-pill">{course.category}</span>
+                    <span className="sidebar-level-pill">{course.badge || 'Certified'}</span>
+                    <button
+                      type="button"
+                      className="modal-mobile-close-btn"
+                      onClick={onClose}
+                      aria-label="Close Course Details"
+                    >
+                      <X size={18} />
+                    </button>
+                  </div>
+
+                  {/* Course Title */}
+                  <h2 className="sidebar-title">{course.title}</h2>
+
+                  {/* Rating & Social Proof */}
+                  <div className="sidebar-rating-row">
+                    <div className="sidebar-stars">
+                      <Star size={13} fill="#facc15" color="#facc15" />
+                      <span className="sidebar-score">{course.rating || '4.9'}</span>
+                    </div>
+                    <span className="sidebar-dot">•</span>
+                    <span className="sidebar-enrolled">{course.students || '1,620+'} enrolled</span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="sidebar-desc">{course.description}</p>
+
+                  {/* Key Program Pillars (Sleek Micro-Cards) */}
+                  <div className="sidebar-pillars-list">
+                    <div className="pillar-item">
+                      <div className="pillar-icon-box cyan">
+                        <Clock size={16} />
+                      </div>
+                      <div className="pillar-text">
+                        <span className="pillar-label">Duration</span>
+                        <span className="pillar-val">{course.duration || '120 Days'} Intensive</span>
+                      </div>
+                    </div>
+
+                    <div className="pillar-item">
+                      <div className="pillar-icon-box emerald">
+                        <Briefcase size={16} />
+                      </div>
+                      <div className="pillar-text">
+                        <span className="pillar-label">Internship</span>
+                        <span className="pillar-val">Basic Package (Performance Based)</span>
+                      </div>
+                    </div>
+
+                    <div className="pillar-item">
+                      <div className="pillar-icon-box amber">
+                        <TrendingUp size={16} />
+                      </div>
+                      <div className="pillar-text">
+                        <span className="pillar-label">Avg Package</span>
+                        <span className="pillar-val">{curriculum.salaryRange}</span>
+                      </div>
+                    </div>
+
+                    <div className="pillar-item">
+                      <div className="pillar-icon-box purple">
+                        <Award size={16} />
+                      </div>
+                      <div className="pillar-text">
+                        <span className="pillar-label">Credentials</span>
+                        <span className="pillar-val">MNC Dual Accreditation</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Pinned Pricing & Enrollment Block */}
+                  <div className="sidebar-pricing-card">
+                    <div className="pricing-top-row">
+                      <span className="pricing-tag">Special Scholarship Offer</span>
+                      <span className="pricing-discount-badge">{discount} Applied</span>
+                    </div>
+                    <div className="pricing-amount-row">
+                      <span className="pricing-amount">{price}</span>
+                      <span className="pricing-original">{originalPrice}</span>
+                    </div>
+                    <div className="pricing-emi-text">
+                      Zero-Cost EMI from <strong>{emi}</strong> for 6 mos
+                    </div>
+
+                    <button
+                      type="button"
+                      className="sidebar-enroll-btn"
+                      onClick={handleEnrollClick}
+                    >
+                      <span>Apply & Enroll with Scholarship</span>
+                      <ArrowRight size={15} />
+                    </button>
+
+                    <div className="sidebar-trust-row">
+                      <ShieldCheck size={14} className="text-emerald" />
+                      <span>Instant Verification • Performance Internship</span>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+
+              {/* ── RIGHT CONTENT CANVAS (Expansive Full-Height Scroll) ── */}
+              <main className="modal-main-panel">
+                {/* Sticky Top Header with Tabs & Desktop Close Button */}
+                <header className="modal-panel-header">
                 <nav className="modal-panel-nav">
                   <button
                     type="button"
@@ -595,28 +613,29 @@ export function CourseDetailsModal({ course, isOpen, onClose, onEnroll }) {
                   </div>
                 )}
               </div>
-
-              {/* Mobile-Only Sticky Bottom Bar (Visible only on screens < 880px) */}
-              <div className="modal-mobile-bottom-bar">
-                <div className="mobile-price-meta">
-                  <span className="mobile-price-label">Program Fee</span>
-                  <div className="mobile-price-row">
-                    <span className="mobile-price-amount">{price}</span>
-                    <span className="mobile-price-orig">{originalPrice}</span>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  className="mobile-enroll-btn"
-                  onClick={handleEnrollClick}
-                >
-                  <span>Apply with Scholarship</span>
-                  <ArrowRight size={15} />
-                </button>
-              </div>
             </main>
-          </motion.div>
+          </div>
+
+          {/* Mobile-Only Sticky Bottom Bar (Visible only on screens <= 880px) */}
+          <div className="modal-mobile-bottom-bar">
+            <div className="mobile-price-meta">
+              <span className="mobile-price-label">Program Fee</span>
+              <div className="mobile-price-row">
+                <span className="mobile-price-amount">{price}</span>
+                <span className="mobile-price-orig">{originalPrice}</span>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className="mobile-enroll-btn"
+              onClick={handleEnrollClick}
+            >
+              <span>Apply with Scholarship</span>
+              <ArrowRight size={15} />
+            </button>
+          </div>
+        </motion.div>
         </div>
       )}
     </AnimatePresence>

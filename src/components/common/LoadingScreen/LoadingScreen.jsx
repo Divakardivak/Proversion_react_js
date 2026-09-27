@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
-import proversionEmblem from '@/assets/proversion-emblem.jpg'
+import logoSrc from '@/assets/proversion-logo.png'
 import './LoadingScreen.css'
 
 /**
- * Realistic Cinematic ProVersion Loader Logo Component:
- * - Real 3D squircle emblem card matching authentic official brand identity (P + golden v)
- * - Dual counter-rotating neon gradient arcs (sapphire blue & golden amber)
- * - Holographic specular shine sweep across the emblem surface
- * - 8 radial particle bursts on lock-in
+ * Cinematic logo reveal component:
+ *  1. A gradient ring (violet → lavender → gold) draws itself around the logo
+ *  2. The logo PNG materialises from a bright blur flash with elastic overshoot
+ *  3. 8 spark particles burst outward the instant the logo appears
+ *  4. Ambient floating dust particles drift in the background
  */
-function ProVersionLoaderEmblem({ reduceMotion }) {
+function ProVersionLoaderLogo({ reduceMotion }) {
   return (
-    <div className="ui-loading-emblem-wrap">
-      {/* ── Ambient background dust particles ── */}
+    <div className="ui-loading-logo-wrap">
+      {/* ── Ambient background particles ────────────────── */}
       {!reduceMotion && (
         <div className="ui-loading-particles" aria-hidden="true">
           {Array.from({ length: 12 }).map((_, i) => (
@@ -23,26 +23,24 @@ function ProVersionLoaderEmblem({ reduceMotion }) {
         </div>
       )}
 
-      {/* ── Dual Orbital Energy Rings around the emblem ── */}
+      {/* ── Glowing SVG ring that draws around the logo ── */}
       <svg
         className="ui-loading-ring"
-        viewBox="0 0 240 240"
+        viewBox="0 0 220 220"
         fill="none"
         aria-hidden="true"
       >
         <defs>
-          <linearGradient id="pvRingGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          {/* Ring gradient: sapphire → sky blue → gold */}
+          <linearGradient id="pvRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#2563eb" />
-            <stop offset="50%" stopColor="#38bdf8" />
-            <stop offset="100%" stopColor="#c084fc" />
+            <stop offset="55%" stopColor="#38bdf8" />
+            <stop offset="100%" stopColor="#FFD700" />
           </linearGradient>
-          <linearGradient id="pvRingGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#f59e0b" />
-            <stop offset="50%" stopColor="#fbbf24" />
-            <stop offset="100%" stopColor="#ec4899" />
-          </linearGradient>
-          <filter id="pvGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+
+          {/* Soft glow filter on the ring */}
+          <filter id="pvRingGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -50,58 +48,39 @@ function ProVersionLoaderEmblem({ reduceMotion }) {
           </filter>
         </defs>
 
-        {/* Ambient track circles */}
+        {/* Subtle track ring (always visible) */}
         <circle
-          cx="120" cy="120" r="105"
-          stroke="rgba(37, 99, 235, 0.12)"
+          cx="110" cy="110" r="96"
+          stroke="rgba(37, 99, 235, 0.16)"
           strokeWidth="1.5"
         />
-        <circle
-          cx="120" cy="120" r="92"
-          stroke="rgba(245, 158, 11, 0.1)"
-          strokeWidth="1"
-          strokeDasharray="4 6"
-        />
 
-        {/* Outer Animated Ring (Clockwise) */}
+        {/* Animated progress ring — draws from top clockwise */}
         <circle
           className={`ui-loading-ring__arc${reduceMotion ? ' ui-loading-ring__arc--instant' : ''}`}
-          cx="120" cy="120" r="105"
-          stroke="url(#pvRingGrad1)"
+          cx="110" cy="110" r="96"
+          stroke="url(#pvRingGrad)"
           strokeWidth="2.5"
           strokeLinecap="round"
-          filter="url(#pvGlow)"
+          filter="url(#pvRingGlow)"
         />
-
-        {/* Inner Animated Ring (Counter-Clockwise) */}
-        {!reduceMotion && (
-          <circle
-            className="ui-loading-ring__arc-inner"
-            cx="120" cy="120" r="92"
-            stroke="url(#pvRingGrad2)"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          />
-        )}
       </svg>
 
-      {/* ── Real 3D Emblem Card with specular shine ── */}
-      <div className={`ui-loading-emblem-card${!reduceMotion ? ' animated' : ''}`}>
-        <div className="ui-loading-emblem-inner">
-          <img
-            src={proversionEmblem}
-            alt="ProVersion Official Logo"
-            className="ui-loading-emblem-img"
-            draggable="false"
-          />
-          {/* Specular Diagonal Light Sweep */}
-          {!reduceMotion && <span className="ui-loading-emblem-shine" aria-hidden="true" />}
-          {/* Edge Rim Highlight */}
-          <span className="ui-loading-emblem-rim" aria-hidden="true" />
-        </div>
+      {/* ── Logo image + flash overlay ───────────────────── */}
+      <div className={`ui-loading-logo-img-wrap${!reduceMotion ? ' animated' : ''}`}>
+        <img
+          src={logoSrc}
+          alt="ProVersion Logo"
+          className="ui-loading-logo-img"
+          draggable="false"
+        />
+        {/* Bright gold flash that blooms and fades on entry */}
+        {!reduceMotion && (
+          <span className="ui-loading-logo-flash" aria-hidden="true" />
+        )}
       </div>
 
-      {/* ── Golden spark burst (8 directions) ── */}
+      {/* ── Spark burst (8 particles, 8 directions) ──────── */}
       {!reduceMotion && (
         <div className="ui-loading-sparks" aria-hidden="true">
           {Array.from({ length: 8 }).map((_, i) => (
@@ -115,39 +94,24 @@ function ProVersionLoaderEmblem({ reduceMotion }) {
 
 /**
  * Premium Loading Screen for ProVersion.
- * Displays a cinematic real emblem logo entrance, live progress counter, and then gracefully exits.
+ * Displays a cinematic logo entrance, then gracefully exits via Framer Motion.
  * @param {{ onComplete: () => void }} props
  */
 export function LoadingScreen({ onComplete }) {
   const shouldReduceMotion = useReducedMotion()
-  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
     const originalOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
 
-    // Smooth numerical progress increment from 0 to 100 over ~2.4s
-    const duration = shouldReduceMotion ? 1200 : 2400
-    const intervalTime = 30
-    const totalSteps = duration / intervalTime
-    let currentStep = 0
-
-    const progressTimer = setInterval(() => {
-      currentStep++
-      const pct = Math.min(100, Math.round((currentStep / totalSteps) * 100))
-      setProgress(pct)
-      if (currentStep >= totalSteps) {
-        clearInterval(progressTimer)
-      }
-    }, intervalTime)
-
+    // Total duration: ring (1.5s) + logo (0.65s) + exit buffer = ~2.4s
+    const duration = shouldReduceMotion ? 1400 : 4200
     const timer = setTimeout(() => {
       if (onComplete) onComplete()
-    }, duration + 200)
+    }, duration)
 
     return () => {
       document.body.style.overflow = originalOverflow
-      clearInterval(progressTimer)
       clearTimeout(timer)
     }
   }, [onComplete, shouldReduceMotion])
@@ -156,9 +120,9 @@ export function LoadingScreen({ onComplete }) {
     initial: { opacity: 1 },
     exit: {
       opacity: 0,
-      scale: 0.97,
+      scale: 0.96,
       transition: {
-        duration: shouldReduceMotion ? 0.25 : 0.55,
+        duration: shouldReduceMotion ? 0.3 : 0.65,
         ease: [0.19, 1, 0.22, 1],
       },
     },
@@ -171,44 +135,41 @@ export function LoadingScreen({ onComplete }) {
       initial="initial"
       exit="exit"
       role="status"
-      aria-label="Loading ProVersion platform"
+      aria-label="Loading ProVersion experience"
     >
       <div className="ui-loading-screen__background" />
 
       <div className="ui-loading-screen__content">
-        {/* Real Logo Emblem with 3D Cinematic Animation */}
-        <ProVersionLoaderEmblem reduceMotion={shouldReduceMotion} />
 
-        {/* Brand name slides up and expands */}
+        {/* Cinematic logo reveal */}
+        <ProVersionLoaderLogo reduceMotion={shouldReduceMotion} />
+
+        {/* Brand name slides up after logo settles */}
         <motion.div
           className="ui-loading-screen__brand"
-          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+          transition={{ delay: 2.6, duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
         >
           <span className="ui-loading-screen__brand-pro">PRO</span>
           <span className="ui-loading-screen__brand-version">VERSION</span>
         </motion.div>
 
-        {/* Progress Bar & Percentage Counter */}
-        <div className="ui-loading-screen__progress-container">
-          <div className="ui-loading-screen__line">
-            <div
-              className="ui-loading-screen__progress"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-          <div className="ui-loading-screen__progress-meta">
-            <span className="ui-loading-screen__progress-status">INITIALIZING EXPERIENCE</span>
-            <span className="ui-loading-screen__progress-pct">{progress}%</span>
-          </div>
+        {/* Progress bar sweeps in */}
+        <div className="ui-loading-screen__line">
+          <motion.div
+            className="ui-loading-screen__progress"
+            initial={shouldReduceMotion ? { scaleX: 1 } : { scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 0.5, duration: 2.8, ease: [0.25, 1, 0.5, 1] }}
+          />
         </div>
 
         <motion.span
           className="ui-loading-screen__subtitle"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
+          transition={{ delay: 1.4, duration: 0.9 }}
         >
           The Next Generation of Tech Learning
         </motion.span>

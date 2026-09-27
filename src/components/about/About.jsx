@@ -25,33 +25,35 @@ export function About() {
 
       <Container size="xl">
         <div className="ui-about__grid">
-          {/* Left Column: Heading & Narrative */}
-          <motion.div
-            className="ui-about__content"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <motion.div className="ui-about__badge" variants={itemVariants}>
-              <Sparkles size={14} />
-              <span>{aboutData.eyebrow}</span>
+          {/* Left Column: Sticky Narrative Container */}
+          <div className="ui-about__sticky-wrapper">
+            <motion.div
+              className="ui-about__content"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <motion.div className="ui-about__badge" variants={itemVariants}>
+                <Sparkles size={14} />
+                <span>{aboutData.eyebrow}</span>
+              </motion.div>
+
+              <motion.h2 className="ui-about__title" variants={itemVariants}>
+                Bridging the Gap Between{' '}
+                <span className="text-gradient-brand">Academia & Industry</span>
+              </motion.h2>
+
+              <motion.p className="ui-about__description" variants={itemVariants}>
+                {aboutData.description}
+              </motion.p>
+
+              <motion.blockquote className="ui-about__quote" variants={itemVariants}>
+                &ldquo;We transform academic knowledge into real-world technological
+                leadership through continuous mentor guidance and project execution.&rdquo;
+              </motion.blockquote>
             </motion.div>
-
-            <motion.h2 className="ui-about__title" variants={itemVariants}>
-              Bridging the Gap Between{' '}
-              <span className="text-gradient-brand">Academia & Industry</span>
-            </motion.h2>
-
-            <motion.p className="ui-about__description" variants={itemVariants}>
-              {aboutData.description}
-            </motion.p>
-
-            <motion.blockquote className="ui-about__quote" variants={itemVariants}>
-              &ldquo;We transform academic knowledge into real-world technological
-              leadership through continuous mentor guidance and project execution.&rdquo;
-            </motion.blockquote>
-          </motion.div>
+          </div>
 
           {/* Right Column: 3D Floating Information Panels */}
           <div className="ui-about__cards-wrapper">

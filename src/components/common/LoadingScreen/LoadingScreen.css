@@ -215,13 +215,14 @@
   height: 100%;
 }
 
-/* Outer ring: circumference for r=105 is 2 × π × 105 ≈ 660 */
+/* Ring circumference = 2 × π × 96 ≈ 603 */
 .ui-loading-ring__arc {
-  stroke-dasharray: 660;
-  stroke-dashoffset: 660;
+  stroke-dasharray: 603;
+  stroke-dashoffset: 603;
+  /* Start from the top of the circle */
   transform: rotate(-90deg);
-  transform-origin: 120px 120px;
-  animation: pvRingDrawOuter 2.0s cubic-bezier(0.35, 0, 0.15, 1) 0.1s forwards;
+  transform-origin: 110px 110px;
+  animation: pvRingDraw 2.8s cubic-bezier(0.35, 0, 0.15, 1) 0.2s forwards;
 }
 
 .ui-loading-ring__arc--instant {
@@ -229,143 +230,81 @@
   animation: none;
 }
 
-@keyframes pvRingDrawOuter {
+@keyframes pvRingDraw {
   0% {
-    stroke-dashoffset: 660;
-    opacity: 0.4;
+    stroke-dashoffset: 603;
+    opacity: 0.5;
   }
-  15% {
+
+  8% {
     opacity: 1;
   }
+
   100% {
     stroke-dashoffset: 0;
     opacity: 1;
   }
 }
 
-/* Inner ring: circumference for r=92 is 2 × π × 92 ≈ 578 */
-.ui-loading-ring__arc-inner {
-  stroke-dasharray: 578;
-  stroke-dashoffset: 578;
-  transform: rotate(90deg);
-  transform-origin: 120px 120px;
-  animation: pvRingDrawInner 1.8s cubic-bezier(0.35, 0, 0.15, 1) 0.25s forwards;
-}
-
-@keyframes pvRingDrawInner {
+/* Pulse glow when ring completes */
+@keyframes pvRingPulse {
   0% {
-    stroke-dashoffset: 578;
-    opacity: 0.3;
+    filter: drop-shadow(0 0 4px #2563eb);
   }
-  20% {
-    opacity: 0.9;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    opacity: 0.85;
-  }
-}
 
-/* ── Real 3D Emblem Card ─────────────────────────────────── */
-.ui-loading-emblem-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(160px, 32vw, 240px);
-  height: clamp(160px, 32vw, 240px);
-}
-
-.ui-loading-emblem-card {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ui-loading-emblem-card.animated {
-  animation: pvEmblemCardEntrance 1.1s cubic-bezier(0.2, 1.35, 0.4, 1) 0.2s both;
-}
-
-@keyframes pvEmblemCardEntrance {
-  0% {
-    opacity: 0;
-    transform: scale(0.38) rotate(-8deg) translateY(18px);
-    filter: blur(14px) brightness(2);
-  }
   50% {
-    filter: blur(0px) brightness(1.2);
+    filter: drop-shadow(0 0 18px #38bdf8) drop-shadow(0 0 32px #2563eb);
   }
+
   100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg) translateY(0);
-    filter: blur(0px) brightness(1);
+    filter: drop-shadow(0 0 8px #2563eb);
   }
 }
 
-.ui-loading-emblem-inner {
-  position: relative;
-  width: clamp(96px, 20vw, 130px);
-  height: clamp(96px, 20vw, 130px);
-  border-radius: 28px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow:
-    0 12px 36px rgba(0, 0, 0, 0.65),
-    0 0 45px rgba(147, 51, 234, 0.45),
-    0 0 20px rgba(37, 99, 235, 0.55);
-  border: 1.5px solid rgba(255, 255, 255, 0.28);
-  background: #090e24;
-}
-
-.ui-loading-emblem-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Glass specular light sweep across emblem */
-.ui-loading-emblem-shine {
-  position: absolute;
-  inset: -100%;
-  background: linear-gradient(
-    115deg,
-    transparent 35%,
-    rgba(255, 255, 255, 0.6) 50%,
-    transparent 65%
-  );
-  transform: rotate(25deg);
-  animation: pvEmblemShine 1.5s ease-in-out 0.7s infinite;
-  pointer-events: none;
-}
-
-@keyframes pvEmblemShine {
-  0% {
-    transform: translateX(-120%) rotate(25deg);
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.85;
-  }
-  60% {
-    opacity: 0.85;
-  }
-  100% {
-    transform: translateX(120%) rotate(25deg);
-    opacity: 0;
-  }
-}
-
-.ui-loading-emblem-rim {
+/* ── Logo Image ──────────────────────────────────────────── */
+.ui-loading-logo-img-wrap {
   position: absolute;
   inset: 0;
-  border-radius: 28px;
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4), inset 0 -2px 6px rgba(0, 0, 0, 0.5);
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cinematic materialise: starts as a blurry bright smear, snaps into focus — slow burn */
+.ui-loading-logo-img-wrap.animated {
+  animation: pvLogoMaterialize 1.3s cubic-bezier(0.34, 1.4, 0.64, 1) 1.0s both;
+}
+
+@keyframes pvLogoMaterialize {
+  0% {
+    opacity: 0;
+    transform: scale(0.35);
+    filter: blur(18px) brightness(5) saturate(0);
+  }
+
+  40% {
+    filter: blur(6px) brightness(2.5) saturate(0.5);
+  }
+
+  70% {
+    filter: blur(1px) brightness(1.3) saturate(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0) brightness(1) saturate(1);
+  }
+}
+
+.ui-loading-logo-img {
+  width: clamp(54px, 11vw, 76px);
+  height: auto;
+  display: block;
+  /* Optical alignment adjustment to balance visual center of mass within the circular ring */
+  transform: translate(2px, 1px);
+  /* Permanent soft sapphire glow on the logo */
+  filter: drop-shadow(0 0 16px rgba(37, 99, 235, 0.45));
 }
 
 /* ── Gold Flash Overlay ──────────────────────────────────── */
@@ -523,20 +462,12 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   PROGRESS BAR & LIVE COUNTER
+   PROGRESS BAR
    ══════════════════════════════════════════════════════════ */
-.ui-loading-screen__progress-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-  width: clamp(200px, 45vw, 280px);
-}
-
 .ui-loading-screen__line {
-  width: 100%;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.08);
+  width: 140px;
+  height: 2px;
+  background: var(--border-subtle);
   border-radius: var(--radius-full);
   position: relative;
   overflow: hidden;
@@ -547,35 +478,10 @@
   top: 0;
   left: 0;
   height: 100%;
-  background: linear-gradient(90deg, #2563eb, #38bdf8 50%, #f59e0b);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
-  border-radius: var(--radius-full);
-  transition: width 0.08s ease-out;
-}
-
-.ui-loading-screen__progress-meta {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  font-weight: var(--font-semibold);
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-}
-
-.ui-loading-screen__progress-status {
-  text-transform: uppercase;
-  color: var(--text-muted);
-  font-size: 0.65rem;
-}
-
-.ui-loading-screen__progress-pct {
-  color: #38bdf8;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  font-size: 0.72rem;
+  background: var(--gradient-accent);
+  box-shadow: 0 0 16px rgba(37, 99, 235, 0.7);
+  transform-origin: left;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -593,20 +499,22 @@
    RESPONSIVE
    ══════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
-  .ui-loading-emblem-wrap {
-    width: clamp(140px, 42vw, 190px);
-    height: clamp(140px, 42vw, 190px);
+  .ui-loading-logo-wrap {
+    width: clamp(120px, 38vw, 170px);
+    height: clamp(120px, 38vw, 170px);
   }
 
-  .ui-loading-emblem-inner {
-    width: clamp(80px, 24vw, 100px);
-    height: clamp(80px, 24vw, 100px);
-    border-radius: 22px;
+  .ui-loading-logo-img {
+    width: clamp(44px, 16vw, 62px);
   }
 
   .ui-loading-screen__brand-pro,
   .ui-loading-screen__brand-version {
     font-size: clamp(1.6rem, 8vw, 2.8rem);
+  }
+
+  .ui-loading-screen__line {
+    width: 100px;
   }
 
   /* Tighter spark radius on small screens */
@@ -648,13 +556,12 @@
 }
 
 @media (min-width: 1440px) {
-  .ui-loading-emblem-wrap {
-    width: 250px;
-    height: 250px;
+  .ui-loading-logo-wrap {
+    width: 220px;
+    height: 220px;
   }
 
-  .ui-loading-emblem-inner {
-    width: 135px;
-    height: 135px;
+  .ui-loading-logo-img {
+    width: 84px;
   }
 }

@@ -345,30 +345,29 @@
 }
 
 .ui-footer__brand-badge {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  overflow: hidden;
+  width: 32px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  border: none;
+  box-shadow: none;
   flex-shrink: 0;
-  background: #0f172a;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ui-footer__brand:hover .ui-footer__brand-badge {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 22px rgba(139, 92, 246, 0.6);
+  transform: translateY(-2px) scale(1.08);
 }
 
 .ui-footer__brand-logo {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 34px;
+  object-fit: contain;
   display: block;
+  filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.4));
 }
 
 .ui-footer__brand-text {

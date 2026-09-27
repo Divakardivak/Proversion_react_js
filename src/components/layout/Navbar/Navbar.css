@@ -49,30 +49,29 @@
 }
 
 .ui-navbar__brand-badge {
-  width: 36px;
+  width: 32px;
   height: 36px;
-  border-radius: 10px;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: #090e24;
+  background: transparent;
+  border: none;
+  box-shadow: none;
   flex-shrink: 0;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--transition-fast);
 }
 
 .ui-navbar__brand:hover .ui-navbar__brand-badge {
   transform: scale(1.08);
-  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
 }
 
 .ui-navbar__brand-logo {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 34px;
+  object-fit: contain;
   display: block;
+  filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.4));
 }
 
 .ui-navbar__brand-text {

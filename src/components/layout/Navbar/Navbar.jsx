@@ -20,7 +20,7 @@ import { smoothScrollTo } from '@/components/common/SmoothScroll'
 import { Container } from '@/components/common/Container'
 import { MagneticButton } from '@/components/common/MagneticButton'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
-import proversionEmblem from '@/assets/proversion-emblem.jpg'
+import proversionLogo from '@/assets/proversion-logo.png'
 import './Navbar.css'
 
 /**
@@ -169,10 +169,10 @@ export function Navbar() {
             >
               <div className="ui-navbar__brand-badge">
                 <img
-                  src={proversionEmblem}
+                  src={proversionLogo}
                   alt="ProVersion Logo"
                   className="ui-navbar__brand-logo"
-                  width="36"
+                  width="32"
                   height="36"
                 />
               </div>
@@ -253,10 +253,10 @@ export function Navbar() {
                 <div className="ui-sidebar-brand">
                   <div className="ui-navbar__brand-badge">
                     <img
-                      src={proversionEmblem}
+                      src={proversionLogo}
                       alt="ProVersion Logo"
                       className="ui-navbar__brand-logo"
-                      width="36"
+                      width="32"
                       height="36"
                     />
                   </div>

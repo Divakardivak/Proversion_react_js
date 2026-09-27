@@ -8,10 +8,9 @@ html {
   scroll-behavior: auto !important;
 }
 
-/* Ensure document remains naturally scrollable with native document scrollbar */
+/* Keep body overflow natural so viewport position: sticky functions seamlessly */
 body {
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: visible;
 }
 
 /* Optimize scrollable nested regions (dropdowns, code blocks, modals) */
