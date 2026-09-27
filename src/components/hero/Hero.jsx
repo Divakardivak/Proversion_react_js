@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Sparkles, 
@@ -91,6 +91,20 @@ function CompanyLogoItem({ company }) {
 
 export function Hero() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
+
+  useEffect(() => {
+    if (!isVideoModalOpen) return
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsVideoModalOpen(false)
+    }
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = originalOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isVideoModalOpen])
 
   const handleExploreClick = (e) => {
     e.preventDefault()
@@ -301,12 +315,18 @@ export function Hero() {
                 <X size={20} />
               </button>
               <div className="video-player-container">
-                <iframe
-                  src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1"
-                  title="ProVersion Platform Overview"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+                <video
+                  className="proversion-overview-video"
+                  controls
+                  autoPlay
+                  playsInline
+                  preload="auto"
+                  poster="/assets/video_mp4_preview.jpg"
+                >
+                  <source src="/assets/proversion_overview.mp4" type="video/mp4" />
+                  <source src="/assets/IMG_2424.MOV" type="video/quicktime" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </motion.div>
           </div>
