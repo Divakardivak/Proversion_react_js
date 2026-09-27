@@ -309,7 +309,7 @@ export function CourseDetailsModal({ course, isOpen, onClose, onEnroll }) {
                   <div className="sidebar-pillars-list">
                     <div className="pillar-item">
                       <div className="pillar-icon-box cyan">
-                        <Clock size={16} />
+                        <Clock size={15} />
                       </div>
                       <div className="pillar-text">
                         <span className="pillar-label">Duration</span>
@@ -319,17 +319,19 @@ export function CourseDetailsModal({ course, isOpen, onClose, onEnroll }) {
 
                     <div className="pillar-item">
                       <div className="pillar-icon-box emerald">
-                        <Briefcase size={16} />
+                        <Briefcase size={15} />
                       </div>
                       <div className="pillar-text">
                         <span className="pillar-label">Internship</span>
-                        <span className="pillar-val">Basic Package (Performance Based)</span>
+                        <span className="pillar-val" title={course.internship || 'Performance Based'}>
+                          {course.internship?.includes('Performance') ? 'Performance Based' : (course.internship || 'Included')}
+                        </span>
                       </div>
                     </div>
 
                     <div className="pillar-item">
                       <div className="pillar-icon-box amber">
-                        <TrendingUp size={16} />
+                        <TrendingUp size={15} />
                       </div>
                       <div className="pillar-text">
                         <span className="pillar-label">Avg Package</span>
@@ -339,11 +341,11 @@ export function CourseDetailsModal({ course, isOpen, onClose, onEnroll }) {
 
                     <div className="pillar-item">
                       <div className="pillar-icon-box purple">
-                        <Award size={16} />
+                        <Award size={15} />
                       </div>
                       <div className="pillar-text">
                         <span className="pillar-label">Credentials</span>
-                        <span className="pillar-val">MNC Dual Accreditation</span>
+                        <span className="pillar-val" title="MNC Dual Accreditation">MNC Dual Accreditation</span>
                       </div>
                     </div>
                   </div>

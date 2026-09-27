@@ -321,9 +321,9 @@ function CourseCard({ course, onEnroll, onViewDetails }) {
             <Clock size={12} className="chip-icon" />
             <span>{course.duration}</span>
           </div>
-          <div className="meta-chip stipend">
+          <div className="meta-chip stipend" title={course.internship}>
             <Briefcase size={12} className="chip-icon" />
-            <span>{course.internship}</span>
+            <span>{course.internship?.includes('Performance') ? 'Performance Internship' : course.internship}</span>
           </div>
         </div>
 
