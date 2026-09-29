@@ -101,8 +101,9 @@ function getSafeCurriculum(course) {
   if (title.includes('vlsi') || title.includes('semiconductor')) return courseCurriculumData['vlsi']
   if (title.includes('cad')) return courseCurriculumData['autocad']
   if (title.includes('resource') || title.includes('hr')) return courseCurriculumData['hr-analytics']
-  if (title.includes('market')) return courseCurriculumData['digital-marketing']
   if (title.includes('stock') || title.includes('trad')) return courseCurriculumData['stock-marketing']
+  if (title.includes('medical') || title.includes('coding')) return courseCurriculumData['medical-coding']
+  if (title.includes('psych') || title.includes('cyco')) return courseCurriculumData['psychology']
 
   // 4. Dynamic comprehensive fallback
   const techList = Array.isArray(course.technologies) && course.technologies.length > 0

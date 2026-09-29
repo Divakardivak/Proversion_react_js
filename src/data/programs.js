@@ -348,6 +348,60 @@ export const programsData = [
     emi: '₹1,166/mo',
     orbitPosition: [0, 0.2, -1.2],
   },
+
+  // ── HEALTHCARE & LIFE SCIENCES (2 Programs) ──
+  {
+    id: 'medical-coding',
+    title: 'Medical Coding',
+    shortTitle: 'Medical Coding',
+    category: 'Healthcare & Life Sciences',
+    description:
+      'Master ICD-10-CM, CPT, HCPCS Level II coding, medical terminology, human anatomy, pathology, HIPAA compliance, and US healthcare revenue cycle management (RCM).',
+    technologies: [
+      'ICD-10-CM & CPT Coding',
+      'HCPCS & Medical Billing',
+      'Human Anatomy & Pathology',
+      'HIPAA & RCM Workflows',
+    ],
+    duration: '120 Days',
+    internship: 'Basic Package (Performance Based)',
+    accentColor: '#059669',
+    rating: 4.9,
+    students: '1,240+',
+    badge: 'CPC Certified Track',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80',
+    originalPrice: '₹10,000',
+    price: '₹6,999',
+    discount: '30% OFF',
+    emi: '₹1,166/mo',
+    orbitPosition: [1.2, -1.4, -0.6],
+  },
+  {
+    id: 'psychology',
+    title: 'Psychology',
+    shortTitle: 'Psychology',
+    category: 'Healthcare & Life Sciences',
+    description:
+      'Comprehensive study of clinical psychology foundations, cognitive behavioral therapy (CBT) principles, psychometrics, counseling techniques, and workplace behavioral health.',
+    technologies: [
+      'Clinical & Counseling Psychology',
+      'Cognitive Behavioral Therapy (CBT)',
+      'Psychometric Assessments',
+      'Behavioral & Mental Health',
+    ],
+    duration: '120 Days',
+    internship: 'Basic Package (Performance Based)',
+    accentColor: '#8b5cf6',
+    rating: 4.8,
+    students: '980+',
+    badge: 'Applied Psychology',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80',
+    originalPrice: '₹10,000',
+    price: '₹6,999',
+    discount: '30% OFF',
+    emi: '₹1,166/mo',
+    orbitPosition: [-1.4, -1.2, 0.8],
+  },
 ]
 
 export const programCategories = [
@@ -355,4 +409,5 @@ export const programCategories = [
   'IT Department',
   'Core',
   'Management',
+  'Healthcare & Life Sciences',
 ]

@@ -717,6 +717,126 @@ export const courseCurriculumData = {
     salaryRange: '₹6.5 LPA – ₹20.0 LPA',
     hiringPartners: ['Zerodha', 'Groww', 'Angel One', 'Motilal Oswal', 'HDFC Securities', 'ICICI Direct', 'QuantInsti'],
   },
+  'medical-coding': {
+    modules: [
+      {
+        title: 'Module 1: Medical Terminology, Human Anatomy & Physiology',
+        duration: 'Weeks 1–3',
+        topics: [
+          'Prefixes, suffixes, combining forms, and medical root words',
+          'Musculoskeletal, cardiovascular, nervous, and digestive systems',
+          'Pathology, pharmacology basics, and clinical diagnostic terminology',
+          'Medical ethics, patient confidentiality, and HIPAA compliance regulations',
+        ],
+      },
+      {
+        title: 'Module 2: ICD-10-CM Diagnostic Coding & Guidelines',
+        duration: 'Weeks 4–6',
+        topics: [
+          'ICD-10-CM conventions, structure, and official coding guidelines',
+          'Infectious diseases, neoplasms, endocrine, and metabolic coding',
+          'Injury, poisoning, adverse effects, and external cause coding',
+          'Z-codes, sequelae coding, and clinical scenario documentation audits',
+        ],
+      },
+      {
+        title: 'Module 3: CPT & HCPCS Level II Procedural Coding',
+        duration: 'Weeks 7–9',
+        topics: [
+          'Evaluation and Management (E/M) coding guidelines & medical decision making',
+          'Surgical coding across organ systems (integumentary, cardiovascular, ortho)',
+          'Radiology, pathology, laboratory, and medicine section procedural coding',
+          'HCPCS Level II national codes for durable medical equipment & injectable drugs',
+        ],
+      },
+      {
+        title: 'Module 4: Revenue Cycle Management (RCM) & CPC Exam Preparation',
+        duration: 'Weeks 10–12',
+        topics: [
+          'Medical billing workflows, claim forms (CMS-1500 & UB-04), and clearinghouses',
+          'Denial management, appeal processing, and reimbursement methodologies',
+          'AAPC Certified Professional Coder (CPC) mock examination drills',
+          'Live EHR/EMR software charting simulations and automated audit tools',
+        ],
+      },
+    ],
+    projects: [
+      {
+        name: 'Comprehensive Hospital Inpatient Chart Audit',
+        description: 'End-to-end coding of 100+ complex multi-specialty clinical case charts applying ICD-10-CM and CPT guidelines with 99% accuracy benchmark.',
+        tech: ['ICD-10-CM Manual', 'CPT 2024', 'HCPCS Level II', 'EHR Simulator', 'EncoderPro'],
+      },
+      {
+        name: 'US Healthcare Revenue Cycle & Denial Resolution Pipeline',
+        description: 'Audited and re-adjudicated 250 rejected healthcare insurance claims, identifying modifier errors, unbundling issues, and medical necessity gaps.',
+        tech: ['CMS-1500', 'UB-04', 'EncoderPro', 'Excel RCM Tracker', 'Clearinghouse Portal'],
+      },
+    ],
+    tools: ['ICD-10-CM', 'CPT Manual', 'HCPCS Level II', 'Optum360 EncoderPro', 'Epic EHR Simulator', 'Cerner EMR', 'Excel RCM Engine'],
+    careerRoles: ['Certified Medical Coder (CPC)', 'Medical Billing Specialist', 'Healthcare Data Analyst', 'RCM Quality Auditor', 'Clinical Documentation Specialist'],
+    salaryRange: '₹4.0 LPA – ₹9.5 LPA',
+    hiringPartners: ['Omega Healthcare', 'Access Healthcare', 'Optum (UnitedHealth)', 'Cognizant Healthcare', 'Episource', 'AGS Health', 'R1 RCM'],
+  },
+  'psychology': {
+    modules: [
+      {
+        title: 'Module 1: Foundations of Clinical & Cognitive Psychology',
+        duration: 'Weeks 1–3',
+        topics: [
+          'Neurobiological bases of behavior, brain anatomy, and neurotransmitters',
+          'Sensation, perception, memory architectures, and cognitive processing',
+          'Developmental stages across the lifespan (childhood through late adulthood)',
+          'Theories of personality: Psychodynamic, Humanistic, and Trait perspectives',
+        ],
+      },
+      {
+        title: 'Module 2: Psychopathology & Diagnostic Frameworks (DSM-5-TR)',
+        duration: 'Weeks 4–6',
+        topics: [
+          'DSM-5-TR & ICD-11 diagnostic criteria and classification systems',
+          'Anxiety, depressive, bipolar, trauma-related, and obsessive-compulsive disorders',
+          'Schizophrenia spectrum, psychotic disorders, and neurodevelopmental conditions',
+          'Clinical assessment interviews, mental status exams (MSE), and differential diagnosis',
+        ],
+      },
+      {
+        title: 'Module 3: Counseling Methodologies & Therapeutic Interventions',
+        duration: 'Weeks 7–9',
+        topics: [
+          'Cognitive Behavioral Therapy (CBT): Thought records and cognitive restructuring',
+          'Person-Centered Therapy, active listening, and unconditional positive regard',
+          'Mindfulness-based interventions (MBSR, ACT) and emotional regulation skills',
+          'Crisis intervention strategies, suicide risk protocols, and ethical standards',
+        ],
+      },
+      {
+        title: 'Module 4: Psychometrics, Behavioral Analytics & Workplace Wellness',
+        duration: 'Weeks 10–12',
+        topics: [
+          'Administration & scoring of psychological assessments (BDI, GAD-7, MMPI, WAIS)',
+          'Organizational behavioral psychology and employee assistance programs (EAP)',
+          'Designing corporate stress-management workshops and mental health campaigns',
+          'Case study reporting, clinical documentation ethics, and supervised counseling drills',
+        ],
+      },
+    ],
+    projects: [
+      {
+        name: 'Comprehensive Clinical Psychological Assessment Battery',
+        description: 'Administered, scored, and synthesized standardized psychometric inventories into comprehensive diagnostic clinical reports and personalized intervention plans.',
+        tech: ['DSM-5-TR Diagnostic Matrix', 'Psychometric Scoring Tools', 'Mental Status Examination (MSE)', 'SPSS Statistics'],
+      },
+      {
+        name: 'Corporate Mental Wellness & Stress Resilience Framework',
+        description: 'Formulated a data-driven mental wellness program for corporate workforces, integrating CBT-based stress inoculation drills and burnout tracking metrics.',
+        tech: ['CBT Frameworks', 'Burnout Inventory (MBI)', 'HR Well-Being Analytics', 'Workshop Toolkits'],
+      },
+    ],
+    tools: ['DSM-5-TR Matrix', 'Psychometric Assessment Batteries', 'SPSS Statistics', 'CBT Thought Protocols', 'MSE Clinical Suites', 'Well-being Analytics'],
+    careerRoles: ['Counseling Psychologist', 'Clinical Psychology Assistant', 'Behavioral Health Specialist', 'Corporate Wellness Consultant', 'Child & Adolescent Counselor'],
+    salaryRange: '₹4.5 LPA – ₹11.0 LPA',
+    hiringPartners: ['Apollo Hospitals', 'Fortis Healthcare', 'MindPeers', 'Manastha Health Solutions', 'YourDOST', 'Cult.fit Wellness', 'Corporate EAP Networks'],
+  },
 }
 
 // Map alias IDs to ensure every course slug from programsData resolves directly
@@ -729,4 +849,6 @@ courseCurriculumData['embedded-systems'] = courseCurriculumData['embedded']
 courseCurriculumData['human-resource'] = courseCurriculumData['hr-analytics']
 courseCurriculumData['ai'] = courseCurriculumData['ai-ml']
 courseCurriculumData['cloud'] = courseCurriculumData['aws-cloud']
+courseCurriculumData['cycology'] = courseCurriculumData['psychology']
+courseCurriculumData['medical'] = courseCurriculumData['medical-coding']
 

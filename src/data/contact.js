@@ -36,7 +36,7 @@ export const contactDetails = {
   socials: [
     {
       name: 'LinkedIn',
-      url: 'https://www.linkedin.com/company/pro-version-innovations-pvt-ltd',
+      url: 'https://www.linkedin.com/company/pro-version/',
       ariaLabel: 'Visit ProVersion on LinkedIn',
     },
     {

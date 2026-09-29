@@ -31,7 +31,7 @@ const ALL_NAV_LINKS = [
   { id: 'home', label: 'Home', href: '#home', num: '01', icon: Home, badge: 'Overview', desc: 'Hero & Mission Overview' },
   { id: 'about', label: 'About Us', href: '#about', num: '02', icon: Compass, badge: 'Vision', desc: 'Beyond Classrooms to Real Capability' },
   { id: 'why-us', label: 'Why Us', href: '#why-us', num: '03', icon: Award, badge: '3 Phases', desc: 'Ignite, Elevate & Accelerate Model' },
-  { id: 'programs', label: 'Programs', href: '#programs', num: '04', icon: BookOpen, badge: '13 Courses', desc: 'IT, Core & Management Domains' },
+  { id: 'programs', label: 'Programs', href: '#programs', num: '04', icon: BookOpen, badge: '15 Courses', desc: 'IT, Core, Healthcare & Management' },
   { id: 'entrepreneurship', label: 'Entrepreneurship', href: '#entrepreneurship', num: '05', icon: Rocket, badge: 'Free MSME', desc: 'Founder Mentorship & Incubation' },
   { id: 'career-path', label: 'Career Path', href: '#career-path', num: '06', icon: TrendingUp, badge: '120 Days', desc: '12 Chapters Structured Growth' },
   { id: 'testimonials', label: 'Testimonials', href: '#testimonials', num: '07', icon: MessageSquareQuote, badge: '4.9★ Rated', desc: 'Alumni Placements & Case Studies' },
