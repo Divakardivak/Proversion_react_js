@@ -1,3 +1,6 @@
+import medicalCodingImg from '@/assets/medical-coding.jpg'
+import psychologyImg from '@/assets/psychology.jpg'
+
 /**
  * Authentic ProVersion Programs Data
  * Structured by Departments: IT Department, Core, and Management
@@ -369,7 +372,7 @@ export const programsData = [
     rating: 4.9,
     students: '1,240+',
     badge: 'CPC Certified Track',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80',
+    image: medicalCodingImg,
     originalPrice: '₹10,000',
     price: '₹6,999',
     discount: '30% OFF',
@@ -395,7 +398,7 @@ export const programsData = [
     rating: 4.8,
     students: '980+',
     badge: 'Applied Psychology',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80',
+    image: psychologyImg,
     originalPrice: '₹10,000',
     price: '₹6,999',
     discount: '30% OFF',

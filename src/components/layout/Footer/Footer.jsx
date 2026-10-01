@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
   Sparkles,
@@ -9,12 +9,15 @@ import {
   MapPin,
   ExternalLink,
   ChevronRight,
+  ShieldCheck,
 } from 'lucide-react'
 import { Container } from '@/components/common/Container'
 import { Button } from '@/components/common/Button'
 import { MagneticButton } from '@/components/common/MagneticButton'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { contactDetails } from '@/data/contact'
+import { legalLinks, copyrightNotice } from '@/data/legal'
+import { LegalModal } from '@/components/legal'
 import proversionLogo from '@/assets/proversion-logo.png'
 import './Footer.css'
 
@@ -42,6 +45,59 @@ const QUICK_LINKS = [
  */
 export function Footer() {
   const shouldReduceMotion = useReducedMotion()
+  const [isLegalOpen, setIsLegalOpen] = useState(false)
+  const [legalPolicyId, setLegalPolicyId] = useState('terms')
+
+  const handleOpenLegal = (policyId) => {
+    setLegalPolicyId(policyId)
+    setIsLegalOpen(true)
+    if (typeof window !== 'undefined') {
+      window.history.pushState(null, '', `#${policyId}`)
+    }
+  }
+
+  const handleCloseLegal = () => {
+    setIsLegalOpen(false)
+    if (typeof window !== 'undefined') {
+      const h = window.location.hash.toLowerCase()
+      if (
+        h.includes('terms') ||
+        h.includes('privacy') ||
+        h.includes('refund') ||
+        h.includes('cancellation')
+      ) {
+        window.history.pushState(null, '', window.location.pathname + window.location.search)
+      }
+    }
+  }
+
+  // Synchronize hash with legal modal (e.g. #terms, #privacy, #refund)
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const checkHash = () => {
+      const hash = window.location.hash.toLowerCase()
+      if (hash === '#terms' || hash === '#terms-and-conditions' || hash === '#terms-conditions') {
+        setLegalPolicyId('terms')
+        setIsLegalOpen(true)
+      } else if (hash === '#privacy' || hash === '#privacy-policy') {
+        setLegalPolicyId('privacy')
+        setIsLegalOpen(true)
+      } else if (
+        hash === '#refund' ||
+        hash === '#refund-policy' ||
+        hash === '#refund-cancellation' ||
+        hash === '#cancellation-policy'
+      ) {
+        setLegalPolicyId('refund')
+        setIsLegalOpen(true)
+      }
+    }
+
+    checkHash()
+    window.addEventListener('hashchange', checkHash)
+    return () => window.removeEventListener('hashchange', checkHash)
+  }, [])
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -227,8 +283,8 @@ export function Footer() {
             </div>
           </motion.div>
 
-          {/* Column 2: Quick Links */}
-          <motion.div className="ui-footer__col" variants={itemVariants}>
+          {/* Column 2: Navigation */}
+          <motion.div className="ui-footer__col ui-footer__col--nav" variants={itemVariants}>
             <h3 className="ui-footer__col-title">Navigation</h3>
             <ul className="ui-footer__link-list" role="list">
               {QUICK_LINKS.map((link) => (
@@ -242,9 +298,30 @@ export function Footer() {
             </ul>
           </motion.div>
 
+          {/* Column 3: Legal Policies */}
+          <motion.div className="ui-footer__col ui-footer__col--legal" variants={itemVariants}>
+            <h3 className="ui-footer__col-title">Legal</h3>
+            <ul className="ui-footer__link-list" role="list">
+              {legalLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    className="ui-footer__link"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleOpenLegal(link.id)
+                    }}
+                  >
+                    <ChevronRight size={13} className="ui-footer__link-arrow" aria-hidden="true" />
+                    <span>{link.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
 
           {/* Column 4: Contact & Social Ecosystem */}
-          <motion.div className="ui-footer__col" variants={itemVariants}>
+          <motion.div className="ui-footer__col ui-footer__col--contact" variants={itemVariants}>
             <h3 className="ui-footer__col-title">Direct Connect</h3>
             <div className="ui-footer__contact-items">
               <a
@@ -314,25 +391,54 @@ export function Footer() {
           </motion.div>
         </motion.div>
 
-        {/* Footer Bottom Bar: Status & Back To Top */}
+        {/* Footer Bottom Bar: Copyright, Legal Links, Status & Back To Top */}
         <div className="ui-footer__bottom">
-
-          <div className="ui-footer__status" aria-label="System status">
-            <span className="ui-footer__status-dot" aria-hidden="true" />
-            <span>Platform Active &bull; Admissions Open</span>
+          <div className="ui-footer__bottom-meta">
+            <p className="ui-footer__copyright">{copyrightNotice}</p>
+            <nav className="ui-footer__bottom-legal" aria-label="Legal documents">
+              {legalLinks.map((item, idx) => (
+                <React.Fragment key={item.id}>
+                  {idx > 0 && <span className="ui-footer__legal-sep" aria-hidden="true">&bull;</span>}
+                  <a
+                    href={`#${item.id}`}
+                    className="ui-footer__bottom-legal-link"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleOpenLegal(item.id)
+                    }}
+                  >
+                    {item.label}
+                  </a>
+                </React.Fragment>
+              ))}
+            </nav>
           </div>
 
-          <button
-            type="button"
-            className="ui-footer__back-to-top"
-            onClick={scrollToTop}
-            aria-label="Scroll back to top of the page"
-          >
-            <span>Back to top</span>
-            <ArrowUp size={15} className="ui-footer__back-icon" aria-hidden="true" />
-          </button>
+          <div className="ui-footer__bottom-actions">
+            <div className="ui-footer__status" aria-label="System status">
+              <span className="ui-footer__status-dot" aria-hidden="true" />
+              <span>Platform Active &bull; Admissions Open</span>
+            </div>
+
+            <button
+              type="button"
+              className="ui-footer__back-to-top"
+              onClick={scrollToTop}
+              aria-label="Scroll back to top of the page"
+            >
+              <span>Back to top</span>
+              <ArrowUp size={15} className="ui-footer__back-icon" aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </Container>
+
+      {/* Interactive Comprehensive Legal Documentation Modal */}
+      <LegalModal
+        isOpen={isLegalOpen}
+        initialPolicyId={legalPolicyId}
+        onClose={handleCloseLegal}
+      />
     </footer>
   )
 }
